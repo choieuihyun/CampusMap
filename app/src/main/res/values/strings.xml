@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">CampusMap_CleanArchitecture</string>
+
+    <string name="notice_title_general">공지사항(일반)</string>
+    <string name="notice_title_haksa">공지사항(학사)</string>
+    <string name="notice_title_janghak">공지사항(장학)</string>
+    <string name="notice_title_recruit">공지사항(취업)</string>
+    <string name="notice_more">더보기</string>
+    <string name="notice_edittext_hint">제목을 입력하세요</string>
+    <string name="search_button">검색</string>
+    <string name="loading_text">잠시만 기다려주세요..</string>
+    <string name="notice_home">메인화면</string>
+    <string name="notice_ilban">일반</string>
+    <string name="notice_haksa">학사</string>
+    <string name="notice_chuiup">취업</string>
+    <string name="notice_janghak">장학</string>
 </resources>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="lecture_room_menu"
+            type="com.campusmap.android.campusmap_with_kakao.lectureroom.BuildingLectureRoomMenu" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/radius_info_menu"/>
+
+
+<!--        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lectureRoom_title_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="40dp">-->
+
+        <TextView
+            android:id="@+id/lectureroom_title_id"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/radius_info_menu_title"
+            android:elevation="20dp"
+            android:gravity="center_vertical"
+
+            android:textSize="30dp"
+            tools:text="건물 정보보기" />
+<!--            -->
+<!--        </androidx.recyclerview.widget.RecyclerView>-->
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginTop="135dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+
+            android:scrollbars="none"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/menu_btn_1"
+                    android:layout_width="93dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radius_info_menu_button"
+                    android:stateListAnimator="@null"
+                    android:text="1층"/>
+
+                <Button
+                    android:id="@+id/menu_btn_2"
+                    android:layout_width="93dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:stateListAnimator="@null"
+                    android:text="2층"/>
+
+                <Button
+                    android:id="@+id/menu_btn_3"
+                    android:layout_width="93dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:stateListAnimator="@null"
+                    android:text="3층"/>
+
+                <Button
+                    android:id="@+id/menu_btn_4"
+                    android:layout_width="93dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:stateListAnimator="@null"
+                    android:text="4층"/>
+
+                <Button
+                    android:id="@+id/menu_btn_5"
+                    android:layout_width="93dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:stateListAnimator="@null"
+                    android:text="5층"/>
+
+                <Button
+                    android:id="@+id/menu_btn_6"
+                    android:layout_width="93dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:stateListAnimator="@null"
+                    android:text="6층"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="170dp"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/radius_info_menu_list"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lectureRoom_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="190dp"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

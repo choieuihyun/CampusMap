@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <!--        <import type="android.view.View"/>-->
+        <variable
+            name="buildingMenuFragment"
+            type="com.campusmap.android.campusmap_with_kakao.BuildingMenuFragment" />
+
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/building_menu_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#ffffff"
+            android:elevation="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="left|center_vertical"
+                android:text="건물 찾기"
+                android:textSize="30dp"
+                android:textColor="#000000" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="#EFEDED">
+
+            //왼쪽 초성메뉴
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/gmarket_ttf_medium"
+                    android:background="#00000000"
+                    android:textColor="#000000"
+                    android:text="가~나"/>
+
+                <Button
+                    android:id="@+id/btn2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/gmarket_ttf_medium"
+                    android:background="#00000000"
+                    android:textColor="#000000"
+                    android:text="다~바"/>
+
+                <Button
+                    android:id="@+id/btn3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/gmarket_ttf_medium"
+                    android:background="#00000000"
+                    android:textColor="#000000"
+                    android:text="사~아"/>
+
+                <Button
+                    android:id="@+id/btn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/gmarket_ttf_medium"
+                    android:background="#00000000"
+                    android:textColor="#000000"
+                    android:text="자~차"/>
+
+                <Button
+                    android:id="@+id/btn5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/gmarket_ttf_medium"
+                    android:background="#00000000"
+                    android:textColor="#000000"
+                    android:text="카~하"/>
+
+                <Button
+                    android:id="@+id/btn6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/gmarket_ttf_medium"
+                    android:background="#00000000"
+                    android:textColor="#000000"
+                    android:text="A~Z"/>
+
+
+
+            </LinearLayout>
+
+            //오른쪽 건물 메뉴
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/building_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EFEDED">
+
+<!--                <LinearLayout
+                    android:id="@+id/FirstLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:visibility="visible">
+
+&lt;!&ndash;                    <include layout="@layout/building_menu_fragment_detail_recyclerview"/>&ndash;&gt;
+
+                </LinearLayout>-->
+
+<!--                <LinearLayout
+                    android:id="@+id/SecondLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:visibility="invisible">
+
+                    <include layout="@layout/activity_main"/>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/ThirdLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:visibility="invisible">
+
+                    <include layout="@layout/activity_main"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/FourthLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:visibility="invisible">
+
+                    <include layout="@layout/activity_main"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/FifthLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:visibility="invisible">
+
+                    <include layout="@layout/activity_main"/>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/SixthLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:visibility="invisible">
+
+                    <include layout="@layout/activity_main"/>
+                </LinearLayout>-->
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
