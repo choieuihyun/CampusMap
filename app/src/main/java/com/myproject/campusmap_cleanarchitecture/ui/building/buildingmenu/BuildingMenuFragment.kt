@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView.OnItemClickListener
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +23,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
 
     private lateinit var buildingMenuAdapter: BuildingMenuAdapter
 
-    private val viewModel: BuildingMenuViewModel by viewModels()
+    private val viewModel: BuildingMenuViewModel by activityViewModels()
 
     interface OnItemClick {
         fun itemClick(id: Int)
