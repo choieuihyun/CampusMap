@@ -1,9 +1,9 @@
-package com.campusmap.android.campusmap_with_kakao.data.db.remote.api
+package com.myproject.campusmap_cleanarchitecture.data.db.remote.api
 
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
-import com.campusmap.android.campusmap_with_kakao.data.db.local.entity.RouteList
+import com.myproject.campusmap_cleanarchitecture.data.db.remote.response.RouteList
 
 interface BusApi {
 

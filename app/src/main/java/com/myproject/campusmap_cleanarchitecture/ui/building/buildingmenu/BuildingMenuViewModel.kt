@@ -1,4 +1,4 @@
-package com.campusmap.android.campusmap_with_kakao
+package com.myproject.campusmap_cleanarchitecture.ui.building.buildingmenu
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

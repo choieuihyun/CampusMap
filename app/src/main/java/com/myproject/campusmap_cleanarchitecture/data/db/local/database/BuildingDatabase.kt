@@ -1,11 +1,11 @@
-package com.campusmap.android.campusmap_with_kakao.data.db.local.database
+package com.myproject.campusmap_cleanarchitecture.data.db.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.campusmap.android.campusmap_with_kakao.data.db.local.dao.BuildingDao
-import com.campusmap.android.campusmap_with_kakao.data.db.local.entity.BuildingEntity
-import com.campusmap.android.campusmap_with_kakao.data.db.local.entity.EngFirstLectureRoomEntity
+import com.myproject.campusmap_cleanarchitecture.data.db.local.dao.BuildingDao
 import com.myproject.campusmap_cleanarchitecture.data.db.local.dao.EngFirstDao
+import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingEntity
+import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.EngFirstLectureRoomEntity
 
 // 이 클래스가 앱의 데이터베이스를 나타낸다고 Room에게 알려줌
 // 그리고 여기에 Dao의 참조를 가진 후 Dao에 정의된 함수들을 호출해서 DB를 사용하겠다.

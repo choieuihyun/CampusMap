@@ -1,4 +1,4 @@
-package com.campusmap.android.campusmap_with_kakao.data.di
+package com.myproject.campusmap_cleanarchitecture.data.di
 
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
