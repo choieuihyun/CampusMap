@@ -1,4 +1,4 @@
-package com.campusmap.android.campusmap_with_kakao
+package com.myproject.campusmap_cleanarchitecture.ui.building.buildingmenu
 
 import android.content.Context
 import android.os.Bundle
@@ -9,152 +9,93 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.campusmap.android.campusmap_with_kakao.building.Building
-import com.campusmap.android.campusmap_with_kakao.databinding.BuildingMenuFragmentBinding
+import com.campusmap.android.campusmap_with_kakao.BuildingMenuViewModel
+import com.myproject.campusmap_cleanarchitecture.R
+import com.myproject.campusmap_cleanarchitecture.databinding.BuildingFragmentMenuBinding
+import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "BuildingMenuFragment"
 
-class BuildingMenuFragment: Fragment() {
+@AndroidEntryPoint
+class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.building_fragment_menu) {
 
-    private lateinit var binding: BuildingMenuFragmentBinding
-    private lateinit var testView: View
-
-    // 여기다가 데이터를 띄워주고 싶어. 그러면 데이터를 액세스하는곳을 알아서 데이터를 가져와야겠지. 그게 바로 Repository고.
     private lateinit var buildingRecyclerView: RecyclerView
-    private var adapter: BuildingAdapter? = BuildingAdapter(emptyList())
+//    private var adapter: BuildingAdapter? = BuildingAdapter(emptyList())
 
-    // 추가부분
-    private val buildingListViewModel: BuildingMenuViewModel by lazy {
-        ViewModelProvider(this).get(BuildingMenuViewModel::class.java)
-    }
-
-
-    interface Callbacks {
-        fun onMenuButtonSelected(id : Int)
-        fun onBuildingSelected(id: Int)
-    }
-
-    private var callbacks: Callbacks? = null
+    private val viewModel: BuildingMenuViewModel by viewModels()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as Callbacks?
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        //화면에 보이는 뷰들의 일반적인 상태를 설정하는 작업을 한다.
+
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-
-        binding = DataBindingUtil.inflate(inflater, R.layout.building_menu_fragment, container, false)
-
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btn1.setOnClickListener {
+            // LiveData로 RecyclerView 갱신.
+            viewModel.getBuildings.observe()
+        }
+
+        binding.btn2.setOnClickListener {
+
+        }
+
+        binding.btn3.setOnClickListener {
+
+        }
+
+        binding.btn4.setOnClickListener {
+
+        }
+
+        binding.btn5.setOnClickListener {
+
+        }
+
+        binding.btn6.setOnClickListener {
+
+        }
+
+/*        아주 가끔 뷰 객체가 생성되지 않는 경우도 있기 때문에 되도록이면 콜백을 받는 onViewCreated에서 View의 초기값을 설정해주거나,
+        adapter를 설정하거나, 이벤트를 정의하거나 해주면 된다.*/
+
         // 추가부분
-        buildingRecyclerView = view.findViewById(R.id.building_recycler_view) as RecyclerView
-        buildingRecyclerView.layoutManager = LinearLayoutManager(context)
-        buildingRecyclerView.adapter = adapter
+//        buildingRecyclerView = view.findViewById(R.id.building_recycler_view) as RecyclerView
+//        buildingRecyclerView.layoutManager = LinearLayoutManager(context)
+//        buildingRecyclerView.adapter = adapter
 
         // LiveData 인스턴스에 옵저버를 등록, 추가부분
 //        binding.btn1.setOnClickListener {
 //
 //        }
 
-        binding.run {
-
-            btn1.setOnClickListener {
-                buildingListViewModel.buildingsLiveData.observe(
-                    viewLifecycleOwner,
-                    { buildings ->
-                        buildings.let {
-                            Log.i("gggg","Got buildings ${buildings.size}")
-                            updateUI(buildings.subList(0,9))
-                        }
-                    }
-                )
-            }
-
-            btn2.setOnClickListener {
-                buildingListViewModel.buildingsLiveData.observe(
-                    viewLifecycleOwner,
-                    { buildings ->
-                        buildings.let {
-                            Log.i("gggg","Got buildings ${buildings.size}")
-                            updateUI(buildings.subList(9,15))
-                        }
-                    }
-                )
-            }
-
-            btn3.setOnClickListener {
-                buildingListViewModel.buildingsLiveData.observe(
-                    viewLifecycleOwner,
-                    { buildings ->
-                        buildings.let {
-                            Log.i("gggg","Got buildings ${buildings.size}")
-                            updateUI(buildings.subList(15,27))
-                        }
-                    }
-                )
-            }
-
-            btn4.setOnClickListener {
-                buildingListViewModel.buildingsLiveData.observe(
-                    viewLifecycleOwner,
-                    { buildings ->
-                        buildings.let {
-                            Log.i("gggg","Got buildings ${buildings.size}")
-                            updateUI(buildings.subList(29,39))
-                        }
-                    }
-                )
-            }
-
-            btn5.setOnClickListener {
-                buildingListViewModel.buildingsLiveData.observe(
-                    viewLifecycleOwner,
-                    { buildings ->
-                        buildings.let {
-                            Log.i("gggg","Got buildings ${buildings.size}")
-                            updateUI(buildings.subList(39,43))
-                        }
-                    }
-                )
-            }
-
-            btn6.setOnClickListener {
-                buildingListViewModel.buildingsLiveData.observe(
-                    viewLifecycleOwner,
-                    { buildings ->
-                        buildings.let {
-                            Log.i("gggg","Got buildings ${buildings.size}")
-                            updateUI(buildings.subList(27,29))
-                        }
-                    }
-                )
-            }
-
-        }
-
-
-
     }
 
-    // 추가부분
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Fragment는 오래 지속되므로 onDestroyView() 메소드에서 binding 클래스 인스턴스에 대한 참조를 정리해줘야한다.
+        // 라고해서 일단 했는데 더 찾아보자 어쩔때 하고 어쩔때 안하는지.
+        //binding = null
+    }
+
+/*    // 추가부분
     private inner class BuildingHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
         private lateinit var buildings: Building
@@ -170,9 +111,6 @@ class BuildingMenuFragment: Fragment() {
             titleTextView.text = this.buildings.name
         }
 
-        override fun onClick(v: View?) {
-            callbacks?.onBuildingSelected(buildings.id)
-        }
     }
 
     // 추가부분
@@ -181,7 +119,7 @@ class BuildingMenuFragment: Fragment() {
 
         // inflate후 만들 Holder 인스턴스를 return
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildingHolder {
-            val view = layoutInflater.inflate(R.layout.list_item_building, parent, false)
+            val view = layoutInflater.inflate(R.layout.building_list_item, parent, false)
             return BuildingHolder(view)
         }
 
@@ -201,16 +139,12 @@ class BuildingMenuFragment: Fragment() {
         buildingRecyclerView.adapter = adapter
     }
 
-    // 추가부분
-    private fun onButtonClick(id: Int) {
-        callbacks?.onMenuButtonSelected(id)
-    }
 
     companion object {
         fun newInstance() : BuildingMenuFragment {
             return BuildingMenuFragment()
         }
-    }
+    }*/
 
 
 }

@@ -8,34 +8,29 @@
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.myproject.campusmap_cleanarchitecture.ui.map.MapFragment"
+        tools:layout="@layout/fragment_map"
         android:label="MapFragment" >
         <action
-            android:id="@+id/action_mapFragment_to_buildingMenuFragment2"
+            android:id="@+id/action_mapFragment_to_buildingMenuFragment"
             app:destination="@id/buildingMenuFragment" />
-        <action
-            android:id="@+id/action_mapFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+<!--        <action-->
+<!--            android:id="@+id/action_mapFragment_to_searchFragment"-->
+<!--            app:destination="@id/searchFragment" />-->
     </fragment>
     <fragment
         android:id="@+id/buildingMenuFragment"
-        android:name="com.campusmap.android.campusmap_with_kakao.BuildingMenuFragment"
-        android:label="BuildingMenuFragment" >
-        <action
-            android:id="@+id/action_buildingMenuFragment_to_buildingDetailFragment"
-            app:destination="@id/buildingDetailFragment" />
-        <action
-            android:id="@+id/action_buildingMenuFragment_to_noticeFragment"
-            app:destination="@id/noticeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/buildingDetailFragment"
-        android:name="com.campusmap.android.campusmap_with_kakao.BuildingDetailFragment"
-        android:label="BuildingDetailFragment" >
-        <action
-            android:id="@+id/action_buildingDetailFragment_to_buildingLectureRoomMenu"
-            app:destination="@id/buildingLectureRoomMenu" />
-    </fragment>
-    <fragment
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.building.buildingmenu.BuildingMenuFragment"
+        android:label="BuildingMenuFragment"
+        tools:layout="@layout/building_fragment_menu"/>
+    <!--    <fragment
+            android:id="@+id/buildingDetailFragment"
+            android:name="com.campusmap.android.campusmap_with_kakao.BuildingDetailFragment"
+            android:label="BuildingDetailFragment" >
+            <action
+                android:id="@+id/action_buildingDetailFragment_to_buildingLectureRoomMenu"
+                app:destination="@id/buildingLectureRoomMenu" />
+        </fragment>-->
+<!--    <fragment
         android:id="@+id/noticeFragment"
         android:name="com.campusmap.android.campusmap_with_kakao.notice.NoticeFragment"
         android:label="NoticeFragment" >
@@ -51,8 +46,8 @@
         <action
             android:id="@+id/action_noticeFragment_to_noticeRecruitFragment"
             app:destination="@id/noticeRecruitFragment" />
-    </fragment>
-    <fragment
+    </fragment>-->
+<!--    <fragment
         android:id="@+id/noticeGeneralFragment"
         android:name="com.campusmap.android.campusmap_with_kakao.notice.NoticeGeneralFragment"
         android:label="NoticeGeneralFragment" />
@@ -75,8 +70,8 @@
         <action
             android:id="@+id/action_buildingLectureRoomMenu_to_buildingLectureRoomDetail"
             app:destination="@id/buildingLectureRoomDetail" />
-    </fragment>
-    <fragment
+    </fragment>-->
+<!--    <fragment
         android:id="@+id/buildingLectureRoomDetail"
         android:name="com.campusmap.android.campusmap_with_kakao.lectureroom.BuildingLectureRoomDetail"
         android:label="BuildingLectureRoomDetail" >
@@ -105,5 +100,5 @@
     <fragment
         android:id="@+id/lectureRoomDetailViewPager3"
         android:name="com.campusmap.android.campusmap_with_kakao.lectureroom.LectureRoomDetailViewPager3"
-        android:label="LectureRoomDetailViewPager3" />
+        android:label="LectureRoomDetailViewPager3" />-->
 </navigation>

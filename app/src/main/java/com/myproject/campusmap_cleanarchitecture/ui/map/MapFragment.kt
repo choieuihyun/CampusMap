@@ -12,6 +12,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -27,12 +28,14 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.work.impl.model.Preference
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.FragmentMapBinding
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapReverseGeoCoder
 import net.daum.mf.map.api.MapView
+import timber.log.Timber
 import java.util.prefs.Preferences
 
 
@@ -64,6 +67,8 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Timber.tag("sdf").d("이거 됨?")
+
         val locationPermissionRequest = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
         ) { permissions ->
@@ -73,11 +78,11 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
                 }
                 permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
                     // Only approximate location access granted.
-                } else -> {
-                // No location access granted.
+                }
+                else -> {
+                    // No location access granted.
+                }
             }
-            }
-
 
         }
 
@@ -86,6 +91,15 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
             Manifest.permission.ACCESS_COARSE_LOCATION))
 
 
+/*        binding.buildingSearchButton.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_searchFragment)
+        }*/
+
+
+
+/*        binding.menuNotice.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_buildingMenuFragment_to_noticeFragment)
+        }*/
 
     }
 
@@ -116,6 +130,10 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
             drawerLayout.openDrawer(Gravity.RIGHT)
         }
 
+        binding.menuBuilding.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_buildingMenuFragment)
+        }
+
     }
 
     override fun onDestroyView() {
@@ -126,11 +144,6 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         // binding.mapFragment.mapView 야 이거쓰면 무슨 item 제거도 되네
         mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
     }
-
-
-
-
-
 
     companion object {
         fun newInstance() : MapFragment {

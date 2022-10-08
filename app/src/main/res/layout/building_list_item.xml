@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+<data>
+    <!--        <import type="android.view.View"/>-->
+    <variable
+        name="viewModel"
+        type="com.campusmap.android.campusmap_with_kakao.BuildingMenuViewModel" />
+
+</data>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -19,3 +29,5 @@
     <!--    building_menu_list RecyclerView 항목들-->
 
 </LinearLayout>
+
+</layout>
