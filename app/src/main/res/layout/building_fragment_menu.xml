@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-        <!--        <import type="android.view.View"/>-->
-        <variable
-            name="buildingMenuFragment"
-            type="com.campusmap.android.campusmap_with_kakao.BuildingMenuFragment" />
 
-    </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -21,7 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:background="#ffffff"
@@ -41,7 +35,7 @@
                 android:layout_height="0dp" />
 
 
-        </FrameLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +43,7 @@
             android:orientation="horizontal"
             android:background="#EFEDED">
 
-            //왼쪽 초성메뉴
+<!--            왼쪽 초성메뉴-->
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
@@ -138,78 +132,13 @@
 
             </LinearLayout>
 
-            //오른쪽 건물 메뉴
+<!--         오른쪽 건물 메뉴-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/building_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#EFEDED">
 
-<!--                <LinearLayout
-                    android:id="@+id/FirstLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="30dp"
-                    android:visibility="visible">
-
-&lt;!&ndash;                    <include layout="@layout/building_menu_fragment_detail_recyclerview"/>&ndash;&gt;
-
-                </LinearLayout>-->
-
-<!--                <LinearLayout
-                    android:id="@+id/SecondLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="30dp"
-                    android:visibility="invisible">
-
-                    <include layout="@layout/activity_main"/>
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:id="@+id/ThirdLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#FFFFFF"
-                    android:visibility="invisible">
-
-                    <include layout="@layout/activity_main"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/FourthLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#FFFFFF"
-                    android:visibility="invisible">
-
-                    <include layout="@layout/activity_main"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/FifthLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#FFFFFF"
-                    android:visibility="invisible">
-
-                    <include layout="@layout/activity_main"/>
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:id="@+id/SixthLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#FFFFFF"
-                    android:visibility="invisible">
-
-                    <include layout="@layout/activity_main"/>
-                </LinearLayout>-->
             </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
     </LinearLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/campusmap_nav_graph"
+    app:startDestination="@id/mapFragment">
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.map.MapFragment"
+        tools:layout="@layout/fragment_map"
+        android:label="MapFragment" >
+        <action
+            android:id="@+id/action_mapFragment_to_buildingMenuFragment"
+            app:destination="@id/buildingMenuFragment" />
+<!--        <action-->
+<!--            android:id="@+id/action_mapFragment_to_searchFragment"-->
+<!--            app:destination="@id/searchFragment" />-->
+    </fragment>
+    <fragment
+        android:id="@+id/buildingMenuFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.building.buildingmenu.BuildingMenuFragment"
+        android:label="BuildingMenuFragment"
+        tools:layout="@layout/building_fragment_menu"/>
+    <!--    <fragment
+            android:id="@+id/buildingDetailFragment"
+            android:name="com.campusmap.android.campusmap_with_kakao.BuildingDetailFragment"
+            android:label="BuildingDetailFragment" >
+            <action
+                android:id="@+id/action_buildingDetailFragment_to_buildingLectureRoomMenu"
+                app:destination="@id/buildingLectureRoomMenu" />
+        </fragment>-->
+<!--    <fragment
+        android:id="@+id/noticeFragment"
+        android:name="com.campusmap.android.campusmap_with_kakao.notice.NoticeFragment"
+        android:label="NoticeFragment" >
+        <action
+            android:id="@+id/action_noticeFragment_to_noticeGeneralFragment"
+            app:destination="@id/noticeGeneralFragment" />
+        <action
+            android:id="@+id/action_noticeFragment_to_noticeJanghakFragment"
+            app:destination="@id/noticeJanghakFragment" />
+        <action
+            android:id="@+id/action_noticeFragment_to_noticeHaksaFragment"
+            app:destination="@id/noticeHaksaFragment" />
+        <action
+            android:id="@+id/action_noticeFragment_to_noticeRecruitFragment"
+            app:destination="@id/noticeRecruitFragment" />
+    </fragment>-->
+<!--    <fragment
+        android:id="@+id/noticeGeneralFragment"
+        android:name="com.campusmap.android.campusmap_with_kakao.notice.NoticeGeneralFragment"
+        android:label="NoticeGeneralFragment" />
+    <fragment
+        android:id="@+id/noticeHaksaFragment"
+        android:name="com.campusmap.android.campusmap_with_kakao.notice.NoticeHaksaFragment"
+        android:label="NoticeHaksaFragment" />
+    <fragment
+        android:id="@+id/noticeJanghakFragment"
+        android:name="com.campusmap.android.campusmap_with_kakao.notice.NoticeJanghakFragment"
+        android:label="NoticeJanghakFragment" />
+    <fragment
+        android:id="@+id/noticeRecruitFragment"
+        android:name="com.campusmap.android.campusmap_with_kakao.notice.NoticeRecruitFragment"
+        android:label="NoticeRecruitFragment" />
+    <fragment
+        android:id="@+id/buildingLectureRoomMenu"
+        android:name="com.campusmap.android.campusmap_with_kakao.lectureroom.BuildingLectureRoomMenu"
+        android:label="BuildingLectureRoomMenu" >
+        <action
+            android:id="@+id/action_buildingLectureRoomMenu_to_buildingLectureRoomDetail"
+            app:destination="@id/buildingLectureRoomDetail" />
+    </fragment>-->
+<!--    <fragment
+        android:id="@+id/buildingLectureRoomDetail"
+        android:name="com.campusmap.android.campusmap_with_kakao.lectureroom.BuildingLectureRoomDetail"
+        android:label="BuildingLectureRoomDetail" >
+        <action
+            android:id="@+id/action_buildingLectureRoomDetail_to_lectureRoomDetailViewPager1"
+            app:destination="@id/lectureRoomDetailViewPager1" />
+        <action
+            android:id="@+id/action_buildingLectureRoomDetail_to_lectureRoomDetailViewPager2"
+            app:destination="@id/lectureRoomDetailViewPager2" />
+        <action
+            android:id="@+id/action_buildingLectureRoomDetail_to_lectureRoomDetailViewPager3"
+            app:destination="@id/lectureRoomDetailViewPager3" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.campusmap.android.campusmap_with_kakao.SearchFragment"
+        android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/lectureRoomDetailViewPager1"
+        android:name="com.campusmap.android.campusmap_with_kakao.lectureroom.LectureRoomDetailViewPager1"
+        android:label="LectureRoomDetailViewPager1" />
+    <fragment
+        android:id="@+id/lectureRoomDetailViewPager2"
+        android:name="com.campusmap.android.campusmap_with_kakao.lectureroom.LectureRoomDetailViewPager2"
+        android:label="LectureRoomDetailViewPager2" />
+    <fragment
+        android:id="@+id/lectureRoomDetailViewPager3"
+        android:name="com.campusmap.android.campusmap_with_kakao.lectureroom.LectureRoomDetailViewPager3"
+        android:label="LectureRoomDetailViewPager3" />-->
+</navigation>
