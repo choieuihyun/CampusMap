@@ -1,4 +1,4 @@
-package com.campusmap.android.campusmap_with_kakao.data.db.local.entity
+package com.myproject.campusmap_cleanarchitecture.data.db.remote.response
 
 import com.google.gson.annotations.SerializedName
 

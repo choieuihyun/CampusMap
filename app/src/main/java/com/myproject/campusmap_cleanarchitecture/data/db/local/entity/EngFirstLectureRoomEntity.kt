@@ -1,5 +1,4 @@
-package com.campusmap.android.campusmap_with_kakao.data.db.local.entity
-
+package com.myproject.campusmap_cleanarchitecture.data.db.local.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

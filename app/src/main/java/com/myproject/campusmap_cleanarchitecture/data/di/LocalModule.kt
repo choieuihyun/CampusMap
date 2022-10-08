@@ -1,8 +1,8 @@
-package com.campusmap.android.campusmap_with_kakao.data.di
+package com.myproject.campusmap_cleanarchitecture.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.campusmap.android.campusmap_with_kakao.data.db.local.database.BuildingDatabase
+import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,6 +25,7 @@ object LocalModule {
             Room.databaseBuilder(context,
                 BuildingDatabase::class.java,
                 DATABASE_NAME)
+                .fallbackToDestructiveMigration()
                 .createFromAsset("databases/buildings.db")
                 .build()
 
