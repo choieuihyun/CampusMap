@@ -29,22 +29,26 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import androidx.work.impl.model.Preference
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.FragmentMapBinding
-import net.daum.mf.map.api.MapPoint
-import net.daum.mf.map.api.MapReverseGeoCoder
-import net.daum.mf.map.api.MapView
+import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import net.daum.mf.map.api.*
 import timber.log.Timber
 import java.util.prefs.Preferences
 
 
-class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener {
+class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener, MapView.POIItemEventListener {
 
     private lateinit var binding: FragmentMapBinding
+    private lateinit var mapPoint: MapPoint
+    private lateinit var marker: MapPOIItem // 그냥 lateinit 해봤음 안해도 될듯 ㅋㅋ;;
     private lateinit var backPressedCallbacks: OnBackPressedCallback
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var mapView : MapView
+
+    // private val args by navArgs<MapFragmentArgs>()
 
     private val ACCESS_FINE_LOCATION = 1000     // Request Code
 
@@ -115,8 +119,7 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
         binding.map.addView(mapView)
 
-        mapView.setCurrentLocationEventListener(this)
-        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+
 
         return binding.root
     }
@@ -125,6 +128,21 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         super.onViewCreated(view, savedInstanceState)
 
         drawerLayout = view.findViewById(R.id.drawer_layout)
+
+        mapView.setCurrentLocationEventListener(this)
+        //
+        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+
+        val args by navArgs<MapFragmentArgs>()
+        val building = args.building
+
+            binding.map.apply {
+                if (building != null) {
+                    createMarker(building)
+                }
+            }
+
+
 
         binding.menuButton.setOnClickListener {
             drawerLayout.openDrawer(Gravity.RIGHT)
@@ -142,13 +160,16 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         val parent = mapView.parent as ViewGroup?
         parent?.removeView(mapView)
         // binding.mapFragment.mapView 야 이거쓰면 무슨 item 제거도 되네
-        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
+        //mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
     }
 
-    companion object {
-        fun newInstance() : MapFragment {
-            return MapFragment()
-        }
+    private fun createMarker(building: Building) {
+        mapPoint = MapPoint.mapPointWithGeoCoord(building.latitude!!, building.longitude!!)
+        marker = MapPOIItem()
+        marker.itemName = building.name
+        marker.mapPoint = mapPoint
+        mapView.moveCamera(CameraUpdateFactory.newMapPointAndDiameter(mapPoint, 350f))
+        mapView.addPOIItem(marker)
     }
 
     override fun onCurrentLocationUpdate(p0: MapView?, p1: MapPoint?, p2: Float) {
@@ -172,6 +193,27 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
     }
 
     override fun onReverseGeoCoderFailedToFindAddress(p0: MapReverseGeoCoder?) {
+
+    }
+
+    override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
+
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {
+
+    }
+
+    override fun onCalloutBalloonOfPOIItemTouched(
+        p0: MapView?,
+        p1: MapPOIItem?,
+        p2: MapPOIItem.CalloutBalloonButtonType?,
+    ) {
+
+    }
+
+    override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {
 
     }
 
