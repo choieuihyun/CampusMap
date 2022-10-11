@@ -2,6 +2,7 @@ package com.myproject.campusmap_cleanarchitecture.ui.map
 
 import android.Manifest
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.LOCATION_SERVICE
 import android.content.Context.MODE_PRIVATE
@@ -131,6 +132,7 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         return binding.root
     }
 
+    @SuppressLint("SuspiciousIndentation") // 찾아보자.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mapView.setPOIItemEventListener(this)

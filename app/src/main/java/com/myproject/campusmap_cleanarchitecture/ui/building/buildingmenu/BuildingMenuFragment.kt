@@ -25,7 +25,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
 
     private lateinit var buildingMenuAdapter: BuildingMenuAdapter
 
-    private val viewModel: BuildingMenuViewModel by activityViewModels()
+    private val viewModel: BuildingMenuViewModel by viewModels()
 
 /*
     interface OnItemClick {
