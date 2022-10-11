@@ -35,5 +35,11 @@
         android:id="@+id/buildingDetailFragment"
         android:name="com.myproject.campusmap_cleanarchitecture.ui.building.buildingdetail.BuildingDetailFragment"
         android:label="BuildingDetailFragment"
-        tools:layout="@layout/building_fragment_detail"/>
+        tools:layout="@layout/building_fragment_detail">
+        <argument
+            android:name="building"
+            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
+    </fragment>
+    <argument
+        android:name="building" />
 </navigation>

@@ -29,11 +29,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.work.impl.model.Preference
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.FragmentMapBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.ui.building.buildingmenu.BuildingMenuFragmentDirections
 import net.daum.mf.map.api.*
 import timber.log.Timber
 import java.util.prefs.Preferences
@@ -49,8 +51,13 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
     private lateinit var mapView : MapView
 
     // private val args by navArgs<MapFragmentArgs>()
-
+    private val args by navArgs<MapFragmentArgs>()
     private val ACCESS_FINE_LOCATION = 1000     // Request Code
+
+    private var onItemClickListener: ((Building) -> Unit)? = null
+    fun setOnItemClickListener(listener: (Building) -> Unit) {
+        onItemClickListener = listener
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -126,14 +133,9 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mapView.setPOIItemEventListener(this)
         drawerLayout = view.findViewById(R.id.drawer_layout)
 
-        mapView.setCurrentLocationEventListener(this)
-        //
-        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
-
-        val args by navArgs<MapFragmentArgs>()
         val building = args.building
 
             binding.map.apply {
@@ -143,6 +145,10 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
             }
 
 
+        binding.locationButton.setOnClickListener {
+            mapView.setCurrentLocationEventListener(this)
+            mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+        }
 
         binding.menuButton.setOnClickListener {
             drawerLayout.openDrawer(Gravity.RIGHT)
@@ -151,6 +157,8 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         binding.menuBuilding.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_buildingMenuFragment)
         }
+
+
 
     }
 
@@ -163,13 +171,16 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         //mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
     }
 
-    private fun createMarker(building: Building) {
+    private fun createMarker(building: Building) { // 그냥 이거 구조 자체가 찝찝함
         mapPoint = MapPoint.mapPointWithGeoCoord(building.latitude!!, building.longitude!!)
         marker = MapPOIItem()
         marker.itemName = building.name
         marker.mapPoint = mapPoint
         mapView.moveCamera(CameraUpdateFactory.newMapPointAndDiameter(mapPoint, 350f))
         mapView.addPOIItem(marker)
+        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff // 이거 뭔가 찝찝함
+
+
     }
 
     override fun onCurrentLocationUpdate(p0: MapView?, p1: MapPoint?, p2: Float) {
@@ -198,6 +209,7 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
     override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
 
+
     }
 
     @Deprecated("Deprecated in Java")
@@ -210,7 +222,8 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         p1: MapPOIItem?,
         p2: MapPOIItem.CalloutBalloonButtonType?,
     ) {
-
+        val action = MapFragmentDirections.actionMapFragmentToBuildingDetailFragment(args.building!!)
+        findNavController().navigate(action)
     }
 
     override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {

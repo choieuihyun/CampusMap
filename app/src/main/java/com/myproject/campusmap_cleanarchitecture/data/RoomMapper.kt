@@ -7,12 +7,14 @@ fun Building.toEntity() = BuildingEntity(
     id = id,
     name = name,
     latitude = latitude,
-    longitude = longitude
+    longitude = longitude,
+    buildingImageUri = buildingImageUri
 )
 
 fun BuildingEntity.toModel() = Building(
     id = id,
     name = name,
     latitude = latitude,
-    longitude = longitude
+    longitude = longitude,
+    buildingImageUri = buildingImageUri
 )

@@ -101,6 +101,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
     private fun updateList(fromIdx: Int, toIdx: Int) {
         viewModel.getBuildings.observe(viewLifecycleOwner) {
                 buildings -> buildingMenuAdapter.submitList(buildings.subList(fromIdx,toIdx))
+            Log.d("building", buildings.toString())
         }
     }
 
@@ -118,8 +119,9 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
             }*/
         }
 
-        buildingMenuAdapter.setOnItemClickListener {
-            val action = BuildingMenuFragmentDirections.actionBuildingMenuFragmentToMapFragment(it)
+        buildingMenuAdapter.setOnItemClickListener { // args가 필요할땐 이렇게? 공부해야할듯.
+            building ->
+            val action = BuildingMenuFragmentDirections.actionBuildingMenuFragmentToMapFragment(building)
             findNavController().navigate(action)
         }
     }
