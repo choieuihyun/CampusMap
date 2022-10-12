@@ -2,6 +2,7 @@ package com.myproject.campusmap_cleanarchitecture.ui.map
 
 import android.Manifest
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.LOCATION_SERVICE
 import android.content.Context.MODE_PRIVATE
@@ -29,24 +30,35 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.work.impl.model.Preference
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.FragmentMapBinding
-import net.daum.mf.map.api.MapPoint
-import net.daum.mf.map.api.MapReverseGeoCoder
-import net.daum.mf.map.api.MapView
+import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.ui.building.buildingmenu.BuildingMenuFragmentDirections
+import net.daum.mf.map.api.*
 import timber.log.Timber
 import java.util.prefs.Preferences
 
 
-class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener {
+class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener, MapView.POIItemEventListener {
 
     private lateinit var binding: FragmentMapBinding
+    private lateinit var mapPoint: MapPoint
+    private lateinit var marker: MapPOIItem // 그냥 lateinit 해봤음 안해도 될듯 ㅋㅋ;;
     private lateinit var backPressedCallbacks: OnBackPressedCallback
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var mapView : MapView
 
+    // private val args by navArgs<MapFragmentArgs>()
+    private val args by navArgs<MapFragmentArgs>()
     private val ACCESS_FINE_LOCATION = 1000     // Request Code
+
+    private var onItemClickListener: ((Building) -> Unit)? = null
+    fun setOnItemClickListener(listener: (Building) -> Unit) {
+        onItemClickListener = listener
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -115,16 +127,30 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
         binding.map.addView(mapView)
 
-        mapView.setCurrentLocationEventListener(this)
-        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+
 
         return binding.root
     }
 
+    @SuppressLint("SuspiciousIndentation") // 찾아보자.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mapView.setPOIItemEventListener(this)
         drawerLayout = view.findViewById(R.id.drawer_layout)
+
+        val building = args.building
+
+            binding.map.apply {
+                if (building != null) {
+                    createMarker(building)
+                }
+            }
+
+
+        binding.locationButton.setOnClickListener {
+            mapView.setCurrentLocationEventListener(this)
+            mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+        }
 
         binding.menuButton.setOnClickListener {
             drawerLayout.openDrawer(Gravity.RIGHT)
@@ -134,6 +160,8 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
             Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_buildingMenuFragment)
         }
 
+
+
     }
 
     override fun onDestroyView() {
@@ -142,13 +170,19 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         val parent = mapView.parent as ViewGroup?
         parent?.removeView(mapView)
         // binding.mapFragment.mapView 야 이거쓰면 무슨 item 제거도 되네
-        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
+        //mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
     }
 
-    companion object {
-        fun newInstance() : MapFragment {
-            return MapFragment()
-        }
+    private fun createMarker(building: Building) { // 그냥 이거 구조 자체가 찝찝함
+        mapPoint = MapPoint.mapPointWithGeoCoord(building.latitude!!, building.longitude!!)
+        marker = MapPOIItem()
+        marker.itemName = building.name
+        marker.mapPoint = mapPoint
+        mapView.moveCamera(CameraUpdateFactory.newMapPointAndDiameter(mapPoint, 350f))
+        mapView.addPOIItem(marker)
+        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff // 이거 뭔가 찝찝함
+
+
     }
 
     override fun onCurrentLocationUpdate(p0: MapView?, p1: MapPoint?, p2: Float) {
@@ -172,6 +206,29 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
     }
 
     override fun onReverseGeoCoderFailedToFindAddress(p0: MapReverseGeoCoder?) {
+
+    }
+
+    override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
+
+
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {
+
+    }
+
+    override fun onCalloutBalloonOfPOIItemTouched(
+        p0: MapView?,
+        p1: MapPOIItem?,
+        p2: MapPOIItem.CalloutBalloonButtonType?,
+    ) {
+        val action = MapFragmentDirections.actionMapFragmentToBuildingDetailFragment(args.building!!)
+        findNavController().navigate(action)
+    }
+
+    override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {
 
     }
 

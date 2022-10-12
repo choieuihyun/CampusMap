@@ -1,5 +1,7 @@
 package com.myproject.campusmap_cleanarchitecture.data.repository
 
+import android.app.Activity
+import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource.BuildingDataSource
@@ -26,5 +28,9 @@ class BuildingRepositoryImpl @Inject constructor(
         return dataSource.getBuilding(id = id).map {
             it!!.toModel() // 이거 !! non assert 구림.
         }
+    }
+
+    override fun getBuildingImages(c: Activity, path: String, v: ImageView) {
+        dataSource.getBuildingImages(c,path,v)
     }
 }

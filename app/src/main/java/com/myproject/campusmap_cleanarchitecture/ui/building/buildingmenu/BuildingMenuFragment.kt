@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView.OnItemClickListener
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,9 +27,11 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
 
     private val viewModel: BuildingMenuViewModel by viewModels()
 
+/*
     interface OnItemClick {
         fun itemClick(id: Int)
     }
+*/
 
 
     override fun onAttach(context: Context) {
@@ -56,7 +61,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
         }
 
         binding.btn2.setOnClickListener {
-            updateList(9,15)
+            //updateList(9,15)
         }
 
         binding.btn3.setOnClickListener {
@@ -96,6 +101,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
     private fun updateList(fromIdx: Int, toIdx: Int) {
         viewModel.getBuildings.observe(viewLifecycleOwner) {
                 buildings -> buildingMenuAdapter.submitList(buildings.subList(fromIdx,toIdx))
+            Log.d("building", buildings.toString())
         }
     }
 
@@ -111,6 +117,12 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
 /*            buildingMenuAdapter.setOnItemClickListener {
                 // 이렇게 하기보다는 그냥 ViewHolder에서 clicklistener 구현해서 하는게 맞아보인다. 여기는 building.id를 구할수가 없음.
             }*/
+        }
+
+        buildingMenuAdapter.setOnItemClickListener { // args가 필요할땐 이렇게? 공부해야할듯.
+            building ->
+            val action = BuildingMenuFragmentDirections.actionBuildingMenuFragmentToMapFragment(building)
+            findNavController().navigate(action)
         }
     }
 

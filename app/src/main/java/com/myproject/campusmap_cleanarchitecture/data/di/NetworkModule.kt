@@ -1,11 +1,15 @@
 package com.myproject.campusmap_cleanarchitecture.data.di
 
+import android.content.Context
+import com.google.firebase.FirebaseApp
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 import com.google.firebase.storage.FirebaseStorage
 import dagger.Component
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttp
 import okhttp3.OkHttpClient
@@ -43,11 +47,17 @@ object NetworkModule {
             .baseUrl(BASE_URL)
             .build()
     }
-
+/*
     @Singleton
     @Provides
     fun provideFirebase(firebase: Firebase): Firebase {
         return firebase
+    }*/
+
+    @Singleton
+    @Provides
+    fun provideFirebase(firebase: Firebase, @ApplicationContext context: Context): FirebaseApp? {
+        return firebase.initialize(context)
     }
 
     @Singleton
