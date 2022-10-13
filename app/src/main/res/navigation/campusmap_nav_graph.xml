@@ -21,6 +21,9 @@
             app:nullable="true"
             android:defaultValue="@null"
             app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
+        <action
+            android:id="@+id/action_mapFragment_to_noticeFragment"
+            app:destination="@id/noticeFragment" />
     </fragment>
     <fragment
         android:id="@+id/buildingMenuFragment"
@@ -39,7 +42,39 @@
         <argument
             android:name="building"
             app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
+        <action
+            android:id="@+id/action_buildingDetailFragment_to_lectureRoomMenu"
+            app:destination="@id/lectureRoomMenu" />
     </fragment>
     <argument
         android:name="building" />
+    <fragment
+        android:id="@+id/noticeFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.notice.NoticeFragment"
+        android:label="NoticeFragment" />
+    <fragment
+        android:id="@+id/noticeGeneralFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.notice.NoticeGeneralFragment"
+        android:label="NoticeGeneralFragment" />
+    <fragment
+        android:id="@+id/noticeHaksaFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.notice.NoticeHaksaFragment"
+        android:label="NoticeHaksaFragment" />
+    <fragment
+        android:id="@+id/noticeJanghakFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.notice.NoticeJanghakFragment"
+        android:label="NoticeJanghakFragment" />
+    <fragment
+        android:id="@+id/noticeRecruitFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.notice.NoticeRecruitFragment"
+        android:label="NoticeRecruitFragment" />
+    <fragment
+        android:id="@+id/lectureRoomMenu"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.building.lectureroom.LectureRoomMenu"
+        android:label="LectureRoomMenu"
+        tools:layout="@layout/lectureroom_fragment_menu">
+        <argument
+            android:name="building"
+            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
+    </fragment>
 </navigation>

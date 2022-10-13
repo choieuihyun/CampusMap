@@ -3,7 +3,7 @@ package com.myproject.campusmap_cleanarchitecture.domain.repository
 import androidx.lifecycle.LiveData
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.EngFirstLectureRoomEntity
 
-interface EngFirstRepository {
+interface LectureRoomRepository {
 
     fun getEngFirstLectureRooms() : LiveData<List<EngFirstLectureRoomEntity>>
 

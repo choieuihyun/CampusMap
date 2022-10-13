@@ -61,7 +61,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
         }
 
         binding.btn2.setOnClickListener {
-            //updateList(9,15)
+            updateList(9,15)
         }
 
         binding.btn3.setOnClickListener {
