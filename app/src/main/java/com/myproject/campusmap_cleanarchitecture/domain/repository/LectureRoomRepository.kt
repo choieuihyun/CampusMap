@@ -1,12 +1,13 @@
 package com.myproject.campusmap_cleanarchitecture.domain.repository
 
 import androidx.lifecycle.LiveData
-import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.EngFirstLectureRoomEntity
+import com.myproject.campusmap_cleanarchitecture.domain.model.EngFirstLectureRoom
+import com.myproject.campusmap_cleanarchitecture.domain.model.LectureRoom
 
 interface LectureRoomRepository {
 
-    fun getEngFirstLectureRooms() : LiveData<List<EngFirstLectureRoomEntity>>
+    fun getEngFirstLectureRooms() : LiveData<List<LectureRoom>>
 
-    fun getEngFirstLectureRoom() : LiveData<EngFirstLectureRoomEntity>
+    fun getEngFirstLectureRoom(id: Int) : LiveData<LectureRoom>
 
 }

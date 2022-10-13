@@ -2,8 +2,6 @@ package com.myproject.campusmap_cleanarchitecture.domain.model
 
 import java.io.Serializable
 
-
-
 data class EngFirstLectureRoom (
     val id: Int,
     var name: String? = "",
