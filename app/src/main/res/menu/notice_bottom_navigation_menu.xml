@@ -3,32 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="결과 아이콘"> A+ 결과 아이콘  제작자: Freepik - Flaticon</a> -->
 
-    <item android:id="@+id/bottomNavi_home"
-        app:showAsAction="ifRoom"
-        android:enabled="true"
-        android:icon="@drawable/home"
-        android:title="@string/notice_home"/>
-
-    <item android:id="@+id/bottomNavi_general"
+    <item android:id="@+id/noticeGeneralFragment"
         app:showAsAction="ifRoom"
         android:enabled="true"
         android:icon="@drawable/general"
         android:title="@string/notice_ilban"/>
 
     <!-- <a href="https://www.flaticon.com/kr/free-icons/-" title="학사 학위 아이콘">학사 학위 아이콘  제작자: Freepik - Flaticon</a> -->
-    <item android:id="@+id/bottomNavi_haksa"
+    <item android:id="@+id/noticeHaksaFragment"
         app:showAsAction="ifRoom"
         android:enabled="true"
         android:icon="@drawable/haksa"
         android:title="@string/notice_haksa"/>
 
-    <item android:id="@+id/bottomNavi_recruit"
+    <item android:id="@+id/noticeRecruitFragment"
         app:showAsAction="ifRoom"
         android:enabled="true"
         android:icon="@drawable/recruit"
         android:title="@string/notice_chuiup"/>
 
-    <item android:id="@+id/bottomNavi_janghak"
+    <item android:id="@+id/noticeJanghakFragment"
         app:showAsAction="ifRoom"
         android:enabled="true"
         android:icon="@drawable/janghak"

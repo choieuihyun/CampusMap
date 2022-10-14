@@ -27,13 +27,6 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
 
     private val viewModel: BuildingMenuViewModel by viewModels()
 
-/*
-    interface OnItemClick {
-        fun itemClick(id: Int)
-    }
-*/
-
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
@@ -61,7 +54,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
         }
 
         binding.btn2.setOnClickListener {
-            //updateList(9,15)
+            updateList(9,15)
         }
 
         binding.btn3.setOnClickListener {

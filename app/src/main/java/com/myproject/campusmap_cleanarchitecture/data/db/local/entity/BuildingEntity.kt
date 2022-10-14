@@ -1,5 +1,6 @@
 package com.myproject.campusmap_cleanarchitecture.data.db.local.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,5 +11,6 @@ data class BuildingEntity(@PrimaryKey val id : Int,
                           var name: String = "",
                           var latitude: Double? = 0.0,
                           var longitude: Double? = 0.0,
-                          var buildingImageUri : String? = "") {
+                          var buildingImageUri : String? = ""/*, 이것도 가능하긴 한데..
+                          @Embedded val eng : EngFirstLectureRoomEntity*/) {
 }

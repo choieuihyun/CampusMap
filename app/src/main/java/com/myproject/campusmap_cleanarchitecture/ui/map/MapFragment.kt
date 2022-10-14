@@ -55,11 +55,6 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
     private val args by navArgs<MapFragmentArgs>()
     private val ACCESS_FINE_LOCATION = 1000     // Request Code
 
-    private var onItemClickListener: ((Building) -> Unit)? = null
-    fun setOnItemClickListener(listener: (Building) -> Unit) {
-        onItemClickListener = listener
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
@@ -160,6 +155,9 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
             Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_buildingMenuFragment)
         }
 
+        binding.menuNotice.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_noticeFragment)
+        }
 
 
     }
