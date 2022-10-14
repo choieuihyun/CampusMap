@@ -27,13 +27,6 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
 
     private val viewModel: BuildingMenuViewModel by viewModels()
 
-/*
-    interface OnItemClick {
-        fun itemClick(id: Int)
-    }
-*/
-
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
 

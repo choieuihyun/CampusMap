@@ -2,7 +2,7 @@ package com.myproject.campusmap_cleanarchitecture.data.db.local.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName="Eng1LectureRoom")
 data class EngFirstLectureRoomEntity(@PrimaryKey val id: Int,
                                      var name: String? = "",
                                      var floor: Int? = 0,

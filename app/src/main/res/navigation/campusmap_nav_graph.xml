@@ -70,7 +70,7 @@
         android:label="NoticeRecruitFragment" />
     <fragment
         android:id="@+id/lectureRoomMenu"
-        android:name="com.myproject.campusmap_cleanarchitecture.ui.building.lectureroom.LectureRoomMenu"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.building.lectureroom.LectureRoomMenuFragment"
         android:label="LectureRoomMenu"
         tools:layout="@layout/lectureroom_fragment_menu">
         <argument
