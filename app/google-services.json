@@ -1,0 +1,142 @@
+{
+  "project_info": {
+    "project_number": "602513672363",
+    "project_id": "campus-map-ef1ed",
+    "storage_bucket": "campus-map-ef1ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602513672363:android:6c72c5ab9188677acecfee",
+        "android_client_info": {
+          "package_name": "com.campusmap.android.campusmap_with_kakao"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602513672363-olskoaoi3cfh93i6ursutokuh077bnq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdeSqyr2eCGUexA65P2T2iqarQZFe9HPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602513672363-olskoaoi3cfh93i6ursutokuh077bnq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602513672363:android:18431dd1c39aa9e5cecfee",
+        "android_client_info": {
+          "package_name": "com.example.ConnectFirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602513672363-6bj67i1897gj5k4v0jmb9sii44nu85la.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ConnectFirebase",
+            "certificate_hash": "23799a04ba6f4dfbb8b874a6fff1c8ec889165e4"
+          }
+        },
+        {
+          "client_id": "602513672363-olskoaoi3cfh93i6ursutokuh077bnq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdeSqyr2eCGUexA65P2T2iqarQZFe9HPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602513672363-olskoaoi3cfh93i6ursutokuh077bnq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602513672363:android:a420c0568be274edcecfee",
+        "android_client_info": {
+          "package_name": "com.example.campus_map_v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602513672363-41kbosho12dj0pnsig17o4phkmhka2ul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.campus_map_v2",
+            "certificate_hash": "23799a04ba6f4dfbb8b874a6fff1c8ec889165e4"
+          }
+        },
+        {
+          "client_id": "602513672363-olskoaoi3cfh93i6ursutokuh077bnq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdeSqyr2eCGUexA65P2T2iqarQZFe9HPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602513672363-olskoaoi3cfh93i6ursutokuh077bnq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602513672363:android:260d52b3aeb34483cecfee",
+        "android_client_info": {
+          "package_name": "com.myproject.campusmap_cleanarchitecture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602513672363-olskoaoi3cfh93i6ursutokuh077bnq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdeSqyr2eCGUexA65P2T2iqarQZFe9HPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602513672363-olskoaoi3cfh93i6ursutokuh077bnq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
