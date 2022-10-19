@@ -1,10 +1,12 @@
 package com.myproject.campusmap_cleanarchitecture.data.di
 
 import android.content.Context
+import com.bumptech.glide.annotation.GlideModule
 import com.google.firebase.FirebaseApp
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import dagger.Component
 import dagger.Module
 import dagger.Provides
@@ -17,6 +19,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -65,6 +68,15 @@ object NetworkModule {
     fun provideFirebaseStorage() : FirebaseStorage {
         return FirebaseStorage.getInstance()
     }
+
+    // 일단 추가했는데 별 소용은 없네요.
+
+    @Singleton
+    @Provides
+    fun provideFirebaseStorageReference(firebaseStorage: FirebaseStorage) : StorageReference  {
+        return firebaseStorage.reference
+    }
+
 
 
 

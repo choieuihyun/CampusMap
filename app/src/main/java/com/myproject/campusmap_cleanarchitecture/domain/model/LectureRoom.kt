@@ -8,4 +8,4 @@ data class LectureRoom (
     var route_1: String? = "",
     var route_2: String? = "",
     var route_3: String? = ""
-)
+) : java.io.Serializable
