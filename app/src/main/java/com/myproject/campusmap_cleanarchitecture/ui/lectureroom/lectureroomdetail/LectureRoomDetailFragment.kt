@@ -32,7 +32,9 @@ class LectureRoomDetailFragment: BaseFragment<LectureroomFragmentDetailBinding>(
         )
 
         viewPagerAdapter = LectureRoomDetailViewPagerAdapter(requireContext(), viewModel)
-        viewPagerAdapter.submitList(imageList)
+        viewPagerAdapter.submitList(imageList.filter {
+            it.path != null
+        })
         binding.viewpager.adapter = viewPagerAdapter
 
     }

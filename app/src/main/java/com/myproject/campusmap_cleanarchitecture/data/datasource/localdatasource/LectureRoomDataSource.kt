@@ -33,8 +33,12 @@ class LectureRoomDataSource @Inject constructor(
     // Activity -> Context
     fun getLectureRoomImages(c: Context, path: String?, v: ImageView) {
 
-        if  (path != null) {
-            val submitProfile: StorageReference = storageReference.child(path.toString())
+        val pathReference: StorageReference = storageReference.child("photo")
+
+        if (path == null) {
+            Toast.makeText(c, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
+        } else {
+            val submitProfile: StorageReference = storageReference.child(path)
             submitProfile.downloadUrl.addOnSuccessListener { uri ->
                 Glide.with(c).load(uri).into(v)
             }.addOnFailureListener {
