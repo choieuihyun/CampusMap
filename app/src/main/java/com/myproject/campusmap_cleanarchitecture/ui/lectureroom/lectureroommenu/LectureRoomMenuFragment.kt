@@ -1,9 +1,9 @@
-package com.myproject.campusmap_cleanarchitecture.ui.building.lectureroom
+package com.myproject.campusmap_cleanarchitecture.ui.lectureroom.lectureroommenu
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -75,7 +75,9 @@ class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.l
         }
 
         lectureRoomAdapter.setOnItemClickListener {
-
+            lectureRoom ->
+            val action = LectureRoomMenuFragmentDirections.actionLectureRoomMenuToLectureRoomDetailFragment(lectureRoom)
+            findNavController().navigate(action)
         }
     }
 }

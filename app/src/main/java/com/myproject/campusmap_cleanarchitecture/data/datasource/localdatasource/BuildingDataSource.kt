@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingDatabase
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingEntity
 import com.myproject.campusmap_cleanarchitecture.data.di.NetworkModule
@@ -31,6 +32,21 @@ class BuildingDataSource @Inject constructor(
 
     fun getBuildingImages(c: Activity, path: String, v: ImageView) {
 
+        val storageReference: StorageReference = firebaseStorage.reference
+        val pathReference : StorageReference? = storageReference.child("photo")
+
+        if (pathReference == null) {
+            Toast.makeText(c as Activity?, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
+        } else {
+            val submitProfile: StorageReference = storageReference.child(path)
+            submitProfile.downloadUrl.addOnSuccessListener { uri ->
+                Glide.with(c).load(uri).fallback(R.drawable.ic_launcher_background).into(v)
+            }.addOnFailureListener { }
+        }
+    }
+
+/*    fun getBuildingImages(c: Activity, path: String, v: ImageView) {
+
         val storageReference : StorageReference = firebaseStorage.reference
         val pathReference : StorageReference? = storageReference.child("photo")
 
@@ -42,6 +58,6 @@ class BuildingDataSource @Inject constructor(
                 Glide.with(c).load(uri).into(v)
             }.addOnFailureListener { }
         }
-    }
+    }*/
 
 }

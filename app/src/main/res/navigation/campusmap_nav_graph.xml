@@ -70,11 +70,23 @@
         android:label="NoticeRecruitFragment" />
     <fragment
         android:id="@+id/lectureRoomMenu"
-        android:name="com.myproject.campusmap_cleanarchitecture.ui.building.lectureroom.LectureRoomMenuFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.lectureroom.lectureroommenu.LectureRoomMenuFragment"
         android:label="LectureRoomMenu"
         tools:layout="@layout/lectureroom_fragment_menu">
         <argument
             android:name="building"
             app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
+        <action
+            android:id="@+id/action_lectureRoomMenu_to_lectureRoomDetailFragment"
+            app:destination="@id/LectureRoomDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/LectureRoomDetailFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.lectureroom.lectureroomdetail.LectureRoomDetailFragment"
+        android:label="LectureRoomDetailFragment"
+        tools:layout="@layout/lectureroom_fragment_detail">
+        <argument
+            android:name="lectureRoom"
+            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.LectureRoom" />
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.myproject.campusmap_cleanarchitecture.ui.building.lectureroom
+package com.myproject.campusmap_cleanarchitecture.ui.lectureroom.lectureroommenu
 
 import androidx.lifecycle.ViewModel
 import com.myproject.campusmap_cleanarchitecture.domain.usecase.GetLectureRoomsUseCase
