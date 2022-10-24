@@ -1,7 +1,14 @@
 package com.myproject.campusmap_cleanarchitecture.ui.main
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnticipateInterpolator
+import androidx.core.animation.doOnEnd
+import androidx.core.splashscreen.SplashScreen
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -16,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity(){
 
     private lateinit var navController: NavController
+    private lateinit var splashScreen: SplashScreen
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -23,6 +31,10 @@ class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        splashScreen = installSplashScreen()
+//        startSplash()
+
         setContentView(binding.root)
 
         setupNavigation()
@@ -64,6 +76,23 @@ class MainActivity : AppCompatActivity(){
             .beginTransaction()
             .replace(R.id.notice_container, view)
             .commit()
+    }*/
+
+/*    // splash의 애니메이션 설정
+    private fun startSplash() {
+        splashScreen.setOnExitAnimationListener { splashScreenView ->
+            val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 5f, 1f)
+            val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 5f, 1f)
+
+            ObjectAnimator.ofPropertyValuesHolder(splashScreenView.iconView, scaleX, scaleY).run {
+                interpolator = AnticipateInterpolator()
+                duration = 1000L
+                doOnEnd {
+                    splashScreenView.remove()
+                }
+                start()
+            }
+        }
     }*/
 
 }

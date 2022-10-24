@@ -137,6 +137,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/libDaumMapAndroid.jar')
 
+    // splashScreen
+    implementation("androidx.core:core-splashscreen:1.0.0-beta01")
+
 }
 
 kapt {

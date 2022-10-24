@@ -89,4 +89,8 @@
             android:name="lectureRoom"
             app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.LectureRoom" />
     </fragment>
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.myproject.campusmap_cleanarchitecture.SplashActivity"
+        android:label="SplashActivity" />
 </navigation>
