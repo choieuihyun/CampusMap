@@ -1,50 +1,33 @@
 package com.myproject.campusmap_cleanarchitecture.ui.map
 
 import android.Manifest
-import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Context.LOCATION_SERVICE
-import android.content.Context.MODE_PRIVATE
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.LocationManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.work.impl.model.Preference
 import com.myproject.campusmap_cleanarchitecture.R
-import com.myproject.campusmap_cleanarchitecture.databinding.FragmentMapBinding
+import com.myproject.campusmap_cleanarchitecture.databinding.MapFragmentBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
-import com.myproject.campusmap_cleanarchitecture.ui.building.buildingmenu.BuildingMenuFragmentDirections
 import net.daum.mf.map.api.*
 import timber.log.Timber
-import java.util.prefs.Preferences
 
 
 class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener, MapView.POIItemEventListener {
 
-    private lateinit var binding: FragmentMapBinding
+    private lateinit var binding: MapFragmentBinding
     private lateinit var mapPoint: MapPoint
     private lateinit var marker: MapPOIItem // 그냥 lateinit 해봤음 안해도 될듯 ㅋㅋ;;
     private lateinit var backPressedCallbacks: OnBackPressedCallback
@@ -118,7 +101,7 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
         mapView = MapView(context)
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_map, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.map_fragment, container, false)
 
         binding.map.addView(mapView)
 
@@ -141,6 +124,9 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
                 }
             }
 
+        binding.locationButton123.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_bottomSheetDialog)
+        }
 
         binding.locationButton.setOnClickListener {
             mapView.setCurrentLocationEventListener(this)

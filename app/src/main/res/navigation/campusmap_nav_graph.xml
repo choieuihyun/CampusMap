@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.myproject.campusmap_cleanarchitecture.ui.map.MapFragment"
-        tools:layout="@layout/fragment_map"
+        tools:layout="@layout/map_fragment"
         android:label="MapFragment" >
         <action
             android:id="@+id/action_mapFragment_to_buildingMenuFragment"
@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_mapFragment_to_noticeFragment"
             app:destination="@id/noticeFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_bottomSheetDialog"
+            app:destination="@id/bottomSheetDialog" />
     </fragment>
     <fragment
         android:id="@+id/buildingMenuFragment"
@@ -89,8 +92,8 @@
             android:name="lectureRoom"
             app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.LectureRoom" />
     </fragment>
-    <activity
-        android:id="@+id/splashActivity"
-        android:name="com.myproject.campusmap_cleanarchitecture.SplashActivity"
-        android:label="SplashActivity" />
+    <dialog
+        android:id="@+id/bottomSheetDialog"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.map.BottomSheetDialog"
+        android:label="BottomSheetDialog" />
 </navigation>

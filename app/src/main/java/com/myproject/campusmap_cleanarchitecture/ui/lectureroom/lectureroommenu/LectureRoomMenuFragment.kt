@@ -1,7 +1,12 @@
 package com.myproject.campusmap_cleanarchitecture.ui.lectureroom.lectureroommenu
 
 import android.os.Bundle
+import android.system.Os.remove
+import android.util.Log
 import android.view.View
+import android.widget.Button
+import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -12,11 +17,13 @@ import com.myproject.campusmap_cleanarchitecture.databinding.LectureroomFragment
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.adapter.LectureRoomMenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.math.floor
 
 @AndroidEntryPoint
 class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.layout.lectureroom_fragment_menu) {
 
     private lateinit var lectureRoomAdapter: LectureRoomMenuAdapter
+    private lateinit var buttonArgs : ArrayList<AppCompatButton>
 
     private val viewModel: LectureRoomMenuViewModel by viewModels()
     private val args by navArgs<LectureRoomMenuFragmentArgs>()
@@ -29,28 +36,58 @@ class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.l
 
         setupRecyclerView()
 
-        binding.lectureRoomMenuBtn1.setOnClickListener {
-            updateList(floor = 1)
-        }
+            binding.lectureRoomMenuBtn1.setOnClickListener {
+                changeSelected(0)
+                it.isSelected = true
+                updateList(floor = 1)
+            }
 
-        binding.lectureRoomMenuBtn2.setOnClickListener {
-            updateList(floor = 2)
-        }
+            binding.lectureRoomMenuBtn2.setOnClickListener {
+                changeSelected(1)
+                it.isSelected = true
+                updateList(floor = 2)
+            }
 
-        binding.lectureRoomMenuBtn3.setOnClickListener {
-            updateList(floor = 3)
-        }
+            binding.lectureRoomMenuBtn3.setOnClickListener {
+                changeSelected(2)
+                it.isSelected = true
+                updateList(floor = 3)
+            }
 
-        binding.lectureRoomMenuBtn4.setOnClickListener {
-            updateList(floor = 4)
-        }
+            binding.lectureRoomMenuBtn4.setOnClickListener {
+                changeSelected(3)
+                it.isSelected = true
+                updateList(floor = 4)
+            }
 
-        binding.lectureRoomMenuBtn5.setOnClickListener {
-            updateList(floor = 5)
-        }
+            binding.lectureRoomMenuBtn5.setOnClickListener {
+                changeSelected(4)
+                it.isSelected = true
+                updateList(floor = 5)
+            }
 
-        binding.lectureRoomMenuBtn6.setOnClickListener {
-            updateList(floor = 6)
+            binding.lectureRoomMenuBtn6.setOnClickListener {
+                changeSelected(5)
+                it.isSelected = true
+                updateList(floor = 6)
+            }
+
+    }
+
+    private fun changeSelected(index: Int) {
+        // it(AppCompatButton)을 매개변수로 하고 it 빼고 다 false
+        buttonArgs = ArrayList()
+        buttonArgs.add(binding.lectureRoomMenuBtn1)
+        buttonArgs.add(binding.lectureRoomMenuBtn2)
+        buttonArgs.add(binding.lectureRoomMenuBtn3)
+        buttonArgs.add(binding.lectureRoomMenuBtn4)
+        buttonArgs.add(binding.lectureRoomMenuBtn5)
+        buttonArgs.add(binding.lectureRoomMenuBtn6)
+
+        buttonArgs.removeAt(index)
+
+        for(i in 0 until buttonArgs.size) {
+            buttonArgs[i].isSelected = false
         }
     }
 
@@ -80,6 +117,7 @@ class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.l
             findNavController().navigate(action)
         }
     }
+
 }
 
 
