@@ -1,12 +1,8 @@
 package com.myproject.campusmap_cleanarchitecture.ui.lectureroom.lectureroommenu
 
 import android.os.Bundle
-import android.system.Os.remove
-import android.util.Log
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,7 +13,6 @@ import com.myproject.campusmap_cleanarchitecture.databinding.LectureroomFragment
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.adapter.LectureRoomMenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.floor
 
 @AndroidEntryPoint
 class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.layout.lectureroom_fragment_menu) {
@@ -71,11 +66,9 @@ class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.l
                 it.isSelected = true
                 updateList(floor = 6)
             }
-
     }
 
     private fun changeSelected(index: Int) {
-        // it(AppCompatButton)을 매개변수로 하고 it 빼고 다 false
         buttonArgs = ArrayList()
         buttonArgs.add(binding.lectureRoomMenuBtn1)
         buttonArgs.add(binding.lectureRoomMenuBtn2)
@@ -100,7 +93,9 @@ class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.l
     }
 
     private fun setupRecyclerView() {
+
         lectureRoomAdapter = LectureRoomMenuAdapter()
+
         binding.lectureRoomRecyclerView.apply {
             setHasFixedSize(true)
             layoutManager =

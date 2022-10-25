@@ -7,13 +7,13 @@
             <corners
                 android:topLeftRadius="15dp"
                 android:topRightRadius="15dp"/>
-            <stroke android:width="2dp" android:color="@color/white" />
+            <stroke android:width="2dp" android:color="#D3D3D3" />
         </shape>
     </item>
 
     <item android:state_selected="true" >
         <shape>
-            <solid android:color="@color/teal_700"/>
+            <solid android:color="#1E90FF"/>
             <corners
                 android:topLeftRadius="15dp"
                 android:topRightRadius="15dp"/>

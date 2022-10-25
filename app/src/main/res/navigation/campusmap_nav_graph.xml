@@ -95,5 +95,12 @@
     <dialog
         android:id="@+id/bottomSheetDialog"
         android:name="com.myproject.campusmap_cleanarchitecture.ui.map.BottomSheetDialog"
-        android:label="BottomSheetDialog" />
+        android:label="BottomSheetDialog" >
+        <argument
+            android:name="building"
+            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
+        <action
+            android:id="@+id/action_bottomSheetDialog_to_buildingDetailFragment"
+            app:destination="@id/buildingDetailFragment" />
+    </dialog>
 </navigation>
