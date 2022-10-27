@@ -57,8 +57,6 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Timber.tag("sdf").d("이거 됨?")
-
         val locationPermissionRequest = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
         ) { permissions ->
@@ -124,9 +122,6 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
                 }
             }
 
-        binding.locationButton123.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_bottomSheetDialog)
-        }
 
         binding.locationButton.setOnClickListener {
             mapView.setCurrentLocationEventListener(this)
@@ -165,8 +160,6 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         mapView.moveCamera(CameraUpdateFactory.newMapPointAndDiameter(mapPoint, 350f))
         mapView.addPOIItem(marker)
         mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff // 이거 뭔가 찝찝함
-
-
     }
 
     override fun onCurrentLocationUpdate(p0: MapView?, p1: MapPoint?, p2: Float) {
@@ -194,8 +187,8 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
     }
 
     override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
-
-
+        val action = MapFragmentDirections.actionMapFragmentToBottomSheetDialog(args.building!!)
+        findNavController().navigate(action)
     }
 
     @Deprecated("Deprecated in Java")

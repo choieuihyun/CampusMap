@@ -33,7 +33,6 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
         super.onViewCreated(view, savedInstanceState)
 
         val building = args.building
-        Log.d("buildinguri", building.buildingImageUri.toString()) // 슬래시때문에 변환안되서 그런가? 왜 Uri가 안넘어오지? 어 Mapper에서 안했어
 
         binding.building = building
 
@@ -47,7 +46,6 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
                 val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(args.building)
                 findNavController().navigate(action)
         }
-
 
     }
 
