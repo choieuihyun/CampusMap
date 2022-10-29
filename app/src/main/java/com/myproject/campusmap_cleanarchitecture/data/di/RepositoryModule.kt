@@ -36,6 +36,7 @@ object RepositoryModule {
     fun provideLectureRoomRepository(dataSource: LectureRoomDataSource) : LectureRoomRepository {
         return LectureRoomRepositoryImpl(dataSource)
     }
+
 /*    @Singleton
     @Binds
     fun provideEngFirstRepository() : EngFirstRepository {

@@ -11,6 +11,4 @@ interface BusApi {
     fun getBusData(@Query("ServiceKey") ServiceKey : String,
                    @Query("stopStdid") stopStdid : String) : Call<RouteList>
 
-
-
 }
