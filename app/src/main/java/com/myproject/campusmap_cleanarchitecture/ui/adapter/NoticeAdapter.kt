@@ -37,11 +37,11 @@ class NoticeAdapter() : ListAdapter<NoticeItem, NoticeViewHolder>(NoticeDiffCall
 
         private val NoticeDiffCallback = object : DiffUtil.ItemCallback<NoticeItem>() {
             override fun areItemsTheSame(oldItem: NoticeItem, newItem: NoticeItem): Boolean {
-                return oldItem.hashCode() == newItem.hashCode()
+                return oldItem == newItem
             }
 
             override fun areContentsTheSame(oldItem: NoticeItem, newItem: NoticeItem): Boolean {
-                return oldItem == newItem
+                return oldItem.title == newItem.title
             }
 
         }

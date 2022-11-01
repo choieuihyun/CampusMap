@@ -54,6 +54,7 @@ class GetNoticeUseCase @Inject constructor() {
                             val itemNumbers = noticeDocArray[i].select(".b-num-box")
                             val itemTitles = noticeDocArray[i].select(".b-title")
                             val itemInfos = noticeDocArray[i].select(".b-info-box")
+                            val itemWriters = noticeDocArray[i].select(".b-m-con").select(".b-writer")
 
                             if (i == 0) {
                                 for (k in 0 until itemNumbers.size) {
@@ -63,13 +64,15 @@ class GetNoticeUseCase @Inject constructor() {
                                     val itemInfo: Element = itemInfos[k]
                                     val itemLink: String =
                                         linkUrl + itemTitle.select("a").attr("href")
+                                    val itemWriter = itemWriters[k]
 
                                     noticeArray.add(
                                         NoticeItem(
                                             itemNumber.text(),
                                             itemTitle.text(),
                                             itemInfo.text().substring(0, 10),
-                                            itemLink
+                                            itemLink,
+                                            itemWriter.text()
                                         )
                                     )
                                 }
@@ -81,13 +84,15 @@ class GetNoticeUseCase @Inject constructor() {
                                     val itemInfo: Element = itemInfos[k]
                                     val itemLink: String =
                                         linkUrl + itemTitle.select("a").attr("href")
+                                    val itemWriter = itemWriters[k]
 
                                     noticeArray.add(
                                         NoticeItem(
                                             itemNumber.text(),
                                             itemTitle.text(),
                                             itemInfo.text().substring(0, 10),
-                                            itemLink
+                                            itemLink,
+                                            itemWriter.text()
                                         )
                                     )
                                 }

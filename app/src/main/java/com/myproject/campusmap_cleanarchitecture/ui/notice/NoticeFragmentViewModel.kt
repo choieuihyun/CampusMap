@@ -1,5 +1,6 @@
 package com.myproject.campusmap_cleanarchitecture.ui.notice
 
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
