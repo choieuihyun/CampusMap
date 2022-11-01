@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -21,8 +22,8 @@ import androidx.navigation.fragment.navArgs
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.MapFragmentBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.ui.main.MainActivity
 import net.daum.mf.map.api.*
-import timber.log.Timber
 
 
 class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener, MapView.POIItemEventListener {
@@ -33,6 +34,7 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
     private lateinit var backPressedCallbacks: OnBackPressedCallback
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var mapView : MapView
+    private lateinit var mainActivity: MainActivity
 
     // private val args by navArgs<MapFragmentArgs>()
     private val args by navArgs<MapFragmentArgs>()
@@ -40,6 +42,8 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
+        mainActivity = context as MainActivity
 
         backPressedCallbacks = object : OnBackPressedCallback(true) { // DrawerLayout을 닫기위한 쇼
             override fun handleOnBackPressed() { // 근데 이러니까 뒤로가기로 앱이 안닫혀 이럴거 같더라 MapFragment의 onAttach에 했으니.
@@ -78,17 +82,6 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION))
 
-
-/*        binding.buildingSearchButton.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_searchFragment)
-        }*/
-
-
-
-/*        binding.menuNotice.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.action_buildingMenuFragment_to_noticeFragment)
-        }*/
-
     }
 
     override fun onCreateView(
@@ -113,6 +106,8 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         super.onViewCreated(view, savedInstanceState)
         mapView.setPOIItemEventListener(this)
         drawerLayout = view.findViewById(R.id.drawer_layout)
+
+        mainActivity.getBinding.bottomNavigationView.isVisible = false // Main NavHost의 BottomNavi 지우기.
 
         val building = args.building
 

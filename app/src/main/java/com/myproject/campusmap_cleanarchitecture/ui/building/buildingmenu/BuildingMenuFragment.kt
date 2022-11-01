@@ -17,8 +17,6 @@ import com.myproject.campusmap_cleanarchitecture.databinding.BuildingFragmentMen
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.adapter.BuildingMenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
-
 
 @AndroidEntryPoint
 class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.building_fragment_menu) {
