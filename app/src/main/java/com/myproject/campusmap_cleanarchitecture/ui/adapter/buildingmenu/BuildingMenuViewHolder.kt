@@ -1,4 +1,4 @@
-package com.myproject.campusmap_cleanarchitecture.ui.adapter
+package com.myproject.campusmap_cleanarchitecture.ui.adapter.buildingmenu
 
 import android.util.Log
 import androidx.navigation.Navigation

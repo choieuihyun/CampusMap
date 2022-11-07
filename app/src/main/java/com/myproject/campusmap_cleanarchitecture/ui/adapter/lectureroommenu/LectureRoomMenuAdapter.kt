@@ -1,12 +1,10 @@
-package com.myproject.campusmap_cleanarchitecture.ui.adapter
+package com.myproject.campusmap_cleanarchitecture.ui.adapter.lectureroommenu
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.myproject.campusmap_cleanarchitecture.databinding.LectureroomListItemBinding
-import com.myproject.campusmap_cleanarchitecture.domain.model.Building
-import com.myproject.campusmap_cleanarchitecture.domain.model.EngFirstLectureRoom
 import com.myproject.campusmap_cleanarchitecture.domain.model.LectureRoom
 
 class LectureRoomMenuAdapter() : ListAdapter<LectureRoom, LectureRoomMenuHolder>(diffCallback) {

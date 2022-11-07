@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,12 +15,8 @@ import com.myproject.campusmap_cleanarchitecture.databinding.NoticeFragmentRecru
 import com.myproject.campusmap_cleanarchitecture.domain.model.NoticeItem
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.LoadingProgress
-import com.myproject.campusmap_cleanarchitecture.ui.adapter.NoticeAdapter
+import com.myproject.campusmap_cleanarchitecture.ui.adapter.notice.NoticeAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class NoticeRecruitFragment : BaseFragment<NoticeFragmentRecruitBinding>(R.layout.notice_fragment_recruit) {

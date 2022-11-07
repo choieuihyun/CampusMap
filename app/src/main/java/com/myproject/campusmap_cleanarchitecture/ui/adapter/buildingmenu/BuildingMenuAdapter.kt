@@ -1,4 +1,4 @@
-package com.myproject.campusmap_cleanarchitecture.ui.adapter
+package com.myproject.campusmap_cleanarchitecture.ui.adapter.buildingmenu
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,9 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.myproject.campusmap_cleanarchitecture.databinding.BuildingListItemBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
-import com.myproject.campusmap_cleanarchitecture.ui.building.buildingmenu.BuildingMenuFragment
 
-class BuildingMenuAdapter() : ListAdapter<Building, BuildingMenuViewHolder>(BuildingMenuDiffCallback)  {
+class BuildingMenuAdapter : ListAdapter<Building, BuildingMenuViewHolder>(BuildingMenuDiffCallback)  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildingMenuViewHolder {
         return BuildingMenuViewHolder(

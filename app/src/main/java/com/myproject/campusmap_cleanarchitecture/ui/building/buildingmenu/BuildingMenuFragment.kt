@@ -4,18 +4,14 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView.OnItemClickListener
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.BuildingFragmentMenuBinding
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
-import com.myproject.campusmap_cleanarchitecture.ui.adapter.BuildingMenuAdapter
+import com.myproject.campusmap_cleanarchitecture.ui.adapter.buildingmenu.BuildingMenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.myproject.campusmap_cleanarchitecture.ui.adapter
+package com.myproject.campusmap_cleanarchitecture.ui.adapter.notice
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

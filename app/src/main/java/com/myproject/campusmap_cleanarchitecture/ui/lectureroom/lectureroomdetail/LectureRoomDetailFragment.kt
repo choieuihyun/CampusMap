@@ -1,15 +1,13 @@
 package com.myproject.campusmap_cleanarchitecture.ui.lectureroom.lectureroomdetail
 
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.LectureroomFragmentDetailBinding
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
-import com.myproject.campusmap_cleanarchitecture.ui.adapter.LectureRoomDetailViewPagerAdapter
+import com.myproject.campusmap_cleanarchitecture.ui.adapter.lectureroomdetail.LectureRoomDetailViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
