@@ -3,7 +3,6 @@ package com.myproject.campusmap_cleanarchitecture.data
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingEntity
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.EngFirstLectureRoomEntity
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
-import com.myproject.campusmap_cleanarchitecture.domain.model.EngFirstLectureRoom
 import com.myproject.campusmap_cleanarchitecture.domain.model.LectureRoom
 
 fun Building.toEntity() = BuildingEntity(
@@ -41,3 +40,4 @@ fun EngFirstLectureRoomEntity.toModel() = LectureRoom(
     route_2 = route_2,
     route_3 = route_3
 )
+

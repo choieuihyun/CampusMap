@@ -1,4 +1,4 @@
-package com.myproject.campusmap_cleanarchitecture.ui.adapter
+package com.myproject.campusmap_cleanarchitecture.ui.adapter.lectureroommenu
 
 import androidx.recyclerview.widget.RecyclerView
 import com.myproject.campusmap_cleanarchitecture.databinding.LectureroomListItemBinding

@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,7 +16,7 @@ import com.myproject.campusmap_cleanarchitecture.databinding.NoticeFragmentGener
 import com.myproject.campusmap_cleanarchitecture.domain.model.NoticeItem
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.LoadingProgress
-import com.myproject.campusmap_cleanarchitecture.ui.adapter.NoticeAdapter
+import com.myproject.campusmap_cleanarchitecture.ui.adapter.notice.NoticeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -78,7 +77,7 @@ class NoticeGeneralFragment : BaseFragment<NoticeFragmentGeneralBinding>(R.layou
                     noticeSearchArray.clear()
 
                         if (searchText != "") {
-                            for (i in 0 until notices.size) {
+                            for (i in notices.indices) {
                                 if (notices[i].title.contains(searchText)) {
                                     noticeSearchArray.add(notices[i])
                                 }

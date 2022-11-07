@@ -6,7 +6,7 @@
     <string name="notice_title_janghak">공지사항(장학)</string>
     <string name="notice_title_recruit">공지사항(취업)</string>
     <string name="notice_more">더보기</string>
-    <string name="notice_edittext_hint">제목을 입력하세요</string>
+    <string name="notice_edittext_hint">건물명을 입력하세요</string>
     <string name="search_button">검색</string>
     <string name="loading_text">잠시만 기다려주세요..</string>
     <string name="notice_home">메인화면</string>

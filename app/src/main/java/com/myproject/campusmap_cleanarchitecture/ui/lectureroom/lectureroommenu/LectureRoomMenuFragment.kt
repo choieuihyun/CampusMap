@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.LectureroomFragmentMenuBinding
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
-import com.myproject.campusmap_cleanarchitecture.ui.adapter.LectureRoomMenuAdapter
+import com.myproject.campusmap_cleanarchitecture.ui.adapter.lectureroommenu.LectureRoomMenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +21,7 @@ class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.l
     private lateinit var buttonArgs : ArrayList<AppCompatButton>
 
     private val viewModel: LectureRoomMenuViewModel by viewModels()
-    private val args by navArgs<LectureRoomMenuFragmentArgs>()
+    private val args by navArgs<LectureRoomMenuFragmentArgs>() // 제거해야할듯.
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

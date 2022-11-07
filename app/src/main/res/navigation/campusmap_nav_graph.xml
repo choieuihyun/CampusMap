@@ -16,17 +16,20 @@
         <action
             android:id="@+id/action_mapFragment_to_buildingDetailFragment"
             app:destination="@id/buildingDetailFragment" />
-        <argument
-            android:name="building"
-            app:nullable="true"
-            android:defaultValue="@null"
-            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
         <action
             android:id="@+id/action_mapFragment_to_noticeFragment"
             app:destination="@id/noticeFragment" />
         <action
             android:id="@+id/action_mapFragment_to_bottomSheetDialog"
             app:destination="@id/bottomSheetDialog" />
+        <action
+            android:id="@+id/action_mapFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <argument
+            android:name="building"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
     </fragment>
     <fragment
         android:id="@+id/buildingMenuFragment"
@@ -49,12 +52,11 @@
             android:id="@+id/action_buildingDetailFragment_to_lectureRoomMenu"
             app:destination="@id/lectureRoomMenu" />
     </fragment>
-    <argument
-        android:name="building" />
     <fragment
         android:id="@+id/noticeFragment"
         android:name="com.myproject.campusmap_cleanarchitecture.ui.notice.NoticeFragment"
-        android:label="NoticeFragment" />
+        android:label="NoticeFragment"
+        tools:layout="@layout/notice_fragment"/>
     <fragment
         android:id="@+id/noticeGeneralFragment"
         android:name="com.myproject.campusmap_cleanarchitecture.ui.notice.NoticeGeneralFragment"
@@ -95,7 +97,8 @@
     <dialog
         android:id="@+id/bottomSheetDialog"
         android:name="com.myproject.campusmap_cleanarchitecture.ui.map.BottomSheetDialog"
-        android:label="BottomSheetDialog" >
+        android:label="BottomSheetDialog"
+        tools:layout="@layout/map_fragment_bottomsheetdialog">
         <argument
             android:name="building"
             app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
@@ -103,4 +106,13 @@
             android:id="@+id/action_bottomSheetDialog_to_buildingDetailFragment"
             app:destination="@id/buildingDetailFragment" />
     </dialog>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/search_fragment">
+        <action
+            android:id="@+id/action_searchFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
 </navigation>

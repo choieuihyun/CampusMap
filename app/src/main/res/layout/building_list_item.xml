@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 <data>
     <!--        <import type="android.view.View"/>-->
     <variable
@@ -23,7 +23,8 @@
         android:fontFamily="@font/gmarket_ttf_medium"
         android:gravity="center"
         android:text="@{building.name}"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        tools:text="공학관"/>
 
 
     <!--    building_menu_list RecyclerView 항목들-->

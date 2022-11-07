@@ -1,4 +1,4 @@
-package com.myproject.campusmap_cleanarchitecture.ui.adapter
+package com.myproject.campusmap_cleanarchitecture.ui.adapter.lectureroomdetail
 
 import android.content.Context
 import android.util.Log

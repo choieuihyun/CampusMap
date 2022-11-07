@@ -111,12 +111,9 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
         val building = args.building
 
-            binding.map.apply {
-                if (building != null) {
-                    createMarker(building)
-                }
-            }
-
+        if (building != null) {
+            createMarker(building)
+        }
 
         binding.locationButton.setOnClickListener {
             mapView.setCurrentLocationEventListener(this)
@@ -133,6 +130,10 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
         binding.menuNotice.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_noticeFragment)
+        }
+
+        binding.buildingSearchButton.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_searchFragment)
         }
 
 
@@ -196,8 +197,8 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         p1: MapPOIItem?,
         p2: MapPOIItem.CalloutBalloonButtonType?,
     ) {
-        val action = MapFragmentDirections.actionMapFragmentToBuildingDetailFragment(args.building!!)
-        findNavController().navigate(action)
+        val data = MapFragmentDirections.actionMapFragmentToBuildingDetailFragment(args.building!!)
+        findNavController().navigate(data)
     }
 
     override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {
