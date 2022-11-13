@@ -93,7 +93,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
     }
 
     private fun setupRecyclerView() {
-        //buildingRecyclerView = binding.buildingRecyclerView
+
         buildingMenuAdapter = BuildingMenuAdapter()
         binding.buildingRecyclerView.apply {
             setHasFixedSize(true)

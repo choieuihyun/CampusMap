@@ -7,6 +7,8 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.tickaroo.tikxml.TikXml
+import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import dagger.Component
 import dagger.Module
 import dagger.Provides
@@ -28,7 +30,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val BUSAPI_BASE_URL = "http://openapi.jeonju.go.kr/jeonjubus/openApi/traffic/"
+    private const val BUSAPI_BASE_URL = "http://openapi.jeonju.go.kr/jeonjubus/openApi/traffic/" // 전라북도 전주시_실시간 운행정보 서비스
     private const val JSOUP_GENERAL_BASE_URL = "https://www.jj.ac.kr/jj/community/notice/gennotice.jsp?mode=list&board_no=1041&pager.offset="
 
     // 참고로 모듈에 SingletonComponent라고 작성을 해주었지만, Dagger-Hilt 공식 문서에서 나와 있듯이,
@@ -48,8 +50,10 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+
+        val parser = TikXml.Builder().exceptionOnUnreadXml(false).build() // 원하지 않는 데이터는 제외하기 위해서. 내려받은 데이터를 모두 사용한다면 추가하지 않아도 됨.
         return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(TikXmlConverterFactory.create(parser))
             .client(okHttpClient)
             .baseUrl(BUSAPI_BASE_URL)
             .build()

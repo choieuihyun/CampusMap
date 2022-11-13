@@ -132,6 +132,10 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
             Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_noticeFragment)
         }
 
+        binding.menuBus.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_busStopFragment)
+        }
+
         binding.buildingSearchButton.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_searchFragment)
         }
