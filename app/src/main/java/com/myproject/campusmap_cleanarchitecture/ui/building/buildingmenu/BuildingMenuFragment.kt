@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.BuildingFragmentMenuBinding
+import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.adapter.buildingmenu.BuildingMenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -108,7 +111,9 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
 
         buildingMenuAdapter.setOnItemClickListener { // args가 필요할땐 이렇게? 공부해야할듯.
             building ->
-            val action = BuildingMenuFragmentDirections.actionBuildingMenuFragmentToMapFragment(building)
+            val busStop = BusStop("","","","","","")
+            val action = BuildingMenuFragmentDirections.actionBuildingMenuFragmentToMapFragment(
+                building,busStop)
             findNavController().navigate(action)
         }
     }

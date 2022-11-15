@@ -22,6 +22,7 @@ import androidx.navigation.fragment.navArgs
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.MapFragmentBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 import com.myproject.campusmap_cleanarchitecture.ui.main.MainActivity
 import net.daum.mf.map.api.*
 
@@ -96,8 +97,6 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
         binding.map.addView(mapView)
 
-
-
         return binding.root
     }
 
@@ -110,9 +109,20 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         mainActivity.getBinding.bottomNavigationView.isVisible = false // Main NavHost의 BottomNavi 지우기.
 
         val building = args.building
+        val busStop = args.busStop
 
-        if (building != null) {
-            createMarker(building)
+        if(building != null) {
+
+            if (building.latitude != 0.0 && building.longitude != 0.0) {
+
+                createBuildingMarker(building)
+
+            } else if (building.latitude == 0.0 && building.longitude == 0.0) {
+
+                createBusStopMarker(busStop!!)
+
+            }
+
         }
 
         binding.locationButton.setOnClickListener {
@@ -152,10 +162,20 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         //mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
     }
 
-    private fun createMarker(building: Building) { // 그냥 이거 구조 자체가 찝찝함
+    private fun createBuildingMarker(building: Building) { // 그냥 이거 구조 자체가 찝찝함
         mapPoint = MapPoint.mapPointWithGeoCoord(building.latitude!!, building.longitude!!)
         marker = MapPOIItem()
         marker.itemName = building.name
+        marker.mapPoint = mapPoint
+        mapView.moveCamera(CameraUpdateFactory.newMapPointAndDiameter(mapPoint, 350f))
+        mapView.addPOIItem(marker)
+        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff // 이거 뭔가 찝찝함
+    }
+
+    private fun createBusStopMarker(busStop: BusStop) {
+        mapPoint = MapPoint.mapPointWithGeoCoord(busStop.stopY.toDouble(), busStop.stopX.toDouble())
+        marker = MapPOIItem()
+        marker.itemName = busStop.stopKname
         marker.mapPoint = mapPoint
         mapView.moveCamera(CameraUpdateFactory.newMapPointAndDiameter(mapPoint, 350f))
         mapView.addPOIItem(marker)
@@ -187,8 +207,15 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
     }
 
     override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
-        val action = MapFragmentDirections.actionMapFragmentToBottomSheetDialog(args.building!!)
-        findNavController().navigate(action)
+
+        if (args.building?.latitude != 0.0 && args.building?.longitude != 0.0) {
+            val action = MapFragmentDirections.actionMapFragmentToBottomSheetDialog(args.building!!)
+            findNavController().navigate(action)
+        } else {
+            val action2 = MapFragmentDirections.actionMapFragmentToBusStopBottomSheetDialog(args.busStop!!)
+            findNavController().navigate(action2)
+        }
+
     }
 
     @Deprecated("Deprecated in Java")

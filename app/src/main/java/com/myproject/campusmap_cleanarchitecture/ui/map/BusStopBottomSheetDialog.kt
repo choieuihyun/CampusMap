@@ -9,39 +9,36 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.myproject.campusmap_cleanarchitecture.databinding.BuildingDetailBottomsheetdialogBinding
+import com.myproject.campusmap_cleanarchitecture.databinding.BusStopBottomsheetdialogBinding
+
 import com.myproject.campusmap_cleanarchitecture.ui.building.buildingdetail.BuildingDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BottomSheetDialog() : BottomSheetDialogFragment() {
+class BusStopBottomSheetDialog() : BottomSheetDialogFragment() {
 
-    private lateinit var binding: BuildingDetailBottomsheetdialogBinding
-    private val args by navArgs<BottomSheetDialogArgs>()
-
-    private val viewModel: BuildingDetailViewModel by activityViewModels()
+    private lateinit var binding: BusStopBottomsheetdialogBinding
+    private val args by navArgs<BusStopBottomSheetDialogArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = BuildingDetailBottomsheetdialogBinding.inflate(inflater, container, false)
+        binding = BusStopBottomsheetdialogBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.building = args.building
-        viewModel.getBuildingImages(requireActivity(), binding.building?.buildingImageUri!!,binding.buildingImage)
+        binding.busStopData = args.busStop
 
-        binding.lectureRoomButton.setOnClickListener {
-            val action = BottomSheetDialogDirections.actionBottomSheetDialogToBuildingDetailFragment(args.building)
+        binding.busPositionButton.setOnClickListener {
+            val action = BusStopBottomSheetDialogDirections.actionBusStopBottomSheetDialogToBusPositionFragment(args.busStop.stopStandardid.toInt())
             findNavController().navigate(action)
         }
 
@@ -49,7 +46,7 @@ class BottomSheetDialog() : BottomSheetDialogFragment() {
 
     override fun onResume() {
         super.onResume()
-        context?.dialogFragmentResize(this@BottomSheetDialog, 0.9f, 0.9f)
+        context?.dialogFragmentResize(this@BusStopBottomSheetDialog, 0.9f, 0.9f)
 
     }
 

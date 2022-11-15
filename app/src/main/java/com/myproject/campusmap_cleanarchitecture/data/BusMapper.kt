@@ -15,7 +15,7 @@ fun BusPositionData.toModel() = BusPosition(
     brtVianame = brtVianame
 )
 
-fun BusStopData.toModel(direction: String) = BusStop(
+fun BusStopData.toModel(direction: String) = BusStop( // 공공데이터가 잘못보내줘서 X,Y 변환
     stopKname = "$stopKname\n($direction)",
     stopStandardid = stopStandardid,
     stopId = stopId,

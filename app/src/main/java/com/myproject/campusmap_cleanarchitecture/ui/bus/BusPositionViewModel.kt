@@ -19,8 +19,8 @@ class BusPositionViewModel @Inject constructor(
     val busPositionDatas : LiveData<List<BusPosition>>
         get() = _busPositionDatas
 
-    fun getBusPositionData() {
-        val stopStdid = 305032694
+    fun getBusPositionData(stopStdid: Int) {
+        //val stopStdid = 305032694
 
         viewModelScope.launch {
            _busPositionDatas.value = useCase.invoke(stopStdid)

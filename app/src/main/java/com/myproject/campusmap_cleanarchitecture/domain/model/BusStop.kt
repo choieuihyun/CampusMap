@@ -7,4 +7,4 @@ data class BusStop (
     val stopX: String,
     val stopY: String,
     val reMark: String
-    )
+    ) : java.io.Serializable

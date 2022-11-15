@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.SearchFragmentBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 import com.myproject.campusmap_cleanarchitecture.domain.model.LectureRoom
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.adapter.search.SearchBuildingAdapter
@@ -160,7 +161,8 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
 
         searchBuildingAdapter.setOnItemClickListener {
             building ->
-            val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building)
+            val busStop = BusStop("","","","","","")
+            val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building,busStop)
             findNavController().navigate(action)
         }
 

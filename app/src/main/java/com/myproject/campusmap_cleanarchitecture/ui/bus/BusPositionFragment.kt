@@ -2,7 +2,10 @@ package com.myproject.campusmap_cleanarchitecture.ui.bus
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myproject.campusmap_cleanarchitecture.R
@@ -15,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class BusPositionFragment : BaseFragment<BusPositionFragmentBinding>(R.layout.bus_position_fragment) {
 
     private val viewModel : BusPositionViewModel by viewModels()
+    private val args by navArgs<BusPositionFragmentArgs>()
 
     private lateinit var busPositionAdapter : BusPositionAdapter
 
@@ -23,12 +27,16 @@ class BusPositionFragment : BaseFragment<BusPositionFragmentBinding>(R.layout.bu
 
         setupRecyclerView()
 
-        viewModel.getBusPositionData()
+        try {
+        viewModel.getBusPositionData(args.busStandardId)
+        } catch (e: java.lang.NullPointerException){
+            Toast.makeText(context,"버스가 없음",Toast.LENGTH_LONG).show()
+        }
 
         updateList()
 
         binding.refresh.setOnRefreshListener {
-            viewModel.getBusPositionData()
+            viewModel.getBusPositionData(args.busStandardId)
             binding.refresh.isRefreshing = false
         }
 
@@ -36,7 +44,8 @@ class BusPositionFragment : BaseFragment<BusPositionFragmentBinding>(R.layout.bu
 
     private fun updateList() {
         viewModel.busPositionDatas.observe(viewLifecycleOwner) {
-            busDatas -> busPositionAdapter.submitList(busDatas)
+            busDatas ->
+                busPositionAdapter.submitList(busDatas)
         }
     }
 

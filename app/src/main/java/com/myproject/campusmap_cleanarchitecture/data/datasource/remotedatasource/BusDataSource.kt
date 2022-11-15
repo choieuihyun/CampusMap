@@ -3,10 +3,13 @@ package com.myproject.campusmap_cleanarchitecture.data.datasource.remotedatasour
 import com.myproject.campusmap_cleanarchitecture.data.db.remote.api.BusApi
 import com.myproject.campusmap_cleanarchitecture.data.db.remote.response.BusPositionData
 import com.myproject.campusmap_cleanarchitecture.data.db.remote.response.BusStopData
+import com.myproject.campusmap_cleanarchitecture.domain.NetworkErrorHandler
+import com.myproject.campusmap_cleanarchitecture.domain.NetworkResult
 import javax.inject.Inject
 
 class BusDataSource @Inject constructor(
-    private val api: BusApi
+    private val api: BusApi,
+    private val networkErrorHandler: NetworkErrorHandler
 ){
     suspend fun getBusPositionData(stopStdid: Int) : List<BusPositionData>? {
 

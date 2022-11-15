@@ -1,5 +1,4 @@
 package com.myproject.campusmap_cleanarchitecture.data.db.remote.response
-
 import com.tickaroo.tikxml.annotation.Element
 import com.tickaroo.tikxml.annotation.PropertyElement
 import com.tickaroo.tikxml.annotation.Xml

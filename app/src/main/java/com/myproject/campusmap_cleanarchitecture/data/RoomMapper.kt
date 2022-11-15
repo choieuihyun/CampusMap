@@ -3,22 +3,15 @@ package com.myproject.campusmap_cleanarchitecture.data
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingEntity
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.EngFirstLectureRoomEntity
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 import com.myproject.campusmap_cleanarchitecture.domain.model.LectureRoom
-
-fun Building.toEntity() = BuildingEntity(
-    id = id,
-    name = name,
-    latitude = latitude,
-    longitude = longitude,
-    buildingImageUri = buildingImageUri
-)
 
 fun BuildingEntity.toModel() = Building(
     id = id,
     name = name,
     latitude = latitude,
     longitude = longitude,
-    buildingImageUri = buildingImageUri
+    buildingImageUri = buildingImageUri,
 )
 
 /*fun EngFirstLectureRoomEntity.toModel() = EngFirstLectureRoom(

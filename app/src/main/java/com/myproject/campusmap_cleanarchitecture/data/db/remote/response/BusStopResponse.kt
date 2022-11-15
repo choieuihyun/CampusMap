@@ -39,4 +39,4 @@ data class BusStopData(
         val stopX: String,
         @PropertyElement(name = "stopY")
         val stopY: String
-) : Serializable
+)
