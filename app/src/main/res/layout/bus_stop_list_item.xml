@@ -1,0 +1,41 @@
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="busStopData"
+            type="com.myproject.campusmap_cleanarchitecture.domain.model.BusStop" />
+
+    </data>
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_margin="20dp"
+            android:text="@{`정류장명 : ` + busStopData.stopKname }"
+            tools:text="정류장명 : 안골 "
+            app:drawableEndCompat="@drawable/search" />
+
+    </LinearLayout>
+
+<!--
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@{'('+busStopData.reMark+')'}"
+            tools:text="(모래내시장방향)" />
+-->
+
+
+
+
+</layout>

@@ -1,63 +1,58 @@
 package com.myproject.campusmap_cleanarchitecture.data.db.remote.response
+import com.tickaroo.tikxml.annotation.Element
+import com.tickaroo.tikxml.annotation.PropertyElement
+import com.tickaroo.tikxml.annotation.Xml
 
-import com.google.gson.annotations.SerializedName
-
-data class BusResponse(
-    @SerializedName("RFC30")
-    val rFC30: RFC30?
+@Xml (name = "RFC30")
+data class BusPositionResponse(
+    @PropertyElement
+    val code: String,
+    @PropertyElement
+    val msg: String,
+    @Element
+    val routeList: RouteList
 )
 
-data class RFC30(
-    @SerializedName("code")
-    val code: Code?,
-    @SerializedName("msg")
-    val msg: Msg?,
-    @SerializedName("routeList")
-    val routeList: RouteList?
+@Xml (name = "routeList")
+data class RouteList (
+    @Element
+    val list: List<BusPositionData>
+    )
+
+@Xml (name = "list")
+data class BusPositionData(
+    @PropertyElement(name = "LKey")
+    val lKey: String,
+    @PropertyElement(name = "RStop")
+    val rStop: String,
+    @PropertyElement(name = "RTime")
+    val rTime: String,
+    @PropertyElement(name = "bidNo")
+    val bidNo: String,
+    @PropertyElement(name = "brtClass")
+    val brtClass: String,
+    @PropertyElement(name = "brtDirection")
+    val brtDirection: String,
+    @PropertyElement(name = "brtId")
+    val brtId: String,
+    @PropertyElement(name = "brtStdid")
+    val brtStdid: String,
+    @PropertyElement(name = "brtVianame")
+    val brtVianame: String,
+    @PropertyElement(name = "busLow")
+    val busLow: String,
+    @PropertyElement(name = "initBrtClass")
+    val initBrtClass: String,
+    @PropertyElement(name = "initBrtid")
+    val initBrtid: String,
+    @PropertyElement(name = "orderBy")
+    val orderBy: String,
+    @PropertyElement(name = "range")
+    val range: String,
+    @PropertyElement(name = "stopStdid")
+    val stopStdid: String,
+    @PropertyElement(name = "viaStopname")
+    val viaStopname: String
 )
 
-data class RouteList(
-    @SerializedName("_class")
-    val classX: String?,
-    @SerializedName("list")
-    val list: List<BusData>?
-)
 
-data class Code(
-    @SerializedName("__text")
-    val text: String?,
-    @SerializedName("_type")
-    val type: String?
-)
-
-data class Msg(
-    @SerializedName("__text")
-    val text: String?,
-    @SerializedName("_type")
-    val type: String?
-)
-
-data class BusData(
-    @SerializedName("bidNo")
-    val bidNo: String?,
-    @SerializedName("brtClass")
-    val brtClass: String?,
-    @SerializedName("brtDirection")
-    val brtDirection: String?,
-    @SerializedName("brtId")
-    val brtId: String?,
-    @SerializedName("brtStdid")
-    val brtStdid: String?,
-    @SerializedName("brtVianame")
-    val brtVianame: String?,
-    @SerializedName("busLow")
-    val busLow: String?,
-    @SerializedName("_class")
-    val classX: String?,
-    @SerializedName("RStop")
-    val rStop: String?,
-    @SerializedName("RTime")
-    val rTime: String?,
-    @SerializedName("viaStopname")
-    val viaStopname: String?
-)

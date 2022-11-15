@@ -63,6 +63,8 @@ dependencies {
     def okhttp_version = "4.9.1"
     def navigation_version = "2.5.2"
     def jsoup_version = "1.13.1"
+    def tikxml_version = "0.8.13"
+    def swipe_refresh_version = "1.1.0"
 
     // junit
     testImplementation "junit:junit:$junit_version"
@@ -143,6 +145,15 @@ dependencies {
 
     // Jsoup
     implementation ("org.jsoup:jsoup:$jsoup_version")
+
+    //xml parser
+    implementation ("com.tickaroo.tikxml:annotation:$tikxml_version")
+    implementation ("com.tickaroo.tikxml:core:$tikxml_version")
+    implementation ("com.tickaroo.tikxml:retrofit-converter:$tikxml_version")
+    kapt ("com.tickaroo.tikxml:processor:$tikxml_version")
+
+    // pull to refresh
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_version")
 
 }
 

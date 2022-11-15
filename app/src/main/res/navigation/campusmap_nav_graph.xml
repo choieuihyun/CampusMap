@@ -30,6 +30,17 @@
             app:nullable="true"
             android:defaultValue="@null"
             app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
+        <action
+            android:id="@+id/action_mapFragment_to_busStopFragment"
+            app:destination="@id/busStopFragment" />
+        <argument
+            android:name="busStop"
+            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.BusStop"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+        <action
+            android:id="@+id/action_mapFragment_to_busStopBottomSheetDialog"
+            app:destination="@id/busStopBottomSheetDialog" />
     </fragment>
     <fragment
         android:id="@+id/buildingMenuFragment"
@@ -98,7 +109,7 @@
         android:id="@+id/bottomSheetDialog"
         android:name="com.myproject.campusmap_cleanarchitecture.ui.map.BottomSheetDialog"
         android:label="BottomSheetDialog"
-        tools:layout="@layout/map_fragment_bottomsheetdialog">
+        tools:layout="@layout/building_detail_bottomsheetdialog">
         <argument
             android:name="building"
             app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
@@ -115,4 +126,33 @@
             android:id="@+id/action_searchFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/busPositionFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.bus.BusPositionFragment"
+        android:label="BusPositionFragment"
+        tools:layout="@layout/bus_position_fragment">
+        <argument
+            android:name="busStandardId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/busStopFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.bus.BusStopFragment"
+        android:label="BusStopFragment"
+        tools:layout="@layout/bus_stop_fragment">
+        <action
+            android:id="@+id/action_busStopFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/busStopBottomSheetDialog"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.map.BusStopBottomSheetDialog"
+        android:label="BusStopBottomSheetDialog" >
+        <action
+            android:id="@+id/action_busStopBottomSheetDialog_to_busPositionFragment"
+            app:destination="@id/busPositionFragment" />
+        <argument
+            android:name="busStop"
+            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.BusStop" />
+    </dialog>
 </navigation>

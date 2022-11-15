@@ -2,9 +2,12 @@ package com.myproject.campusmap_cleanarchitecture.data.di
 
 import com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource.BuildingDataSource
 import com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource.LectureRoomDataSource
+import com.myproject.campusmap_cleanarchitecture.data.datasource.remotedatasource.BusDataSource
 import com.myproject.campusmap_cleanarchitecture.data.repository.BuildingRepositoryImpl
+import com.myproject.campusmap_cleanarchitecture.data.repository.BusRepositoryImpl
 import com.myproject.campusmap_cleanarchitecture.data.repository.LectureRoomRepositoryImpl
 import com.myproject.campusmap_cleanarchitecture.domain.repository.BuildingRepository
+import com.myproject.campusmap_cleanarchitecture.domain.repository.BusRepository
 import com.myproject.campusmap_cleanarchitecture.domain.repository.LectureRoomRepository
 import dagger.Module
 import dagger.Provides
@@ -35,6 +38,12 @@ object RepositoryModule {
     @Provides
     fun provideLectureRoomRepository(dataSource: LectureRoomDataSource) : LectureRoomRepository {
         return LectureRoomRepositoryImpl(dataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun provideBusRepository(dataSource: BusDataSource) : BusRepository {
+        return BusRepositoryImpl(dataSource)
     }
 
 /*    @Singleton
