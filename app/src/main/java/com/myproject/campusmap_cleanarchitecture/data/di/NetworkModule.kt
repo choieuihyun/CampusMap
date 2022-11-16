@@ -7,6 +7,8 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.myproject.campusmap_cleanarchitecture.data.db.remote.interactor.NetworkErrorHandlerImpl
+import com.myproject.campusmap_cleanarchitecture.domain.NetworkErrorHandler
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import dagger.Component
@@ -83,6 +85,12 @@ object NetworkModule {
     @Provides
     fun provideFirebaseStorageReference(firebaseStorage: FirebaseStorage) : StorageReference  {
         return firebaseStorage.reference
+    }
+
+    @Singleton
+    @Provides
+    fun provideNetworkHandler(): NetworkErrorHandler {
+        return NetworkErrorHandlerImpl()
     }
 
 

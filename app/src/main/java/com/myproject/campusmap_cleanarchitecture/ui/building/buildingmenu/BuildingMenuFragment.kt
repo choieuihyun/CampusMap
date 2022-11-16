@@ -47,27 +47,27 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
 
         binding.btn1.setOnClickListener {
             // LiveData로 RecyclerView 갱신.
-            updateList(0,9)
+            updateList(1)
         }
 
         binding.btn2.setOnClickListener {
-            updateList(9,15)
+            updateList(2)
         }
 
         binding.btn3.setOnClickListener {
-            updateList(15,27)
+            updateList(3)
         }
 
         binding.btn4.setOnClickListener {
-            updateList(29,39)
+            updateList(4)
         }
 
         binding.btn5.setOnClickListener {
-            updateList(39,43)
+            updateList(5)
         }
 
         binding.btn6.setOnClickListener {
-            updateList(27,29)
+            updateList(6)
         }
 
 
@@ -88,9 +88,9 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
         super.onDestroyView()
     }
 
-    private fun updateList(fromIdx: Int, toIdx: Int) {
+    private fun updateList(category: Int) {
         viewModel.getBuildings.observe(viewLifecycleOwner) {
-                buildings -> buildingMenuAdapter.submitList(buildings.subList(fromIdx,toIdx))
+                buildings -> buildingMenuAdapter.submitList(buildings.filter { it.category == category.toString() })
             Log.d("building", buildings.toString())
         }
     }

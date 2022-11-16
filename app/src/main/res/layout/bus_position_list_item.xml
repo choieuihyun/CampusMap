@@ -19,22 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:text="@{`버스번호 : ` + busData.bidNo}"
-            tools:text="bidNo" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:text="@{`노선번호 : ` + busData.brtId}"
             tools:text="brtId" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="@{`노선ID : ` + busData.brtStdid}"
-            tools:text="brtStdid" />
 
         <TextView
             android:layout_width="match_parent"
@@ -61,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:text="@{`최근 통과지점 : ` + busData.viaStopname}"
+            android:text="@{`최근통과지점 : ` + busData.viaStopname}"
             tools:text="viaStopName" />
 
 

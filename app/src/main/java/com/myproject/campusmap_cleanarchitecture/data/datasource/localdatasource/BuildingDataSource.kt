@@ -39,24 +39,10 @@ class BuildingDataSource @Inject constructor(
         } else {
             val submitProfile: StorageReference = storageReference.child(path)
             submitProfile.downloadUrl.addOnSuccessListener { uri ->
-                Glide.with(c).load(uri).fallback(R.drawable.ic_launcher_background).into(v)
+                Glide.with(c).load(uri).fallback(R.drawable.lastpage).into(v)
             }.addOnFailureListener { }
         }
     }
 
-/*    fun getBuildingImages(c: Activity, path: String, v: ImageView) {
-
-        val storageReference : StorageReference = firebaseStorage.reference
-        val pathReference : StorageReference? = storageReference.child("photo")
-
-        if (pathReference == null) {
-            Toast.makeText(c as Activity?, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
-        } else {
-            val submitProfile: StorageReference = storageReference.child(path)
-            submitProfile.downloadUrl.addOnSuccessListener { uri ->
-                Glide.with(c).load(uri).into(v)
-            }.addOnFailureListener { }
-        }
-    }*/
 
 }
