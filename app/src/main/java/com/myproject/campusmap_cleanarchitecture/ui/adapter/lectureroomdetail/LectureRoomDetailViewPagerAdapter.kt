@@ -23,9 +23,6 @@ class LectureRoomDetailViewPagerAdapter(private val context: Context,
 
     override fun onBindViewHolder(holder: LectureRoomDetailViewPagerViewHolder, position: Int) {
         val lectureRoomDetail = currentList[position]
-/*        holder.apply {
-            Glide.with(context).load(lectureRoomDetail.path).into()
-        }*/
         holder.bind(context, lectureRoomDetail)
     }
 

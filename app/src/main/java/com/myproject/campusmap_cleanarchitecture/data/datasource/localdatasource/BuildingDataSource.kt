@@ -1,6 +1,7 @@
 package com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource
 
 import android.app.Activity
+import android.content.Context
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.LiveData
@@ -29,7 +30,7 @@ class BuildingDataSource @Inject constructor(
         return buildingDao.getBuilding(id = id)
     }
 
-    fun getBuildingImages(c: Activity, path: String?, v: ImageView) {
+    fun getBuildingImages(c: Context, path: String?, v: ImageView) {
 
         val storageReference: StorageReference = firebaseStorage.reference
         val pathReference: StorageReference? = storageReference.child("photo")
