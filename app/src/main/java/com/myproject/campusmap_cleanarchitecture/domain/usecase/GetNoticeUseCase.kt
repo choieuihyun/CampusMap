@@ -32,10 +32,10 @@ class GetNoticeUseCase @Inject constructor() {
                 try {
                     // 원래 이 for문 launch로 감싸면 공지사항이 안떴는데 왜그런거지??
                     for (i in 0 until 30) {
-                        doc = Jsoup.connect(url + (urlCount * i).toString()).get() // URL 웹사이트에 있는 html 코드를 다 끌어옴
+                        doc = Jsoup.connect(url + (urlCount * i).toString()).get() // URL 웹사이트에 있는 html 코드를 끌어온다.
                         docArray.add(doc) // 그 코드들을 배열에 저장함.
                         notice = docArray[i].select("#jwxe_main_content")
-                            .select(".b-top-box") // notice 속성에 끌어왔던 html 코드에서 배열 순서대로 select 부분들을 끌고옴
+                            .select(".b-top-box") // notice 속성에 끌어왔던 html 코드에서 배열 순서대로 select 부분들을 끌고온다.
                         noticeDocArray.add(notice) // notice에서 select로 끌고온 쿼리 부분들을 noticeDocArray에 저장함. 그니까 즉 =0에서 저부분이 noticeDocArray[0]에, =20이 noticeDocArray[1]에 들어가고 그런식.
                     }
                 } catch (e: IndexOutOfBoundsException) {

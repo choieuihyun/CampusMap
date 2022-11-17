@@ -22,4 +22,6 @@
     <string name="error_internal_server">An error occurred on the server.\nPlease run again in a few minutes.</string>
     <string name="error_timeout">The request timed out.\nPlease run again in a few minutes.</string>
     <string name="error_bad_request">Error Code : %1$d, Invalid request.\nPlease run again in a few minutes.</string>
+    <string name="bus_error_msg">운행중인 버스가 없습니다.</string>
+    <string name="data_error_msg">데이터가 없습니다.</string>
 </resources>

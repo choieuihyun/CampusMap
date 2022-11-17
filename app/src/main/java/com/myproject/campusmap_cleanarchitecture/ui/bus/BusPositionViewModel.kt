@@ -45,7 +45,7 @@ class BusPositionViewModel @Inject constructor(
                 is NetworkResult.Success -> {
                     _busPositionDatas.value = result.data
                     _isLoading.postValue(false)
-                    _isError.value = false
+                    _isError.postValue(false)
                 }
                 is NetworkResult.Error -> {
                     val msg = result.errorType.toErrorMessage(getApplication(application).applicationContext)

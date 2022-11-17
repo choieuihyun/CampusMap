@@ -31,23 +31,22 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
     private lateinit var binding: MapFragmentBinding
     private lateinit var mapPoint: MapPoint
-    private lateinit var marker: MapPOIItem // 그냥 lateinit 해봤음 안해도 될듯 ㅋㅋ;;
+    private lateinit var marker: MapPOIItem
     private lateinit var backPressedCallbacks: OnBackPressedCallback
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var mapView : MapView
     private lateinit var mainActivity: MainActivity
 
-    // private val args by navArgs<MapFragmentArgs>()
     private val args by navArgs<MapFragmentArgs>()
-    private val ACCESS_FINE_LOCATION = 1000     // Request Code
+    private val ACCESS_FINE_LOCATION = 1000
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
         mainActivity = context as MainActivity
 
-        backPressedCallbacks = object : OnBackPressedCallback(true) { // DrawerLayout을 닫기위한 쇼
-            override fun handleOnBackPressed() { // 근데 이러니까 뒤로가기로 앱이 안닫혀 이럴거 같더라 MapFragment의 onAttach에 했으니.
+        backPressedCallbacks = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
                 if(drawerLayout.isDrawerOpen(Gravity.RIGHT)){
                     drawerLayout.closeDrawers()
                 }
@@ -158,8 +157,6 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         binding.map.removeView(mapView)
         val parent = mapView.parent as ViewGroup?
         parent?.removeView(mapView)
-        // binding.mapFragment.mapView 야 이거쓰면 무슨 item 제거도 되네
-        //mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
     }
 
     private fun createBuildingMarker(building: Building) { // 그냥 이거 구조 자체가 찝찝함

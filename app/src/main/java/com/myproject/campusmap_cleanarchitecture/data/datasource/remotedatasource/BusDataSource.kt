@@ -14,7 +14,7 @@ class BusDataSource @Inject constructor(
 ){
     suspend fun getBusPositionData(stopStdid: Int) : NetworkResult<List<BusPositionData>?> {
 
-        // 사용해볼 수도 있기에 암호화 하지않음.
+        // 테스트를 해볼 수도 있기에 암호화 하지않음.
         val response = api.getBusPositionData("+seeu1lZNKYIcuFUa5fyGd0EywAbUdCfciBylbaoRdU9RzeZJFnxYWMaT0hKg0+wEzFlyM+iKr1wOD/jyx5i9w==", stopStdid)
 
         return try {
