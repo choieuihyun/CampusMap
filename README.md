@@ -20,6 +20,8 @@
 <img src="https://user-images.githubusercontent.com/59135621/202422875-b76bfe10-d7a3-4c48-9d5a-f10f4dc3723f.mp4"/>
 </p>
 
+https://user-images.githubusercontent.com/59135621/202423623-13ab056d-ce44-4296-a6c4-cc571bd30f4d.mp4
+
 ## 기술 스택
 Clean Architecture, MVVM, Kotlin, Hilt, Coroutine, Firebase Storage, Databinding, LiveData, Jetpack Navigation, Room DB, Retrofit,
 Jsoup, Glide, ViewPager, RecyclerView
