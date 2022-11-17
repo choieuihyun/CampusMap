@@ -60,11 +60,10 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/locationButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:scaleType="fitXY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_my_location_24"
-
+                app:fabSize="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.954"

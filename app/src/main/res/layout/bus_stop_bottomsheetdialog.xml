@@ -19,7 +19,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:paddingStart="10dp"
+            android:padding="8dp"
+            android:gravity="end"
             android:text="@{busStopData.stopKname}"
             android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -28,38 +29,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             tools:text="공학 1관" />
-
-        <TextView
-            android:id="@+id/busStop_address"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:paddingStart="10dp"
-            android:text="오른쪽에 작게 사진?"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/busStop_stopKname"
-            app:layout_constraintVertical_bias="0.0" />
-
-<!--        <ImageView-->
-<!--            android:id="@+id/building_image"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:background="@drawable/bottomsheet_imageview_rounded_corner"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginBottom="5dp"-->
-<!--            android:layout_marginStart="30dp"-->
-<!--            android:layout_marginEnd="15dp"-->
-<!--            android:textSize="18sp"-->
-<!--            android:scaleType="fitXY"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/lectureRoom_button"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.891"-->
-<!--            app:layout_constraintStart_toEndOf="@id/building_address"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.34" />-->
 
         <Button
             android:id="@+id/busPositionButton"
@@ -74,9 +43,9 @@
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.941"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/busStop_address"
+            app:layout_constraintTop_toBottomOf="@+id/busStop_stopKname"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
