@@ -13,7 +13,7 @@
 강의실 찾는 과정
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/59135621/202419149-65676e73-dc57-478f-b041-e7263133724f.mp4">
+https://user-images.githubusercontent.com/59135621/202420473-4b261a30-5371-4404-ab88-bf989ac2c087.mp4"
 </p>
 
 ## 기술 스택
