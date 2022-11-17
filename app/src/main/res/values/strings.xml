@@ -1,20 +1,30 @@
 <resources>
-    <string name="app_name">CampusMap_CleanArchitecture</string>
+    <string name="app_name">전주대 캠퍼스 맵</string>
 
+    <!-- notice -->
     <string name="notice_title_general">공지사항(일반)</string>
     <string name="notice_title_haksa">공지사항(학사)</string>
     <string name="notice_title_janghak">공지사항(장학)</string>
     <string name="notice_title_recruit">공지사항(취업)</string>
     <string name="notice_more">더보기</string>
-    <string name="notice_edittext_hint">건물명을 입력하세요</string>
-    <string name="search_button">검색</string>
-    <string name="loading_text">잠시만 기다려주세요..</string>
-    <string name="notice_home">메인화면</string>
     <string name="notice_ilban">일반</string>
     <string name="notice_haksa">학사</string>
     <string name="notice_chuiup">취업</string>
     <string name="notice_janghak">장학</string>
+    <string name="notice_home">메인화면</string>
+    <string name="building_edittext_hint">건물명을 입력하세요</string>
+    <string name="search_button">검색</string>
+    <string name="notice_edittext_hint">제목을 입력하세요</string>
+    <string name="loading_text">잠시만 기다려주세요..</string>
     <string name="last_page">마지막 페이지입니다.</string>
+
+    <!-- building menu -->
+    <string name="ga_na">가~나</string>
+    <string name="da_ba">다~바</string>
+    <string name="sa_aa">사~아</string>
+    <string name="ja_cha">자~차</string>
+    <string name="ka_ha">카~하</string>
+    <string name="a_z">A~Z</string>
 
     <!-- error message -->
     <string name="error_msg">An error occurred during\nnetwork communication.</string>
@@ -24,4 +34,5 @@
     <string name="error_bad_request">Error Code : %1$d, Invalid request.\nPlease run again in a few minutes.</string>
     <string name="bus_error_msg">운행중인 버스가 없습니다.</string>
     <string name="data_error_msg">데이터가 없습니다.</string>
+
 </resources>

@@ -13,7 +13,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:hint="@string/notice_edittext_hint"
+            android:hint="@string/building_edittext_hint"
             android:inputType="text"
             app:layout_constraintBottom_toTopOf="@+id/search_choice"
             app:layout_constraintHorizontal_bias="0.16"

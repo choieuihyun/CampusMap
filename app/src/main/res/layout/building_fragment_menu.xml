@@ -1,147 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+<!--    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"-->
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/building_menu_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <View
+        android:id="@+id/view"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:text="건물 메뉴"
+        android:fontFamily="@font/sebang_gothic_otf"
+        android:textSize="30sp"
+        android:background="#EFEDED"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#ffffff"
-            android:elevation="20dp">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="50dp"
+        android:padding="10dp"
+        android:background="@drawable/building_fragment_menu_button"
+        android:fontFamily="@font/gmarket_ttf_medium"
+        android:text="@string/ga_na"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="left|center_vertical"
-                android:text="건물 찾기"
-                android:textSize="30dp"
-                android:textColor="#000000" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/building_fragment_menu_button"
+        android:fontFamily="@font/gmarket_ttf_medium"
+        android:padding="10dp"
+        android:text="@string/da_ba"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn1" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/building_fragment_menu_button"
+        android:fontFamily="@font/gmarket_ttf_medium"
+        android:padding="10dp"
+        android:text="@string/sa_aa"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/building_fragment_menu_button"
+        android:fontFamily="@font/gmarket_ttf_medium"
+        android:padding="10dp"
+        android:text="@string/ja_cha"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn3" />
 
-        </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/building_fragment_menu_button"
+        android:fontFamily="@font/gmarket_ttf_medium"
+        android:text="@string/ka_ha"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn4" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:background="#EFEDED">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/building_fragment_menu_button"
+        android:fontFamily="@font/gmarket_ttf_medium"
+        android:text="@string/a_z"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn5" />
 
-<!--            왼쪽 초성메뉴-->
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btn1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gmarket_ttf_medium"
-                    android:background="#00000000"
-                    android:textColor="#000000"
-                    android:text="가~나"/>
-
-                <Button
-                    android:id="@+id/btn2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gmarket_ttf_medium"
-                    android:background="#00000000"
-                    android:textColor="#000000"
-                    android:text="다~바"/>
-
-                <Button
-                    android:id="@+id/btn3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gmarket_ttf_medium"
-                    android:background="#00000000"
-                    android:textColor="#000000"
-                    android:text="사~아"/>
-
-                <Button
-                    android:id="@+id/btn4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gmarket_ttf_medium"
-                    android:background="#00000000"
-                    android:textColor="#000000"
-                    android:text="자~차"/>
-
-                <Button
-                    android:id="@+id/btn5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gmarket_ttf_medium"
-                    android:background="#00000000"
-                    android:textColor="#000000"
-                    android:text="카~하"/>
-
-                <Button
-                    android:id="@+id/btn6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gmarket_ttf_medium"
-                    android:background="#00000000"
-                    android:textColor="#000000"
-                    android:text="A~Z"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/building_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:background="#EFEDED"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/building_list_item" />
 
 
-
-            </LinearLayout>
-
-<!--         오른쪽 건물 메뉴-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/building_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#EFEDED"
-                tools:listitem="@layout/building_list_item">
-
-            </androidx.recyclerview.widget.RecyclerView>
-        </LinearLayout>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

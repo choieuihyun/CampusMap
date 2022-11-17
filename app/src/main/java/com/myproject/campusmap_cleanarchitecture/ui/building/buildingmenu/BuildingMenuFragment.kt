@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -21,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.building_fragment_menu) {
 
     private lateinit var buildingMenuAdapter: BuildingMenuAdapter
+    private lateinit var buttonArgs : ArrayList<AppCompatButton>
 
     private val viewModel: BuildingMenuViewModel by viewModels()
 
@@ -31,8 +33,6 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //화면에 보이는 뷰들의 일반적인 상태를 설정하는 작업을 한다.
-
 
     }
 
@@ -46,41 +46,41 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
         setupRecyclerView()
 
         binding.btn1.setOnClickListener {
-            // LiveData로 RecyclerView 갱신.
+            changeSelected(0)
+            it.isSelected = true
             updateList(1)
         }
 
         binding.btn2.setOnClickListener {
+            changeSelected(1)
+            it.isSelected = true
             updateList(2)
         }
 
         binding.btn3.setOnClickListener {
+            changeSelected(2)
+            it.isSelected = true
             updateList(3)
         }
 
         binding.btn4.setOnClickListener {
+            changeSelected(3)
+            it.isSelected = true
             updateList(4)
         }
 
         binding.btn5.setOnClickListener {
+            changeSelected(4)
+            it.isSelected = true
             updateList(5)
         }
 
         binding.btn6.setOnClickListener {
+            changeSelected(5)
+            it.isSelected = true
             updateList(6)
         }
 
-
-
-        // 추가부분
-//        buildingRecyclerView = view.findViewById(R.id.building_recycler_view) as RecyclerView
-//        buildingRecyclerView.layoutManager = LinearLayoutManager(context)
-//        buildingRecyclerView.adapter = adapter
-
-        // LiveData 인스턴스에 옵저버를 등록, 추가부분
-//        binding.btn1.setOnClickListener {
-//
-//        }
 
     }
 
@@ -88,10 +88,26 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
         super.onDestroyView()
     }
 
+    private fun changeSelected(index: Int) {
+
+        buttonArgs = ArrayList()
+        buttonArgs.add(binding.btn1)
+        buttonArgs.add(binding.btn2)
+        buttonArgs.add(binding.btn3)
+        buttonArgs.add(binding.btn4)
+        buttonArgs.add(binding.btn5)
+        buttonArgs.add(binding.btn6)
+
+        buttonArgs.removeAt(index)
+
+        for(i in 0 until buttonArgs.size) {
+            buttonArgs[i].isSelected = false
+        }
+    }
+
     private fun updateList(category: Int) {
         viewModel.getBuildings.observe(viewLifecycleOwner) {
                 buildings -> buildingMenuAdapter.submitList(buildings.filter { it.category == category.toString() })
-            Log.d("building", buildings.toString())
         }
     }
 
@@ -104,9 +120,6 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
             addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
             adapter = buildingMenuAdapter
 
-/*            buildingMenuAdapter.setOnItemClickListener {
-                // 이렇게 하기보다는 그냥 ViewHolder에서 clicklistener 구현해서 하는게 맞아보인다. 여기는 building.id를 구할수가 없음.
-            }*/
         }
 
         buildingMenuAdapter.setOnItemClickListener { // args가 필요할땐 이렇게? 공부해야할듯.
