@@ -10,15 +10,15 @@
   
 ## 시연 영상(미완)
 
-강의실 찾기
+**강의실 찾기**
 
 https://user-images.githubusercontent.com/59135621/202423623-13ab056d-ce44-4296-a6c4-cc571bd30f4d.mp4
 
-버스정류장 정보 보기
+**버스정류장 정보 보기**
 
 https://user-images.githubusercontent.com/59135621/202448922-ceb6617b-e396-4c04-b636-3110bf833c40.mp4
 
-공지사항 보기
+**공지사항 보기**
 
 https://user-images.githubusercontent.com/59135621/202448953-accae80a-08f3-4e80-bdf9-4231f613eafe.mp4
 
