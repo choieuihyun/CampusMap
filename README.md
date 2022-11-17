@@ -12,10 +12,6 @@
 
 강의실 찾는 과정
 
-<p>
-  <img src="https://user-images.githubusercontent.com/59135621/202423623-13ab056d-ce44-4296-a6c4-cc571bd30f4d.mp4">
-</p>
-  
 https://user-images.githubusercontent.com/59135621/202423623-13ab056d-ce44-4296-a6c4-cc571bd30f4d.mp4
 
 ## 기술 스택
