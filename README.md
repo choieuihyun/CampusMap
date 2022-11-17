@@ -10,6 +10,9 @@
   
 ## 사용 영상
 
+강의실 찾는 과정
+https://user-images.githubusercontent.com/59135621/202419149-65676e73-dc57-478f-b041-e7263133724f.mp4
+
 ## 기술 스택
 Clean Architecture, MVVM, Kotlin, Hilt, Coroutine, Firebase Storage, Databinding, LiveData, Jetpack Navigation, Room DB, Retrofit,
 Jsoup, Glide, ViewPager, RecyclerView
