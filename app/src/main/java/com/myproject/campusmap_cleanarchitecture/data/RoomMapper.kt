@@ -14,16 +14,6 @@ fun BuildingEntity.toModel() = Building(
     buildingImageUri = buildingImageUri,
 )
 
-/*fun EngFirstLectureRoomEntity.toModel() = EngFirstLectureRoom(
-    id = id,
-    name = name,
-    floor = floor,
-    direction = direction,
-    route_1 = route_1,
-    route_2 = route_2,
-    route_3 = route_3
-)*/
-
 fun EngFirstLectureRoomEntity.toModel() = LectureRoom(
     id = id,
     name = name,
