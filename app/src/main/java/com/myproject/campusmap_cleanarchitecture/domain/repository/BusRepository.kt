@@ -1,7 +1,7 @@
 package com.myproject.campusmap_cleanarchitecture.domain.repository
 
 
-import com.myproject.campusmap_cleanarchitecture.domain.NetworkResult
+import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkResult
 import com.myproject.campusmap_cleanarchitecture.domain.model.BusPosition
 import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 

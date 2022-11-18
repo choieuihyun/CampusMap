@@ -1,4 +1,4 @@
-package com.myproject.campusmap_cleanarchitecture.domain
+package com.myproject.campusmap_cleanarchitecture.domain.error
 
 interface NetworkErrorHandler {
 

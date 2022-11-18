@@ -1,19 +1,17 @@
 package com.myproject.campusmap_cleanarchitecture.ui.bus
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.myproject.campusmap_cleanarchitecture.domain.NetworkResult
+import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkResult
 import com.myproject.campusmap_cleanarchitecture.domain.model.BusPosition
 import com.myproject.campusmap_cleanarchitecture.domain.usecase.GetBusPositionDataUseCase
 import com.myproject.campusmap_cleanarchitecture.ui.util.Event
 import com.myproject.campusmap_cleanarchitecture.ui.util.toErrorMessage
 import dagger.hilt.android.internal.Contexts.getApplication
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

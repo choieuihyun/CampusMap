@@ -1,7 +1,7 @@
 package com.myproject.campusmap_cleanarchitecture.data.db.remote.interactor
 
-import com.myproject.campusmap_cleanarchitecture.domain.NetworkError
-import com.myproject.campusmap_cleanarchitecture.domain.NetworkErrorHandler
+import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkError
+import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkErrorHandler
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 

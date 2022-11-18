@@ -3,9 +3,8 @@ package com.myproject.campusmap_cleanarchitecture.data.datasource.remotedatasour
 import com.myproject.campusmap_cleanarchitecture.data.db.remote.api.BusApi
 import com.myproject.campusmap_cleanarchitecture.data.db.remote.response.BusPositionData
 import com.myproject.campusmap_cleanarchitecture.data.db.remote.response.BusStopData
-import com.myproject.campusmap_cleanarchitecture.domain.NetworkErrorHandler
-import com.myproject.campusmap_cleanarchitecture.domain.NetworkResult
-import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
+import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkErrorHandler
+import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkResult
 import javax.inject.Inject
 
 class BusDataSource @Inject constructor(

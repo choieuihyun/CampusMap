@@ -2,7 +2,7 @@ package com.myproject.campusmap_cleanarchitecture.data
 
 import com.myproject.campusmap_cleanarchitecture.data.db.remote.response.BusPositionData
 import com.myproject.campusmap_cleanarchitecture.data.db.remote.response.BusStopData
-import com.myproject.campusmap_cleanarchitecture.domain.NetworkResult
+import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkResult
 import com.myproject.campusmap_cleanarchitecture.domain.model.BusPosition
 import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 

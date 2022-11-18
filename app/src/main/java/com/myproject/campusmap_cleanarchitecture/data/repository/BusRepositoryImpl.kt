@@ -4,7 +4,7 @@ import com.myproject.campusmap_cleanarchitecture.data.datasource.remotedatasourc
 import com.myproject.campusmap_cleanarchitecture.data.mapNetworkResult
 import com.myproject.campusmap_cleanarchitecture.data.toModel
 import com.myproject.campusmap_cleanarchitecture.data.toNetworkResult
-import com.myproject.campusmap_cleanarchitecture.domain.NetworkResult
+import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkResult
 import com.myproject.campusmap_cleanarchitecture.domain.model.BusPosition
 import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 import com.myproject.campusmap_cleanarchitecture.domain.repository.BusRepository

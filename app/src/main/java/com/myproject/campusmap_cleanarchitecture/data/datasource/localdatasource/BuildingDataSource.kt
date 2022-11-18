@@ -11,7 +11,6 @@ import com.google.firebase.storage.StorageReference
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingDatabase
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingEntity
-import com.myproject.campusmap_cleanarchitecture.domain.NetworkErrorHandler
 import javax.inject.Inject
 
 class BuildingDataSource @Inject constructor(

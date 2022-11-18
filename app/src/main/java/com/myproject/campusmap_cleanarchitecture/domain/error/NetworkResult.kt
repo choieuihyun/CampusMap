@@ -1,6 +1,4 @@
-package com.myproject.campusmap_cleanarchitecture.domain
-
-import com.myproject.campusmap_cleanarchitecture.domain.model.BusPosition
+package com.myproject.campusmap_cleanarchitecture.domain.error
 
 sealed class NetworkResult<out T> {
 

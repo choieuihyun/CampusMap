@@ -2,7 +2,7 @@ package com.myproject.campusmap_cleanarchitecture.ui.util
 
 import android.content.Context
 import com.myproject.campusmap_cleanarchitecture.R
-import com.myproject.campusmap_cleanarchitecture.domain.NetworkError
+import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkError
 
 fun NetworkError.toErrorMessage(
     context: Context
