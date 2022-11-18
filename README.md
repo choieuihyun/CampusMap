@@ -9,6 +9,9 @@
   
   그 외에도 교내 버스정류장과 공지사항을 추가하여 재학 중 필요한 정보를 편하게 얻을 수 있도록 하였습니다.
 
+## Architecture
+
+<img src="https://user-images.githubusercontent.com/59135621/202650966-6a0215bc-b16c-4224-af31-093a8bacfb53.png" width="600" height="600">
 
   
 ## 기술 스택
@@ -16,7 +19,7 @@
 `Jsoup`, `Glide`, `ViewPager`, `RecyclerView`
 
 ## APIs
-공공기관 API, KaKaoMap API
+공공기관 API(실시간 버스 운행, 버스 정류장 정보), KaKaoMap API
 
 
   
