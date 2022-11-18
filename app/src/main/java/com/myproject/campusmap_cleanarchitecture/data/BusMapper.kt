@@ -16,7 +16,7 @@ fun BusPositionData.toModel() = BusPosition(
     brtVianame = brtVianame.replace("-&gt;"," -> ")
 )
 
-fun BusStopData.toModel(direction: String) = BusStop(
+fun BusStopData.toModel(direction: String) = BusStop( 
     stopKname = "$stopKname\n($direction)",
     stopStandardid = stopStandardid,
     stopId = stopId,
