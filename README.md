@@ -7,6 +7,15 @@
   그 외에도 교내 버스정류장과 공지사항을 추가하여 재학 중 필요한 정보를 편하게 얻을 수 있도록 함.
   
   
+## 기술 스택
+`Clean Architecture`, `MVVM`, `Kotlin`, `Hilt`, `Coroutine`, `Firebase Storage`, `Databinding`, `LiveData`, `Jetpack Navigation`, `Room DB`, `Retrofit`,
+`Jsoup`, `Glide`, `ViewPager`, `RecyclerView`
+
+## APIs
+공공기관 API, KaKaoMap API
+
+
+  
   
 ## 시연 영상(미완)
 
@@ -22,12 +31,7 @@ https://user-images.githubusercontent.com/59135621/202448922-ceb6617b-e396-4c04-
 
 https://user-images.githubusercontent.com/59135621/202448953-accae80a-08f3-4e80-bdf9-4231f613eafe.mp4
 
-## 기술 스택
-`Clean Architecture`, `MVVM`, `Kotlin`, `Hilt`, `Coroutine`, `Firebase Storage`, `Databinding`, `LiveData`, `Jetpack Navigation`, `Room DB`, `Retrofit`,
-`Jsoup`, `Glide`, `ViewPager`, `RecyclerView`
 
-## APIs
-공공기관 API, KaKaoMap API
 
 ## 업데이트 예정
 
