@@ -1,4 +1,4 @@
-# 프로젝트 명 : CampusMap
+# 프로젝트 명 : CampusMap_v3
 
 ## 프로젝트 목적
 
