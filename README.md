@@ -1,4 +1,4 @@
-# 프로젝트 명 : CampusMap_v4(4번째 뒤엎음)
+# 프로젝트 명 : CampusMap_v4
 
 ## 프로젝트 목적
 
@@ -8,15 +8,8 @@
   학교에 처음 방문하는 사람과 신입생, 재학생까지 포함하여 학교를 방문하는 사람들이 건물, 혹은 강의실을 찾는 것에 어려움을 겪지 않도록 하기 위하여 검색과 메뉴를 동시에 만들었습니다.
   
   그 외에도 교내 버스정류장과 공지사항을 추가하여 재학 중 필요한 정보를 편하게 얻을 수 있도록 하였습니다.
-  
-## 프로젝트 설명
 
-  깔끔한 구현과 변경사항에 용이하게 대처해보기 위하여 Clean Architecture와 MVVM 패턴을 사용해 보았습니다.
 
-  SAA구조를 채택하였으며 이에 주로 함께 사용되는 Navigation을 사용하였습니다.
-  
-  Notion으로 일정관리를 하였으며 Git에 컨벤션 기준을 적용해 어느정도 규칙성 있는 커밋을 하도록 하였습니다.
-  
   
 ## 기술 스택
 `Clean Architecture`, `MVVM`, `Kotlin`, `Hilt`, `Coroutine`, `Firebase Storage`, `Databinding`, `LiveData`, `Jetpack Navigation`, `Room DB`, `Retrofit`,
