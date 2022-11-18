@@ -42,4 +42,4 @@ Android Studio 2021.3.1 Dolphin
 1. 건물 검색 후 검색기록 리스트 추가 예정
 2. Material Design 이용하여 디자인
 3. https://github.com/PRNDcompany/android-style-guide의 style guide 적용하여 refactoring
-
+4. DB에 데이터 추가 예정
