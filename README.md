@@ -31,7 +31,9 @@ https://user-images.githubusercontent.com/59135621/202448922-ceb6617b-e396-4c04-
 
 https://user-images.githubusercontent.com/59135621/202448953-accae80a-08f3-4e80-bdf9-4231f613eafe.mp4
 
+## 개발 도구
 
+Android Studio 2021.3.1 Dolphin
 
 ## 업데이트 예정
 
