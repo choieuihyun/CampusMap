@@ -36,13 +36,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         splashScreen = installSplashScreen()
-//        startSplash()
 
         setContentView(binding.root)
 
         setupNavigation()
-
-
 
     }
 
@@ -56,42 +53,3 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.isVisible = false
     }
 }
-
-/*    override fun bottomNaviClick(id: Int) {
-        when(id) {
-            R.id.noticeGeneralFragment -> {
-                createBottomNaviFragment(NoticeGeneralFragment.newInstance())
-            }
-            R.id.noticeHaksaFragment -> {
-                createBottomNaviFragment(NoticeHaksaFragment.newInstance())
-            }
-            R.id.noticeRecruitFragment -> {
-                createBottomNaviFragment(NoticeRecruitFragment.newInstance())
-            }
-            R.id.noticeJanghakFragment -> {
-                createBottomNaviFragment(NoticeJanghakFragment.newInstance())
-            }
-        }
-    }
-
-
-/*    // splash의 애니메이션 설정
-    private fun startSplash() {
-        splashScreen.setOnExitAnimationListener { splashScreenView ->
-            val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 5f, 1f)
-            val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 5f, 1f)
-
-            ObjectAnimator.ofPropertyValuesHolder(splashScreenView.iconView, scaleX, scaleY).run {
-                interpolator = AnticipateInterpolator()
-                duration = 1000L
-                doOnEnd {
-                    splashScreenView.remove()
-                }
-                start()
-            }
-        }
-    }*/
-
-}
-
- */

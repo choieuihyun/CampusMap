@@ -14,6 +14,8 @@ class LectureRoomDetailViewModel @Inject constructor(
     private val getLectureRoomDetailImagesUseCase: GetLectureRoomDetailImagesUseCase
 ) : ViewModel(){
 
+
+
     fun getEngFirstLectureRoomDetail(id: Int) = getLectureRoomUseCase.invoke(id)
 
     fun getImagesUseCase(c: Context, path: String?, v: ImageView) = getLectureRoomDetailImagesUseCase.invoke(c, path, v)

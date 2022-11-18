@@ -1,28 +1,23 @@
 package com.myproject.campusmap_cleanarchitecture.data.di
 
 import android.content.Context
-import com.bumptech.glide.annotation.GlideModule
 import com.google.firebase.FirebaseApp
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.myproject.campusmap_cleanarchitecture.data.db.remote.interactor.NetworkErrorHandlerImpl
+import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkErrorHandler
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
-import dagger.Component
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.OkHttp
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.jsoup.Connection
-import org.jsoup.Jsoup
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Url
 import javax.inject.Singleton
 
 
@@ -83,6 +78,12 @@ object NetworkModule {
     @Provides
     fun provideFirebaseStorageReference(firebaseStorage: FirebaseStorage) : StorageReference  {
         return firebaseStorage.reference
+    }
+
+    @Singleton
+    @Provides
+    fun provideNetworkHandler(): NetworkErrorHandler {
+        return NetworkErrorHandlerImpl()
     }
 
 

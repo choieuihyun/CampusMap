@@ -13,20 +13,8 @@ class LectureRoomDetailViewPagerViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(context: Context, items: LectureRoomDetailViewPagerItems) {
-        if(items.path != null) {
+        if (items.path != null) {
             viewModel.getImagesUseCase(context, items.path, binding.lectureRoomDetailImageview)
         }
-        Log.d("glideload", items.path.toString())
     }
-
-/*    fun bind(context: Context, items: LectureRoomDetailViewPagerItems) {
-        Glide.with(context).load(items.path).into(binding.lectureRoomDetailImageview)
-        Log.d("glideload", items.path.toString())
-    }*/
-
-/*    fun bind(items: LectureRoomDetailViewPagerItems) {
-        var image: ImageView = binding.lectureRoomDetailImageview
-        image = items.imageView
-    }*/
-
 }

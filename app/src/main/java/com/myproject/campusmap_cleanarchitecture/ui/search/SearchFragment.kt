@@ -25,7 +25,6 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
     private lateinit var searchBuildingAdapter: SearchBuildingAdapter
     private lateinit var searchLectureRoomAdapter: SearchLectureRoomAdapter
     private var searchBuildingArray: ArrayList<Building> = ArrayList()
-    private var searchLectureRoomArray: ArrayList<LectureRoom> = ArrayList()
 
     private val viewModel: SearchFragmentViewModel by viewModels()
 
@@ -55,12 +54,7 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
         searchBuildingAdapter = SearchBuildingAdapter()
         searchLectureRoomAdapter = SearchLectureRoomAdapter()
 
-        binding.searchBuilding.setOnClickListener {
-
             binding.searchRecyclerView.adapter = searchBuildingAdapter
-
-            it.isSelected = true
-            binding.searchLectureRoom.isSelected = false
 
             viewModel.getBuildings.observe(viewLifecycleOwner) { buildings -> run {
 
@@ -105,59 +99,7 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
                 }
             }
             }
-        }
 
-        binding.searchLectureRoom.setOnClickListener {
-
-            binding.searchRecyclerView.adapter = searchLectureRoomAdapter
-
-            it.isSelected = true
-            binding.searchBuilding.isSelected = false
-
-            viewModel.getLectureRooms.observe(viewLifecycleOwner) { lectureRooms -> run {
-
-                searchLectureRoomAdapter.submitList(lectureRooms)
-
-                binding.buildingSearchEdittext.addTextChangedListener(object : TextWatcher {
-
-                    override fun beforeTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        count: Int,
-                        after: Int,
-                    ) {
-
-                    }
-
-                    override fun onTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        before: Int,
-                        count: Int,
-                    ) {
-
-                    }
-
-                    override fun afterTextChanged(s: Editable?) {
-                        val searchText = binding.buildingSearchEdittext.text.toString()
-                        searchLectureRoomArray.clear()
-
-                        if (searchText != "") {
-                            for (i in lectureRooms.indices) {
-                                if (lectureRooms[i].name?.contains(searchText) == true) {
-                                    searchLectureRoomArray.add(lectureRooms[i])
-                                }
-                            }
-                        }
-                    }
-
-                })
-                binding.buildingSearchButton.setOnClickListener {
-                    searchLectureRoomAdapter.submitList(searchLectureRoomArray.toMutableList())
-                }
-            }
-            }
-        }
 
         searchBuildingAdapter.setOnItemClickListener {
             building ->
@@ -166,11 +108,6 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
             findNavController().navigate(action)
         }
 
-/*        searchLectureRoomAdapter.setOnItemClickListener {
-            lectureRoom ->
-            val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(lectureRoom)
-            findNavController().navigate(action)
-        }*/
     }
 }
 

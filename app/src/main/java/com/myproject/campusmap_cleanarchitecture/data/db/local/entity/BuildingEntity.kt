@@ -11,6 +11,7 @@ data class BuildingEntity(@PrimaryKey val id : Int,
                           var name: String = "",
                           var latitude: Double? = 0.0,
                           var longitude: Double? = 0.0,
-                          var buildingImageUri : String? = ""/*, 이것도 가능하긴 한데..
-                          @Embedded val eng : EngFirstLectureRoomEntity*/) {
+                          var buildingImageUri : String? = "",
+                          var category: String? = ""
+                          /*@Embedded val eng : EngFirstLectureRoomEntity*/) {
 }

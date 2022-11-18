@@ -30,70 +30,24 @@ class LectureRoomDataSource @Inject constructor(
         return engFirstDao.getEngFirstLectureRoom(id = id)
     }
 
-    // Activity -> Context
     fun getLectureRoomImages(c: Context, path: String?, v: ImageView) {
 
-        val pathReference: StorageReference = storageReference.child("photo")
+        val storageReference: StorageReference = firebaseStorage.reference
+        val pathReference: StorageReference? = storageReference.child("photo")
 
-        if (path == null) {
-            Toast.makeText(c, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
-        } else {
-            val submitProfile: StorageReference = storageReference.child(path)
-            submitProfile.downloadUrl.addOnSuccessListener { uri ->
-                Glide.with(c).load(uri).into(v)
-            }.addOnFailureListener {
-                Glide.with(c).load(R.drawable.ic_launcher_background).into(v)
+
+            if (pathReference == null) {
+                Toast.makeText(c as Activity?, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
+            } else {
+                val submitProfile: StorageReference = storageReference.child(path.toString())
+                submitProfile.downloadUrl.addOnSuccessListener { uri ->
+                    Glide.with(c).load(uri).into(v)
+                }.addOnFailureListener {
+                    Glide.with(c).load(R.drawable.no_image).into(v)
+                }
             }
         }
     }
 
 
-/*    // Activity -> Context
-    fun getLectureRoomImages(c: Context, path: String?, v: ImageView) {
-
-        val pathReference: StorageReference = storageReference.child("photo")
-
-        if (pathReference == null) {
-            Toast.makeText(c as Activity?, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
-        } else {
-            val submitProfile: StorageReference = storageReference.child(path.toString())
-            submitProfile.downloadUrl.addOnSuccessListener { uri ->
-                Glide.with(c).load(uri).into(v)
-            }.addOnFailureListener {
-                Glide.with(c).load(R.drawable.ic_launcher_background).into(v)
-            }
-        }
-    }*/
-
-}
-
-/*    fun getLectureRoomImages2(path: String): String {
-
-        val submitProfile: StorageReference = storageReference.child(path)
-        submitProfile.downloadUrl.addOnSuccessListener { uri ->
-            uri.path
-        }.addOnFailureListener {
-
-        }
-        Log.d("lectureimage2", submitProfile.path)
-        return submitProfile.path
-    }
-}*/
-
-
-
-/*    fun getLectureRoomImages(c: Activity, path: String, v: ImageView) {
-
-        val storageReference : StorageReference = firebaseStorage.reference
-        val pathReference : StorageReference? = storageReference.child("photo")
-
-        if (pathReference == null) {
-            Toast.makeText(c as Activity?, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
-        } else {
-            val submitProfile: StorageReference = storageReference.child(path)
-            submitProfile.downloadUrl.addOnSuccessListener { uri ->
-                Glide.with(c).load(uri).into(v)
-            }.addOnFailureListener { }
-        }
-    }*/
 

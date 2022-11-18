@@ -12,20 +12,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     android:padding="8dp">
 
     <TextView
         android:id="@+id/building_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:paddingTop="5dp"
         android:fontFamily="@font/gmarket_ttf_medium"
         android:gravity="center"
         android:text="@{building.name}"
         android:textSize="15sp"
         tools:text="공학관"/>
-
 
     <!--    building_menu_list RecyclerView 항목들-->
 

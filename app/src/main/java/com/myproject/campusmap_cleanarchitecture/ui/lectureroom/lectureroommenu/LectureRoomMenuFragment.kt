@@ -69,6 +69,7 @@ class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.l
     }
 
     private fun changeSelected(index: Int) {
+
         buttonArgs = ArrayList()
         buttonArgs.add(binding.lectureRoomMenuBtn1)
         buttonArgs.add(binding.lectureRoomMenuBtn2)

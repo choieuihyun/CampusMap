@@ -14,8 +14,6 @@ class BuildingRepositoryImpl @Inject constructor(
     private val dataSource: BuildingDataSource
 ) : BuildingRepository {
 
-    // 반환타입이 Entity가 아니라 Model인 이유.
-    // dataSource에서 Entity로 받아온걸 여기서 mapper로 Model로 돌려줘서.
     override fun getBuildings(): LiveData<List<Building>> {
         return dataSource.getBuildings().map { entities ->
             entities.map { entity ->
@@ -26,7 +24,7 @@ class BuildingRepositoryImpl @Inject constructor(
 
     override fun getBuilding(id: Int): LiveData<Building> {
         return dataSource.getBuilding(id = id).map {
-            it!!.toModel() // 이거 !! non assert 구림.
+            it!!.toModel()
         }
     }
 

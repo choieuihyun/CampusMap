@@ -22,8 +22,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class NoticeGeneralFragment : BaseFragment<NoticeFragmentGeneralBinding>(R.layout.notice_fragment_general) {
 
-//    private val viewModel : NoticeFragmentViewModel by viewModels({requireParentFragment()}) // viewModel을 ParentFragment 기준으로.
-    // activityViewModels로 하면 안됨. 뜬거 계속 뜸.
     private val viewModel : NoticeFragmentViewModel by viewModels()
     private lateinit var noticeAdapter: NoticeAdapter
     private lateinit var dialog: Dialog
@@ -36,7 +34,6 @@ class NoticeGeneralFragment : BaseFragment<NoticeFragmentGeneralBinding>(R.layou
         dialog.show()
 
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

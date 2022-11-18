@@ -10,13 +10,13 @@ data class BusPositionResponse(
     @PropertyElement
     val msg: String,
     @Element
-    val routeList: RouteList
+    val routeList: RouteList? // 두번째 정류장 데이터가 넘어오질 않음.
 )
 
 @Xml (name = "routeList")
 data class RouteList (
     @Element
-    val list: List<BusPositionData>
+    val list: List<BusPositionData>? // 이하동문.
     )
 
 @Xml (name = "list")

@@ -38,6 +38,5 @@ class NoticeFragment : BaseFragment<NoticeFragmentBinding>(R.layout.notice_fragm
 
         mainActivity.getBinding.bottomNavigationView.isVisible = true
 
-
     }
 }
