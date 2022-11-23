@@ -19,7 +19,9 @@ class BuildingMenuAdapter : ListAdapter<Building, BuildingMenuViewHolder>(Buildi
         val building = currentList[position]
         holder.bind(building)
         holder.itemView.setOnClickListener {
-            onItemClickListener?.let { it(building) }
+            onItemClickListener?.let {
+                it(building)
+            }
         }
     }
 
