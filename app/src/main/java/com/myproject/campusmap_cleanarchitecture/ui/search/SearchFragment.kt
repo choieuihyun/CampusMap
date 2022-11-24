@@ -16,6 +16,7 @@ import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 import com.myproject.campusmap_cleanarchitecture.domain.model.LectureRoom
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.adapter.search.SearchBuildingAdapter
+import com.myproject.campusmap_cleanarchitecture.ui.adapter.search.SearchHistoriesAdapter
 import com.myproject.campusmap_cleanarchitecture.ui.adapter.search.SearchLectureRoomAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragment) {
 
     private lateinit var searchBuildingAdapter: SearchBuildingAdapter
-    private lateinit var searchLectureRoomAdapter: SearchLectureRoomAdapter
+    private lateinit var searchHistoriesAdapter: SearchHistoriesAdapter
     private var searchBuildingArray: ArrayList<Building> = ArrayList()
 
     private val viewModel: SearchFragmentViewModel by viewModels()
@@ -35,26 +36,45 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupBuildingRecyclerView()
+
         setupRecyclerView()
+
+        setupBuildingHistoriesRecyclerView()
+
+    }
+
+    private fun setupRecyclerView() {
 
         binding.searchRecyclerView.apply {
 
             setHasFixedSize(true)
-
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-
             addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
 
         }
 
-        }
+    }
 
-    private fun setupRecyclerView() {
+    private fun setupBuildingHistoriesRecyclerView() {
+
+        searchHistoriesAdapter = SearchHistoriesAdapter()
+
+        binding.searchHistory.setOnClickListener {
+
+            binding.searchRecyclerView.adapter = searchHistoriesAdapter
+
+            viewModel.getBuildingHistories.observe(viewLifecycleOwner) {
+                searchHistoriesAdapter.submitList(it)
+            }
+
+        }
+    }
+
+    private fun setupBuildingRecyclerView() {
 
         searchBuildingAdapter = SearchBuildingAdapter()
-        searchLectureRoomAdapter = SearchLectureRoomAdapter()
-
-            binding.searchRecyclerView.adapter = searchBuildingAdapter
+        binding.searchRecyclerView.adapter = searchBuildingAdapter
 
             viewModel.getBuildings.observe(viewLifecycleOwner) { buildings -> run {
 
@@ -94,15 +114,17 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
                         }
                     }
                 })
+
                 binding.buildingSearchButton.setOnClickListener {
+
                     searchBuildingAdapter.submitList(searchBuildingArray.toMutableList())
+                    }
                 }
             }
-            }
-
 
         searchBuildingAdapter.setOnItemClickListener {
             building ->
+            viewModel.addBuildingHistories(building)
             val busStop = BusStop("","","","","","")
             val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building,busStop)
             findNavController().navigate(action)
