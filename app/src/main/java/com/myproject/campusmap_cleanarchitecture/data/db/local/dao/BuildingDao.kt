@@ -2,8 +2,10 @@ package com.myproject.campusmap_cleanarchitecture.data.db.local.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingEntity
+import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingHistoryEntity
 
 @Dao
 interface BuildingDao {

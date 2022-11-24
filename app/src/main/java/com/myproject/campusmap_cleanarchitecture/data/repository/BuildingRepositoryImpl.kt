@@ -5,8 +5,11 @@ import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource.BuildingDataSource
+import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingHistoryEntity
+import com.myproject.campusmap_cleanarchitecture.data.toHistoryEntity
 import com.myproject.campusmap_cleanarchitecture.data.toModel
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.domain.repository.BuildingRepository
 import javax.inject.Inject
 
@@ -27,6 +30,23 @@ class BuildingRepositoryImpl @Inject constructor(
             it!!.toModel()
         }
     }
+
+    override fun getBuildingHistories(): LiveData<List<BuildingHistory>> {
+        return dataSource.getBuildingHistories().map {
+            buildingHistoryEntities -> buildingHistoryEntities.map {
+                buildingHistoryEntity -> buildingHistoryEntity.toModel()
+            }
+        }
+    }
+
+    override suspend fun addBuilding(building: Building) {
+        dataSource.addBuilding(building.toHistoryEntity())
+    }
+
+    override suspend fun deleteBuilding(id: Int) {
+        dataSource.deleteBuilding(id)
+    }
+
 
     override fun getBuildingImages(c: Activity, path: String, v: ImageView) {
         dataSource.getBuildingImages(c,path,v)

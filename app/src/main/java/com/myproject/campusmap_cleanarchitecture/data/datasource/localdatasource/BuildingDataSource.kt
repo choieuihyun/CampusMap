@@ -10,15 +10,19 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingDatabase
+import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingHistoriesDatabase
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingEntity
+import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingHistoryEntity
 import javax.inject.Inject
 
 class BuildingDataSource @Inject constructor(
     private val buildingDatabase: BuildingDatabase,
+    private val buildingHistoriesDatabase: BuildingHistoriesDatabase,
     private val firebaseStorage: FirebaseStorage
 ) {
 
     private val buildingDao = buildingDatabase.buildingDao()
+    private val buildingHistoryDao = buildingHistoriesDatabase.buildingHistoriesDao()
 
 
     fun getBuildings() : LiveData<List<BuildingEntity>> {
@@ -27,6 +31,18 @@ class BuildingDataSource @Inject constructor(
 
     fun getBuilding(id: Int) : LiveData<BuildingEntity?> {
         return buildingDao.getBuilding(id = id)
+    }
+
+    fun getBuildingHistories() : LiveData<List<BuildingHistoryEntity>> {
+        return buildingHistoryDao.getBuildingHistories()
+    }
+
+    suspend fun addBuilding(building: BuildingHistoryEntity) {
+        buildingHistoryDao.addBuilding(building)
+    }
+
+    suspend fun deleteBuilding(id: Int) {
+        buildingHistoryDao.deleteBuilding(id)
     }
 
     fun getBuildingImages(c: Context, path: String?, v: ImageView) {

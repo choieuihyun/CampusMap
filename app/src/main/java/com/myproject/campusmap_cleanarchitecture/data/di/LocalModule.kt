@@ -3,6 +3,7 @@ package com.myproject.campusmap_cleanarchitecture.data.di
 import android.content.Context
 import androidx.room.Room
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingDatabase
+import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingHistoriesDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,5 +26,14 @@ object LocalModule {
                 .fallbackToDestructiveMigration()
                 .createFromAsset("databases/building.db")
                 .build()
+
+    @Singleton
+    @Provides
+    fun provideHistoriesDatabase(@ApplicationContext context: Context) : BuildingHistoriesDatabase =
+        Room.databaseBuilder(context,
+            BuildingHistoriesDatabase::class.java,
+            "historiesDB")
+            .fallbackToDestructiveMigration()
+            .build()
 
 }
