@@ -1,5 +1,6 @@
 package com.myproject.campusmap_cleanarchitecture.ui.search
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -68,13 +69,18 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
                 searchHistoriesAdapter.submitList(it)
             }
 
+            searchHistoriesAdapter.setOnButtonClickListener {
+                    building -> Log.d("sfsfsf",building.name)
+            }
+
         }
     }
 
     private fun setupBuildingRecyclerView() {
 
         searchBuildingAdapter = SearchBuildingAdapter()
-        binding.searchRecyclerView.adapter = searchBuildingAdapter
+
+            binding.searchRecyclerView.adapter = searchBuildingAdapter
 
             viewModel.getBuildings.observe(viewLifecycleOwner) { buildings -> run {
 
@@ -129,6 +135,7 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
             val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building,busStop)
             findNavController().navigate(action)
         }
+
 
     }
 }

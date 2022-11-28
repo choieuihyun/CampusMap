@@ -22,13 +22,25 @@ class SearchHistoriesAdapter : ListAdapter<BuildingHistory, SearchHistoriesViewH
                 it(history)
             }
         }
+        holder.setOnButtonClickListener {
+            onButtonClickListener?.let {
+                it(history)
+            }
+        }
+
     }
 
     private var onItemClickListener : ((BuildingHistory) -> Unit)? = null
+    private var onButtonClickListener : ((BuildingHistory) -> Unit)? = null
 
     fun setOnItemClickListener(listener : (BuildingHistory) -> Unit) {
         onItemClickListener = listener
     }
+
+    fun setOnButtonClickListener(listener : (BuildingHistory) -> Unit) {
+        onButtonClickListener = listener
+    }
+
 
     companion object {
         private val buildingHistoriesDiffCallback = object : DiffUtil.ItemCallback<BuildingHistory>() {
