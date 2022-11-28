@@ -33,7 +33,7 @@ class LectureRoomDataSource @Inject constructor(
     fun getLectureRoomImages(c: Context, path: String?, v: ImageView) {
 
         val storageReference: StorageReference = firebaseStorage.reference
-        val pathReference: StorageReference? = storageReference.child("photo")
+        val pathReference: StorageReference = storageReference.child("photo")
 
 
             if (pathReference == null) {
