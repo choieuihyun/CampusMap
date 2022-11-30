@@ -35,12 +35,18 @@
             app:destination="@id/busStopFragment" />
         <argument
             android:name="busStop"
-            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.BusStop"
             app:nullable="true"
-            android:defaultValue="@null"/>
+            android:defaultValue="@null"
+            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.BusStop"
+        />
         <action
             android:id="@+id/action_mapFragment_to_busStopBottomSheetDialog"
             app:destination="@id/busStopBottomSheetDialog" />
+        <argument
+            android:name="buildingHistory"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory" />
     </fragment>
     <fragment
         android:id="@+id/buildingMenuFragment"

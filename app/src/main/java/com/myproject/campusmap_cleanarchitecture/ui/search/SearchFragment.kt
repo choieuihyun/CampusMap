@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.SearchFragmentBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 import com.myproject.campusmap_cleanarchitecture.domain.model.LectureRoom
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
@@ -70,10 +71,12 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
             }
 
             searchHistoriesAdapter.setOnButtonClickListener {
-                    building -> Log.d("sfsfsf",building.name)
+                    buildingHistory ->
+                    viewModel.deleteBuildingHistories(buildingHistory.id)
             }
 
         }
+
     }
 
     private fun setupBuildingRecyclerView() {
@@ -113,7 +116,7 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
 
                         if (searchText != "") {
                             for (i in buildings.indices) {
-                                if (buildings[i].name.contains(searchText)) {
+                                if (buildings[i].name?.contains(searchText) == true) { // 이러면 searchFragment에서 즐겨찾기 누르고 검색할 때 이상해질듯 한데
                                     searchBuildingArray.add(buildings[i])
                                 }
                             }
@@ -124,6 +127,7 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
                 binding.buildingSearchButton.setOnClickListener {
 
                     searchBuildingAdapter.submitList(searchBuildingArray.toMutableList())
+
                     }
                 }
             }
@@ -131,8 +135,7 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
         searchBuildingAdapter.setOnItemClickListener {
             building ->
             viewModel.addBuildingHistories(building)
-            val busStop = BusStop("","","","","","")
-            val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building,busStop)
+            val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building,busStop = null,buildingHistory = null)
             findNavController().navigate(action)
         }
 

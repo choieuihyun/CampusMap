@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.BusStopFragmentBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.adapter.bus.BusStopAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,8 +48,7 @@ class BusStopFragment : BaseFragment<BusStopFragmentBinding>(R.layout.bus_stop_f
 
         busStopAdatper.setOnItemClickListener {
             busStop ->
-            val building = Building(0,"",0.0,0.0,"") // 이거 id가 null이 아닌데 지금
-            val action = BusStopFragmentDirections.actionBusStopFragmentToMapFragment(building,busStop)
+            val action = BusStopFragmentDirections.actionBusStopFragmentToMapFragment(building = null, busStop ,buildingHistory = null)
             findNavController().navigate(action)
         }
     }
