@@ -231,12 +231,15 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
     override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
 
-        if (args.building?.latitude != 0.0 && args.building?.longitude != 0.0) {
+        if (args.building != null) {
             val action = MapFragmentDirections.actionMapFragmentToBottomSheetDialog(args.building!!)
             findNavController().navigate(action)
-        } else {
+        } else if (args.busStop != null) {
             val action2 = MapFragmentDirections.actionMapFragmentToBusStopBottomSheetDialog(args.busStop!!)
             findNavController().navigate(action2)
+        } else if (args.buildingHistory != null) {
+            val action3 = MapFragmentDirections.actionMapFragmentToBuildingHistoryBottomSheetDialog(args.buildingHistory!!)
+            findNavController().navigate(action3)
         }
 
     }
@@ -251,8 +254,12 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         p1: MapPOIItem?,
         p2: MapPOIItem.CalloutBalloonButtonType?,
     ) {
-        val data = MapFragmentDirections.actionMapFragmentToBuildingDetailFragment(args.building!!)
-        findNavController().navigate(data)
+/*
+        val action = MapFragmentDirections.actionMapFragmentToBuildingDetailFragment(args.building!!)
+        findNavController().navigate(action)
+
+        val action2 = MapFragmentDirections.actionMapFragmentToBuildingDetailFragment(building = null, args.buildingHistory!!)
+        findNavController().navigate(action2)*/
     }
 
     override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {

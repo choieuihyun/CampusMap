@@ -75,6 +75,12 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
                     viewModel.deleteBuildingHistories(buildingHistory.id)
             }
 
+            searchHistoriesAdapter.setOnItemClickListener {
+                buildingHistory ->
+                val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building = null, busStop = null, buildingHistory)
+                findNavController().navigate(action)
+            }
+
         }
 
     }
@@ -135,7 +141,7 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
         searchBuildingAdapter.setOnItemClickListener {
             building ->
             viewModel.addBuildingHistories(building)
-            val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building,busStop = null,buildingHistory = null)
+            val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building, busStop = null, buildingHistory = null)
             findNavController().navigate(action)
         }
 
