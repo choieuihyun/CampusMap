@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="building"
-            type="com.myproject.campusmap_cleanarchitecture.domain.model.Building" />
+            name="buildingDetailViewModel"
+            type="com.myproject.campusmap_cleanarchitecture.ui.building.buildingdetail.BuildingDetailViewModel" />
     </data>
 
 
@@ -29,7 +29,7 @@
             android:id="@+id/building_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{building.name}"
+            android:text="@={buildingDetailViewModel._buildingName}"
             android:textSize="24sp"
             android:background="#1E90FF"
             android:paddingStart="16dp"

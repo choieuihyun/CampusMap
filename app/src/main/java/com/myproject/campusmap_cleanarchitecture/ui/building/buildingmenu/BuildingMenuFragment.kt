@@ -89,7 +89,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
         super.onDestroyView()
     }
 
-    private fun changeSelected(index: Int) {
+    private fun changeSelected(index: Int) { // 내가 알고리즘을 잘 몰라서 생긴 참사인듯.
 
         buttonArgs = ArrayList()
         buttonArgs.add(binding.btn1)

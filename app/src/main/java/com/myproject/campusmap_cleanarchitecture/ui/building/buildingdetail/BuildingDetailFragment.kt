@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.BuildingFragmentDetailBinding
+import com.myproject.campusmap_cleanarchitecture.domain.model.Building
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,23 +27,31 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
     }
 
+//    이렇게 돌리면 에러난다. buildingHistory를 이 view에 binding을 못해서 사진이랑 이름이 안뜸.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val building = args.building
+        val buildingHistory = args.buildingHistory
 
-        binding.building = building
+        //binding.building = building
 
-        if(building.buildingImageUri?.contains("no_detail") == true) {
+        binding.buildingDetailViewModel = viewModel
+
+        if(building != null) {
+            updateBuildingUI(building)
+        }
+
+        if(building?.buildingImageUri?.contains("no_detail") == true && buildingHistory?.buildingImageUri?.contains("no_detail") == true) {
             binding.lectureRoomButton.visibility = View.GONE
         }
 
-        updateUI()
-
-        binding.lectureRoomButton.setOnClickListener {
-                val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(args.building)
-                findNavController().navigate(action)
-        }
+//        updateUI()
+//
+//        binding.lectureRoomButton.setOnClickListener {
+//                val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building!!)
+//                findNavController().navigate(action)
+//        }
 
     }
 
@@ -50,9 +59,11 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
         super.onDestroyView()
     }
 
-    private fun updateUI() {
-        binding.buildingName.text = binding.building?.name
-        viewModel.getBuildingImages(requireActivity(), binding.building?.buildingImageUri.toString(),binding.buildingImage)
+    private fun updateBuildingUI(building: Building) {
+        viewModel.getBuildingDetailData(building)
+
+//        binding.buildingName.text = binding.building?.name
+//        viewModel.getBuildingImages(requireActivity(), binding.building?.buildingImageUri.toString(),binding.buildingImage)
     }
 
 
