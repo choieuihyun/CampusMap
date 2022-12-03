@@ -30,9 +30,7 @@ class BuildingDetailViewModel @Inject constructor(
     val buildingDetailData : LiveData<Any>
         get() = _buildingDetailData
 
-    var _buildingName = MutableLiveData<String>()
-/*    val buildingName : LiveData<String>
-        get() = _buildingName*/
+    var buildingName = MutableLiveData<String>() // 양방향 데이터 바인딩은 observable한 데이터로 한다길래..
 
     fun getBuildingDetailData(data: Any) {
 
@@ -42,18 +40,17 @@ class BuildingDetailViewModel @Inject constructor(
 
                 is Building -> {
                     _buildingDetailData.value = buildingUseCase.invoke()
-                    _buildingName.value = data.name!!
+                    buildingName.value = data.name!!
                 }
 
                 is BuildingHistory -> {
                     _buildingDetailData.value = buildingHistoriesUseCase.invoke()
-                    _buildingName.value = data.name!!
+                    buildingName.value = data.name!!
                 }
             }
 
         }
     }
-
 
     fun getBuildingImages(c: Activity, path: String, v: ImageView) {
         buildingsImagesUseCase.invoke(c, path, v)

@@ -29,7 +29,7 @@
             android:id="@+id/building_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@={buildingDetailViewModel._buildingName}"
+            android:text="@={buildingDetailViewModel.buildingName}"
             android:textSize="24sp"
             android:background="#1E90FF"
             android:paddingStart="16dp"
