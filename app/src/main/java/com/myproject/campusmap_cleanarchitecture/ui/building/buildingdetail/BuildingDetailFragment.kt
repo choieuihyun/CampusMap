@@ -29,7 +29,7 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
         super.onCreate(savedInstanceState)
 
     }
-    
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -44,26 +44,13 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
             updateBuildingImages(requireActivity(), building.buildingImageUri.toString(), binding.buildingImage)
 
-            binding.lectureRoomButton.setOnClickListener {
-                val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building, buildingHistory = null)
-                findNavController().navigate(action)
-            }
-
         } else if (buildingHistory != null) {
 
             updateBuildingHistoryUI(buildingHistory)
 
             updateBuildingImages(requireActivity(), buildingHistory.buildingImageUri.toString(), binding.buildingImage)
 
-            binding.lectureRoomButton.setOnClickListener {
-                val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building = null, buildingHistory)
-                findNavController().navigate(action)
-            }
         }
-
-
-
-
     }
 
     override fun onDestroyView() {
@@ -71,17 +58,33 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
     }
 
     private fun updateBuildingUI(building: Building) {
+
         viewModel.getBuildingDetailData(building)
+
         if(building.buildingImageUri?.contains("no_detail") == true) {
             binding.lectureRoomButton.visibility = View.GONE
         }
+
+        binding.lectureRoomButton.setOnClickListener {
+            val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building, buildingHistory = null)
+            findNavController().navigate(action)
+        }
+
     }
 
     private fun updateBuildingHistoryUI(buildingHistory: BuildingHistory) {
+
         viewModel.getBuildingDetailData(buildingHistory)
+
         if(buildingHistory.buildingImageUri?.contains("no_detail") == true) {
             binding.lectureRoomButton.visibility = View.GONE
         }
+
+        binding.lectureRoomButton.setOnClickListener {
+            val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building = null, buildingHistory)
+            findNavController().navigate(action)
+        }
+
     }
 
     private fun updateBuildingImages(c: Activity, path: String, v: ImageView) {
