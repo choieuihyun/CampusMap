@@ -27,7 +27,6 @@ class SearchHistoriesAdapter : ListAdapter<BuildingHistory, SearchHistoriesViewH
                 it(history)
             }
         }
-
     }
 
     private var onItemClickListener : ((BuildingHistory) -> Unit)? = null

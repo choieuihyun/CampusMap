@@ -9,47 +9,50 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.myproject.campusmap_cleanarchitecture.databinding.BuildingDetailBottomsheetdialogBinding
-import com.myproject.campusmap_cleanarchitecture.ui.building.buildingdetail.BuildingDetailViewModel
+import com.myproject.campusmap_cleanarchitecture.databinding.BuildinghistoryBottomsheetdialogBinding
+import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
+import com.myproject.campusmap_cleanarchitecture.ui.search.SearchFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BottomSheetDialog() : BottomSheetDialogFragment() {
+class BuildingHistoryBottomSheetDialog() : BottomSheetDialogFragment() {
 
-    private lateinit var binding: BuildingDetailBottomsheetdialogBinding
-    private val args by navArgs<BottomSheetDialogArgs>()
+    private lateinit var binding : BuildinghistoryBottomsheetdialogBinding
+    private val args by navArgs<BuildingHistoryBottomSheetDialogArgs>()
 
-    private val viewModel: BuildingDetailViewModel by activityViewModels()
+    private val viewModel: SearchFragmentViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        binding = BuildingDetailBottomsheetdialogBinding.inflate(inflater, container, false)
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = BuildinghistoryBottomsheetdialogBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.building = args.building
-        viewModel.getBuildingImages(requireActivity(), binding.building?.buildingImageUri!!,binding.buildingImage)
+        val buildingHistory = args.buildingHistory
+
+        binding.buildingHistory = buildingHistory
+
+        viewModel.getBuildingImages(requireActivity(), buildingHistory.buildingImageUri.toString(), binding.buildingImage)
 
         binding.lectureRoomButton.setOnClickListener {
-            val action = BottomSheetDialogDirections.actionBottomSheetDialogToBuildingDetailFragment(args.building)
+            val action = BuildingHistoryBottomSheetDialogDirections.actionBuildingHistoryBottomSheetDialogToBuildingDetailFragment(building = null, buildingHistory)
             findNavController().navigate(action)
         }
-
     }
 
     override fun onResume() {
         super.onResume()
-        context?.dialogFragmentResize(this@BottomSheetDialog, 0.9f, 0.9f)
+        context?.dialogFragmentResize(this@BuildingHistoryBottomSheetDialog, 0.9f, 0.9f)
 
     }
 

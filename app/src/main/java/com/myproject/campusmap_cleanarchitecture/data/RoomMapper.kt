@@ -18,7 +18,7 @@ fun BuildingEntity.toModel() = Building(
 
 fun Building.toHistoryEntity() = BuildingHistoryEntity(
     id = id,
-    name = name,
+    name = name.toString(),
     latitude = latitude,
     longitude = longitude,
     buildingImageUri = buildingImageUri,

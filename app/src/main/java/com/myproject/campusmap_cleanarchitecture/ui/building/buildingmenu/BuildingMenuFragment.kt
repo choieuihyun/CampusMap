@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.BuildingFragmentMenuBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.adapter.buildingmenu.BuildingMenuAdapter
@@ -88,7 +89,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
         super.onDestroyView()
     }
 
-    private fun changeSelected(index: Int) {
+    private fun changeSelected(index: Int) { // 내가 알고리즘을 잘 몰라서 생긴 참사인듯.
 
         buttonArgs = ArrayList()
         buttonArgs.add(binding.btn1)
@@ -124,9 +125,7 @@ class BuildingMenuFragment: BaseFragment<BuildingFragmentMenuBinding>(R.layout.b
 
         buildingMenuAdapter.setOnItemClickListener { // args가 필요할땐 이렇게? 공부해야할듯.
             building ->
-            val busStop = BusStop("","","","","","")
-            val action = BuildingMenuFragmentDirections.actionBuildingMenuFragmentToMapFragment(
-                building,busStop)
+            val action = BuildingMenuFragmentDirections.actionBuildingMenuFragmentToMapFragment(building, busStop = null,buildingHistory = null)
             findNavController().navigate(action)
         }
     }

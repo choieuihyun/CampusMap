@@ -22,6 +22,7 @@ import androidx.navigation.fragment.navArgs
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.MapFragmentBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.domain.model.BusStop
 import com.myproject.campusmap_cleanarchitecture.ui.main.MainActivity
 import net.daum.mf.map.api.*
@@ -109,18 +110,33 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
         val building = args.building
         val busStop = args.busStop
+        val buildingHistory = args.buildingHistory
 
-        if(building != null) {
+/*        if(building != null) { // map이 열릴때 받은 데이터들을 처리해야해서 이렇게 한건데 아무리봐도 구린 코드임. 방법 생각해내야함.
 
-            if (building.latitude != 0.0 && building.longitude != 0.0) {
+            if (buildingHistory.latitude != 0.0 && building.latitude != 0.0 && building.longitude != 0.0) {
 
                 createBuildingMarker(building)
 
-            } else if (building.latitude == 0.0 && building.longitude == 0.0) {
+            } else if (buildingHistory.latitude != 0.0 && building.latitude == 0.0 && building.longitude == 0.0) {
 
                 createBusStopMarker(busStop!!)
 
             }
+
+        }*/
+
+        if(building != null) { // map이 열릴때 받은 데이터들을 처리해야해서 이렇게 한건데 아무리봐도 구린 코드임. 방법 생각해내야함.
+
+            createBuildingMarker(building)
+
+        } else if (busStop != null) {
+
+            createBusStopMarker(busStop)
+
+        } else if (buildingHistory != null) {
+
+            createBuildingHistoryMarker(buildingHistory)
 
         }
 
@@ -179,6 +195,16 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff // 이거 뭔가 찝찝함
     }
 
+    private fun createBuildingHistoryMarker(buildingHistory: BuildingHistory) {
+        mapPoint = MapPoint.mapPointWithGeoCoord(buildingHistory.latitude!!, buildingHistory.longitude!!)
+        marker = MapPOIItem()
+        marker.itemName = buildingHistory.name
+        marker.mapPoint = mapPoint
+        mapView.moveCamera(CameraUpdateFactory.newMapPointAndDiameter(mapPoint, 350f))
+        mapView.addPOIItem(marker)
+        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff // 이거 뭔가 찝찝함
+    }
+
     override fun onCurrentLocationUpdate(p0: MapView?, p1: MapPoint?, p2: Float) {
 
     }
@@ -205,12 +231,15 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
     override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
 
-        if (args.building?.latitude != 0.0 && args.building?.longitude != 0.0) {
+        if (args.building != null) {
             val action = MapFragmentDirections.actionMapFragmentToBottomSheetDialog(args.building!!)
             findNavController().navigate(action)
-        } else {
+        } else if (args.busStop != null) {
             val action2 = MapFragmentDirections.actionMapFragmentToBusStopBottomSheetDialog(args.busStop!!)
             findNavController().navigate(action2)
+        } else if (args.buildingHistory != null) {
+            val action3 = MapFragmentDirections.actionMapFragmentToBuildingHistoryBottomSheetDialog(args.buildingHistory!!)
+            findNavController().navigate(action3)
         }
 
     }
@@ -225,8 +254,12 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         p1: MapPOIItem?,
         p2: MapPOIItem.CalloutBalloonButtonType?,
     ) {
-        val data = MapFragmentDirections.actionMapFragmentToBuildingDetailFragment(args.building!!)
-        findNavController().navigate(data)
+/*
+        val action = MapFragmentDirections.actionMapFragmentToBuildingDetailFragment(args.building!!)
+        findNavController().navigate(action)
+
+        val action2 = MapFragmentDirections.actionMapFragmentToBuildingDetailFragment(building = null, args.buildingHistory!!)
+        findNavController().navigate(action2)*/
     }
 
     override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {
