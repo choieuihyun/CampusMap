@@ -38,9 +38,9 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupBuildingRecyclerView()
-
         setupRecyclerView()
+
+        setupBuildingRecyclerView()
 
         setupBuildingHistoriesRecyclerView()
 
@@ -54,15 +54,93 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
 
+
+        }
+
+    }
+
+    private fun setupBuildingRecyclerView() {
+
+            searchBuildingAdapter = SearchBuildingAdapter()
+
+            binding.searchRecyclerView.adapter = searchBuildingAdapter
+
+            viewModel.getBuildings.observe(viewLifecycleOwner) { buildings ->
+
+                run {
+
+                    searchBuildingAdapter.submitList(buildings)
+
+                    binding.buildingSearchEdittext.addTextChangedListener(object : TextWatcher {
+
+                        override fun beforeTextChanged(
+                            s: CharSequence?,
+                            start: Int,
+                            count: Int,
+                            after: Int,
+                        ) {
+
+                        }
+
+                        override fun onTextChanged(
+                            s: CharSequence?,
+                            start: Int,
+                            before: Int,
+                            count: Int,
+                        ) {
+
+                        }
+
+                        override fun afterTextChanged(s: Editable?) {
+
+                            val searchText = binding.buildingSearchEdittext.text.toString()
+                            searchBuildingArray.clear()
+
+                            if (searchText != "") {
+                                for (i in buildings.indices) {
+                                    if (buildings[i].name?.contains(searchText) == true) { // 이러면 searchFragment에서 즐겨찾기 누르고 검색할 때 이상해질듯 한데
+                                        searchBuildingArray.add(buildings[i])
+                                    }
+                                }
+                            }
+                        }
+                    })
+
+
+                    binding.searchBuilding.setOnClickListener {
+
+                        searchBuildingAdapter = SearchBuildingAdapter()
+
+                        binding.searchRecyclerView.adapter = searchBuildingAdapter
+
+                        searchBuildingAdapter.submitList(buildings)
+
+                    }
+
+                    binding.buildingSearchButton.setOnClickListener {
+
+                        searchBuildingAdapter.submitList(searchBuildingArray.toMutableList())
+
+                    }
+            }
+
+            searchBuildingAdapter.setOnItemClickListener { building ->
+                viewModel.addBuildingHistories(building)
+                val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building,
+                    busStop = null,
+                    buildingHistory = null)
+                findNavController().navigate(action)
+            }
+
         }
 
     }
 
     private fun setupBuildingHistoriesRecyclerView() {
 
-        searchHistoriesAdapter = SearchHistoriesAdapter()
-
         binding.searchHistory.setOnClickListener {
+
+            searchHistoriesAdapter = SearchHistoriesAdapter()
 
             binding.searchRecyclerView.adapter = searchHistoriesAdapter
 
@@ -85,68 +163,7 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
 
     }
 
-    private fun setupBuildingRecyclerView() {
 
-        searchBuildingAdapter = SearchBuildingAdapter()
-
-            binding.searchRecyclerView.adapter = searchBuildingAdapter
-
-            viewModel.getBuildings.observe(viewLifecycleOwner) { buildings -> run {
-
-                searchBuildingAdapter.submitList(buildings)
-
-                binding.buildingSearchEdittext.addTextChangedListener(object : TextWatcher {
-
-                    override fun beforeTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        count: Int,
-                        after: Int,
-                    ) {
-
-                    }
-
-                    override fun onTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        before: Int,
-                        count: Int,
-                    ) {
-
-                    }
-
-                    override fun afterTextChanged(s: Editable?) {
-
-                        val searchText = binding.buildingSearchEdittext.text.toString()
-                        searchBuildingArray.clear()
-
-                        if (searchText != "") {
-                            for (i in buildings.indices) {
-                                if (buildings[i].name?.contains(searchText) == true) { // 이러면 searchFragment에서 즐겨찾기 누르고 검색할 때 이상해질듯 한데
-                                    searchBuildingArray.add(buildings[i])
-                                }
-                            }
-                        }
-                    }
-                })
-
-                binding.buildingSearchButton.setOnClickListener {
-
-                    searchBuildingAdapter.submitList(searchBuildingArray.toMutableList())
-
-                    }
-                }
-            }
-
-        searchBuildingAdapter.setOnItemClickListener {
-            building ->
-            viewModel.addBuildingHistories(building)
-            val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building, busStop = null, buildingHistory = null)
-            findNavController().navigate(action)
-        }
-
-
-    }
 }
 
 
