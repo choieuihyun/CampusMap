@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.LectureroomFragmentMenuBinding
+import com.myproject.campusmap_cleanarchitecture.domain.model.Building
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import com.myproject.campusmap_cleanarchitecture.ui.adapter.lectureroommenu.LectureRoomMenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,45 +27,46 @@ class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.l
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val lectureRoom = args.building
-        binding.lectureRoomMenu = lectureRoom
+        binding.lectureRoomMenuViewModel = viewModel
 
         setupRecyclerView()
+
+        updateBuildingName()
 
             binding.lectureRoomMenuBtn1.setOnClickListener {
                 changeSelected(0)
                 it.isSelected = true
-                updateList(floor = 1)
+                updateLectureRoomList(floor = 1)
             }
 
             binding.lectureRoomMenuBtn2.setOnClickListener {
                 changeSelected(1)
                 it.isSelected = true
-                updateList(floor = 2)
+                updateLectureRoomList(floor = 2)
             }
 
             binding.lectureRoomMenuBtn3.setOnClickListener {
                 changeSelected(2)
                 it.isSelected = true
-                updateList(floor = 3)
+                updateLectureRoomList(floor = 3)
             }
 
             binding.lectureRoomMenuBtn4.setOnClickListener {
                 changeSelected(3)
                 it.isSelected = true
-                updateList(floor = 4)
+                updateLectureRoomList(floor = 4)
             }
 
             binding.lectureRoomMenuBtn5.setOnClickListener {
                 changeSelected(4)
                 it.isSelected = true
-                updateList(floor = 5)
+                updateLectureRoomList(floor = 5)
             }
 
             binding.lectureRoomMenuBtn6.setOnClickListener {
                 changeSelected(5)
                 it.isSelected = true
-                updateList(floor = 6)
+                updateLectureRoomList(floor = 6)
             }
     }
 
@@ -85,7 +87,21 @@ class LectureRoomMenuFragment : BaseFragment<LectureroomFragmentMenuBinding>(R.l
         }
     }
 
-    private fun updateList(floor: Int) {
+    private fun updateBuildingName() {
+
+        if(args.building != null) {
+
+            viewModel.getLectureRoomDetailData(args.building!!)
+
+        } else if (args.buildingHistory != null) {
+
+            viewModel.getLectureRoomDetailData(args.buildingHistory!!)
+
+        }
+    }
+
+    private fun updateLectureRoomList(floor: Int) {
+
         viewModel.getEngFirstLectureRoom.observe(viewLifecycleOwner) { lectureRooms ->
             lectureRoomAdapter.submitList(lectureRooms.filter {
                 it.floor == floor
