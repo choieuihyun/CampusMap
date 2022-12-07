@@ -2,6 +2,7 @@ package com.myproject.campusmap_cleanarchitecture.ui.building.buildingdetail
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
@@ -50,6 +51,10 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
             updateBuildingImages(requireActivity(), buildingHistory.buildingImageUri.toString(), binding.buildingImage)
 
+        }
+
+        binding.buildingDetailFavorite.setOnClickListener {
+            it.isSelected = true
         }
     }
 
