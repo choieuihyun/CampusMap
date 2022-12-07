@@ -28,7 +28,7 @@
 
     <!-- search fragment -->
     <string name="search_edittext_hint">건물명을 입력하세요</string>
-    <string name="search_result_button">검색 결과</string>
+    <string name="search_result_button">검색 리스트</string>
     <string name="search_history">검색 기록</string>
 
     <!-- error message -->
