@@ -94,7 +94,7 @@
             android:id="@+id/building_detail_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:button="@drawable/favorite"
+            android:button="@drawable/building_detail_favorite_button"
             app:layout_constraintBottom_toBottomOf="@+id/building_name"
             app:layout_constraintEnd_toEndOf="@+id/building_name"
             app:layout_constraintHorizontal_bias="1.0"
