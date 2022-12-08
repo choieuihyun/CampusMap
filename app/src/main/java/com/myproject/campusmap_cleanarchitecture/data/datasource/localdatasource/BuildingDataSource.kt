@@ -13,7 +13,7 @@ import com.myproject.campusmap_cleanarchitecture.data.db.local.database.Building
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingFavoriteDatabase
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingHistoriesDatabase
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingEntity
-import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingFavorite
+import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingFavoriteEntity
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingHistoryEntity
 import javax.inject.Inject
 
@@ -54,19 +54,37 @@ class BuildingDataSource @Inject constructor(
 
     // BuildingFavoriteDB
 
-    fun getBuildingFavorites() : LiveData<List<BuildingFavorite>> {
+    fun getBuildingFavorites() : LiveData<List<BuildingFavoriteEntity>> {
         return buildingFavoriteDao.getBuildingFavorites()
     }
 
-    suspend fun addBuildingFavorite(buildingFavorite: BuildingFavorite) {
-        buildingFavoriteDao.addBuildingFavorite(buildingFavorite)
+    suspend fun addBuildingFavorite(buildingFavoriteEntity: BuildingFavoriteEntity) {
+        buildingFavoriteDao.addBuildingFavorite(buildingFavoriteEntity)
     }
 
     suspend fun deleteBuildingFavorite(id: Int) {
         buildingFavoriteDao.deleteBuildingFavorite(id)
     }
 
+    // Firebase Storage에서 Building Image 불러오는 코드
+
     fun getBuildingImages(c: Context, path: String?, v: ImageView) {
+
+        val storageReference: StorageReference = firebaseStorage.reference
+
+        try {
+            val submitProfile: StorageReference = storageReference.child(path.toString())
+            submitProfile.downloadUrl.addOnSuccessListener { uri ->
+                Glide.with(c).load(uri).into(v)
+            }.addOnFailureListener {
+            }
+        } catch (e : Exception) {
+            Glide.with(c).load(R.drawable.no_image).into(v)
+            Toast.makeText(c as Activity?, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
+        }
+    }
+
+/*    fun getBuildingImages(c: Context, path: String?, v: ImageView) {
 
         val storageReference: StorageReference = firebaseStorage.reference
         val pathReference: StorageReference? = storageReference.child("photo")
@@ -85,7 +103,7 @@ class BuildingDataSource @Inject constructor(
             Glide.with(c).load(R.drawable.no_image).into(v)
             Toast.makeText(c as Activity?, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
         }
-    }
+    }*/
 
 
 }

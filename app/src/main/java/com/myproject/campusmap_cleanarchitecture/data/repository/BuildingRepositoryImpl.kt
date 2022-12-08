@@ -5,10 +5,12 @@ import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource.BuildingDataSource
-import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingHistoryEntity
+import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingFavoriteEntity
+import com.myproject.campusmap_cleanarchitecture.data.toEntity
 import com.myproject.campusmap_cleanarchitecture.data.toHistoryEntity
 import com.myproject.campusmap_cleanarchitecture.data.toModel
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingFavorite
 import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.domain.repository.BuildingRepository
 import javax.inject.Inject
@@ -16,6 +18,8 @@ import javax.inject.Inject
 class BuildingRepositoryImpl @Inject constructor(
     private val dataSource: BuildingDataSource
 ) : BuildingRepository {
+
+    // BuildingDB
 
     override fun getBuildings(): LiveData<List<Building>> {
         return dataSource.getBuildings().map { entities ->
@@ -30,6 +34,8 @@ class BuildingRepositoryImpl @Inject constructor(
             it!!.toModel()
         }
     }
+
+    // BuildingHistoryDB
 
     override fun getBuildingHistories(): LiveData<List<BuildingHistory>> {
         return dataSource.getBuildingHistories().map {
@@ -47,6 +53,25 @@ class BuildingRepositoryImpl @Inject constructor(
         dataSource.deleteBuilding(id)
     }
 
+    // BuildingFavoriteDB
+
+    override fun getBuildingFavorites(): LiveData<List<BuildingFavorite>> {
+        return dataSource.getBuildingFavorites().map {
+                buildingFavoriteEntities -> buildingFavoriteEntities.map {
+                buildingFavoriteEntity -> buildingFavoriteEntity.toModel()
+            }
+        }
+    }
+
+    override suspend fun addBuildingFavorite(buildingFavorite: BuildingFavorite) {
+        return dataSource.addBuildingFavorite(buildingFavorite.toEntity())
+    }
+
+    override suspend fun deleteBuildingFavorite(id: Int) {
+        return dataSource.deleteBuildingFavorite(id)
+    }
+
+    // BuildingImage 불러오는 코드
 
     override fun getBuildingImages(c: Activity, path: String, v: ImageView) {
         dataSource.getBuildingImages(c,path,v)

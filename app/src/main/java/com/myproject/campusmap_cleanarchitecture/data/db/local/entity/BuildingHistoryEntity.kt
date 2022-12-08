@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName="BuildingHistory")
 data class BuildingHistoryEntity (
     @PrimaryKey val id : Int,
-    var name: String = "",
+    var name: String? = "",
     var latitude: Double? = 0.0,
     var longitude: Double? = 0.0,
     var buildingImageUri : String? = "",

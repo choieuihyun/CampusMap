@@ -4,9 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "BuildingFavorite")
-data class BuildingFavorite (
+data class BuildingFavoriteEntity (
     @PrimaryKey val id : Int,
-    var name: String = "",
+    var name: String? = "",
     var latitude: Double? = 0.0,
     var longitude: Double? = 0.0,
     var buildingImageUri : String? = "",
