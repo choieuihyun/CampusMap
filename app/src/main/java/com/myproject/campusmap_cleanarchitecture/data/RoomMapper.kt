@@ -51,7 +51,7 @@ fun BuildingFavoriteEntity.toModel() = BuildingFavorite(
     category = category
 )
 
-fun BuildingFavorite.toEntity() = BuildingFavoriteEntity(
+fun Building.toBuildingFavoriteEntity() = BuildingFavoriteEntity(
     id = id,
     name = name,
     latitude = latitude,

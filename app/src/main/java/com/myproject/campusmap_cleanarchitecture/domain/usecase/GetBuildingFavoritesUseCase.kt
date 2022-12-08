@@ -11,4 +11,5 @@ class GetBuildingFavoritesUseCase @Inject constructor(
         repository.getBuildingFavorites()
     }
 
+
 }

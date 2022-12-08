@@ -28,7 +28,7 @@ interface BuildingRepository {
 
     fun getBuildingFavorites() : LiveData<List<BuildingFavorite>>
 
-    suspend fun addBuildingFavorite(buildingFavorite: BuildingFavorite)
+    suspend fun addBuildingFavorite(building: Building)
 
     suspend fun deleteBuildingFavorite(id: Int)
 

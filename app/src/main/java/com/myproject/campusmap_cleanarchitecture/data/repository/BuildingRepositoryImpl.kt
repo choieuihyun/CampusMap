@@ -5,8 +5,7 @@ import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource.BuildingDataSource
-import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingFavoriteEntity
-import com.myproject.campusmap_cleanarchitecture.data.toEntity
+import com.myproject.campusmap_cleanarchitecture.data.toBuildingFavoriteEntity
 import com.myproject.campusmap_cleanarchitecture.data.toHistoryEntity
 import com.myproject.campusmap_cleanarchitecture.data.toModel
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
@@ -63,8 +62,8 @@ class BuildingRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun addBuildingFavorite(buildingFavorite: BuildingFavorite) {
-        return dataSource.addBuildingFavorite(buildingFavorite.toEntity())
+    override suspend fun addBuildingFavorite(building : Building) {
+        return dataSource.addBuildingFavorite(building.toBuildingFavoriteEntity())
     }
 
     override suspend fun deleteBuildingFavorite(id: Int) {
