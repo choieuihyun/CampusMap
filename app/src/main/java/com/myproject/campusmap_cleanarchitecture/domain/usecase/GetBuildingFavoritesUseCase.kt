@@ -7,7 +7,7 @@ class GetBuildingFavoritesUseCase @Inject constructor(
     private val repository: BuildingRepository
 ) {
 
-    suspend operator fun invoke() {
+    operator fun invoke() {
         repository.getBuildingFavorites()
     }
 
