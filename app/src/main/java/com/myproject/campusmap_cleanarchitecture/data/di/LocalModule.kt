@@ -1,8 +1,10 @@
 package com.myproject.campusmap_cleanarchitecture.data.di
 
 import android.content.Context
+import androidx.room.PrimaryKey
 import androidx.room.Room
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingDatabase
+import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingFavoriteDatabase
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingHistoriesDatabase
 import dagger.Module
 import dagger.Provides
@@ -34,6 +36,14 @@ object LocalModule {
             BuildingHistoriesDatabase::class.java,
             "historiesDB")
             .fallbackToDestructiveMigration()
+            .build()
+
+    @Singleton
+    @Provides
+    fun provideFavoriteDatabase(@ApplicationContext context: Context) : BuildingFavoriteDatabase =
+        Room.databaseBuilder(context,
+        BuildingFavoriteDatabase::class.java,
+        "favoritesDB")
             .build()
 
 }

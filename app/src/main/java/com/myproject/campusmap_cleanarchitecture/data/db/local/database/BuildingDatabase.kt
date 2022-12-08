@@ -2,14 +2,14 @@ package com.myproject.campusmap_cleanarchitecture.data.db.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.Update
 import com.myproject.campusmap_cleanarchitecture.data.db.local.dao.BuildingDao
+import com.myproject.campusmap_cleanarchitecture.data.db.local.dao.BuildingFavoriteDao
 import com.myproject.campusmap_cleanarchitecture.data.db.local.dao.BuildingHistoriesDao
 import com.myproject.campusmap_cleanarchitecture.data.db.local.dao.LectureRoomDao
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingEntity
+import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingFavorite
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingHistoryEntity
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.EngFirstLectureRoomEntity
-import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 
 @Database(entities = [BuildingEntity::class, EngFirstLectureRoomEntity::class], version = 2)
 abstract class BuildingDatabase : RoomDatabase() {
@@ -28,6 +28,13 @@ abstract class BuildingDatabase : RoomDatabase() {
 abstract class BuildingHistoriesDatabase : RoomDatabase() {
 
     abstract fun buildingHistoriesDao(): BuildingHistoriesDao
+
+}
+
+@Database(entities = [BuildingFavorite::class], version = 1)
+abstract class BuildingFavoriteDatabase : RoomDatabase() {
+
+    abstract fun buildingFavoriteDao(): BuildingFavoriteDao
 
 }
 

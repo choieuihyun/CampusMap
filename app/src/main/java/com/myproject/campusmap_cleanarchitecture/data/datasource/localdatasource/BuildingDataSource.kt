@@ -10,20 +10,25 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingDatabase
+import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingFavoriteDatabase
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingHistoriesDatabase
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingEntity
+import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingFavorite
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingHistoryEntity
 import javax.inject.Inject
 
 class BuildingDataSource @Inject constructor(
     private val buildingDatabase: BuildingDatabase,
     private val buildingHistoriesDatabase: BuildingHistoriesDatabase,
+    private val buildingFavoritesDatabase: BuildingFavoriteDatabase,
     private val firebaseStorage: FirebaseStorage
 ) {
 
     private val buildingDao = buildingDatabase.buildingDao()
     private val buildingHistoryDao = buildingHistoriesDatabase.buildingHistoriesDao()
+    private val buildingFavoriteDao = buildingFavoritesDatabase.buildingFavoriteDao()
 
+    // BuildingDB
 
     fun getBuildings() : LiveData<List<BuildingEntity>> {
         return buildingDao.getBuildings()
@@ -33,16 +38,32 @@ class BuildingDataSource @Inject constructor(
         return buildingDao.getBuilding(id = id)
     }
 
+    // BuildingHistoryDB
+
     fun getBuildingHistories() : LiveData<List<BuildingHistoryEntity>> {
         return buildingHistoryDao.getBuildingHistories()
     }
 
-    suspend fun addBuilding(building: BuildingHistoryEntity) {
+    suspend fun addBuilding(building : BuildingHistoryEntity) {
         buildingHistoryDao.addBuilding(building)
     }
 
-    suspend fun deleteBuilding(id: Int) {
+    suspend fun deleteBuilding(id : Int) {
         buildingHistoryDao.deleteBuilding(id)
+    }
+
+    // BuildingFavoriteDB
+
+    fun getBuildingFavorites() : LiveData<List<BuildingFavorite>> {
+        return buildingFavoriteDao.getBuildingFavorites()
+    }
+
+    suspend fun addBuildingFavorite(buildingFavorite: BuildingFavorite) {
+        buildingFavoriteDao.addBuildingFavorite(buildingFavorite)
+    }
+
+    suspend fun deleteBuildingFavorite(id: Int) {
+        buildingFavoriteDao.deleteBuildingFavorite(id)
     }
 
     fun getBuildingImages(c: Context, path: String?, v: ImageView) {
