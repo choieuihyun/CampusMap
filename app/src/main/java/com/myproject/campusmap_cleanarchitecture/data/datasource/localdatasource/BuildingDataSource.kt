@@ -2,6 +2,7 @@ package com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasourc
 
 import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.LiveData
@@ -21,7 +22,8 @@ class BuildingDataSource @Inject constructor(
     private val buildingDatabase: BuildingDatabase,
     private val buildingHistoriesDatabase: BuildingHistoriesDatabase,
     private val buildingFavoritesDatabase: BuildingFavoriteDatabase,
-    private val firebaseStorage: FirebaseStorage
+    private val firebaseStorage: FirebaseStorage,
+    private val sharedPreferences: SharedPreferences
 ) {
 
     private val buildingDao = buildingDatabase.buildingDao()
@@ -84,26 +86,14 @@ class BuildingDataSource @Inject constructor(
         }
     }
 
-/*    fun getBuildingImages(c: Context, path: String?, v: ImageView) {
+    // SharedPreference
 
-        val storageReference: StorageReference = firebaseStorage.reference
-        val pathReference: StorageReference? = storageReference.child("photo")
+    fun getBuildingDetailCheckboxState(id: Int) : Boolean {
+        return sharedPreferences.getBoolean(id.toString(), false)
+    }
 
-        try {
-            if (pathReference == null) {
-                Toast.makeText(c as Activity?, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
-            } else {
-                val submitProfile: StorageReference = storageReference.child(path.toString())
-                submitProfile.downloadUrl.addOnSuccessListener { uri ->
-                    Glide.with(c).load(uri).into(v)
-                }.addOnFailureListener {
-                }
-            }
-        } catch (e : Exception) {
-            Glide.with(c).load(R.drawable.no_image).into(v)
-            Toast.makeText(c as Activity?, "저장소에 사진이 없음", Toast.LENGTH_LONG).show()
-        }
-    }*/
-
+    fun setBuildingDetailCheckboxState(id: Int, state: Boolean) {
+        sharedPreferences.edit().putBoolean(id.toString(), state).apply()
+    }
 
 }

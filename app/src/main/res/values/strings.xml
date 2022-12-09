@@ -40,4 +40,7 @@
     <string name="bus_error_msg">운행중인 버스가 없습니다.</string>
     <string name="data_error_msg">데이터가 없습니다.</string>
 
+    <!-- Sharedpreference -->
+    <string name="spk">spk</string>
+
 </resources>

@@ -75,4 +75,14 @@ class BuildingRepositoryImpl @Inject constructor(
     override fun getBuildingImages(c: Activity, path: String, v: ImageView) {
         dataSource.getBuildingImages(c,path,v)
     }
+
+    // BuildingDetail Checkbox
+
+    override fun getBuildingDetailCheckboxState(id: Int) {
+        dataSource.getBuilding(id)
+    }
+
+    override fun setBuildingDetailCheckboxState(id: Int, state: Boolean) {
+        dataSource.setBuildingDetailCheckboxState(id, state)
+    }
 }

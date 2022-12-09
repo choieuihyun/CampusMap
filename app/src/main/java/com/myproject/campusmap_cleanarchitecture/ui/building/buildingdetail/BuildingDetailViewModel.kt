@@ -11,9 +11,7 @@ import androidx.lifecycle.viewModelScope
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
 import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.domain.model.NoticeItem
-import com.myproject.campusmap_cleanarchitecture.domain.usecase.GetBuildingHistoriesUseCase
-import com.myproject.campusmap_cleanarchitecture.domain.usecase.GetBuildingImagesUseCase
-import com.myproject.campusmap_cleanarchitecture.domain.usecase.GetBuildingsUseCase
+import com.myproject.campusmap_cleanarchitecture.domain.usecase.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -23,7 +21,9 @@ import javax.inject.Inject
 class BuildingDetailViewModel @Inject constructor(
     private val buildingsImagesUseCase: GetBuildingImagesUseCase,
     private val buildingHistoriesUseCase: GetBuildingHistoriesUseCase,
-    private val buildingUseCase: GetBuildingsUseCase
+    private val buildingUseCase: GetBuildingsUseCase,
+    private val getBuildingDetailCheckboxStateUseCase: GetBuildingDetailCheckboxStateUseCase,
+    private val setBuildingDetailCheckboxStateUseCase: SetBuildingDetailCheckboxStateUseCase
 ) : ViewModel() {
 
     private val _buildingDetailData = MutableLiveData<Any>()
@@ -31,6 +31,8 @@ class BuildingDetailViewModel @Inject constructor(
         get() = _buildingDetailData
 
     var buildingName = MutableLiveData<String>() // 양방향 데이터 바인딩은 observable한 데이터로 한다길래..
+
+    var checkboxState : Boolean = false
 
     fun getBuildingDetailData(data: Any) {
 
@@ -56,4 +58,11 @@ class BuildingDetailViewModel @Inject constructor(
         buildingsImagesUseCase.invoke(c, path, v)
     }
 
+    fun getBuildingDetailCheckboxState(id: Int) : Boolean {
+        return getBuildingDetailCheckboxStateUseCase(id)
+    }
+
+    fun setBuildingDetailCheckboxState(id: Int, state: Boolean) {
+        setBuildingDetailCheckboxStateUseCase(id,state)
+    }
 }
