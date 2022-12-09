@@ -36,4 +36,9 @@ interface BuildingRepository {
 
     fun getBuildingImages(c: Activity, path: String, v: ImageView)
 
+    // SharedPreference
+
+    fun getBuildingDetailCheckboxState(id: Int) : Boolean
+
+    fun setBuildingDetailCheckboxState(id: Int, state: Boolean)
 }
