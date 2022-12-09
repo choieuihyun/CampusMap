@@ -59,10 +59,10 @@ class BuildingDetailViewModel @Inject constructor(
     }
 
     fun getBuildingDetailCheckboxState(id: Int) : Boolean {
-        return getBuildingDetailCheckboxStateUseCase(id)
+        return getBuildingDetailCheckboxStateUseCase.getBuildingDetailCheckboxState(id)
     }
 
     fun setBuildingDetailCheckboxState(id: Int, state: Boolean) {
-        setBuildingDetailCheckboxStateUseCase(id,state)
+        setBuildingDetailCheckboxStateUseCase.setBuildingDetailCheckboxState(id,state)
     }
 }

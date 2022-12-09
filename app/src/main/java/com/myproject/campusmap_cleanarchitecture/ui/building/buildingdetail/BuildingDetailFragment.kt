@@ -43,6 +43,8 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
             checkboxState(building.id)
 
+            Log.d("checkboxState", binding.buildingDetailFavorite.isSelected.toString())
+
         } else if (buildingHistory != null) {
 
             updateBuildingHistoryUI(buildingHistory)
@@ -56,10 +58,12 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
         binding.buildingDetailFavorite.setOnClickListener {
 
             if (building != null) {
-                it.isSelected = it.isSelected != true
+
+                it.isSelected = !it.isSelected
+
                 viewModel.checkboxState = it.isSelected
-                Log.d("checkboxState2", viewModel.checkboxState.toString())
                 viewModel.setBuildingDetailCheckboxState(building.id, viewModel.checkboxState)
+                Log.d("checkboxState2", viewModel.checkboxState.toString())
             }
         }
     }
@@ -101,6 +105,7 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
     private fun checkboxState(id: Int) {
         val checkboxState = viewModel.getBuildingDetailCheckboxState(id)
         binding.buildingDetailFavorite.isChecked = checkboxState
+        binding.buildingDetailFavorite.isSelected = checkboxState
     }
 
 }
