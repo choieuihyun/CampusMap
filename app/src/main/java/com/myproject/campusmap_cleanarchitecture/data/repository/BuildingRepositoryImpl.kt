@@ -78,8 +78,8 @@ class BuildingRepositoryImpl @Inject constructor(
 
     // BuildingDetail Checkbox
 
-    override fun getBuildingDetailCheckboxState(id: Int) {
-        dataSource.getBuilding(id)
+    override fun getBuildingDetailCheckboxState(id: Int) : Boolean {
+        return dataSource.getBuildingDetailCheckboxState(id)
     }
 
     override fun setBuildingDetailCheckboxState(id: Int, state: Boolean) {
