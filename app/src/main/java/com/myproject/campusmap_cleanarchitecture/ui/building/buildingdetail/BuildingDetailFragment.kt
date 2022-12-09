@@ -33,8 +33,6 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
         binding.buildingDetailViewModel = viewModel
 
-
-
         if (building != null) {
 
             updateBuildingUI(building)
@@ -64,6 +62,12 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
                 viewModel.checkboxState = it.isSelected
                 viewModel.setBuildingDetailCheckboxState(building.id, viewModel.checkboxState)
                 Log.d("checkboxState2", viewModel.checkboxState.toString())
+            } else if (buildingHistory != null) {
+                it.isSelected = !it.isSelected
+
+                viewModel.checkboxState = it.isSelected
+                viewModel.setBuildingDetailCheckboxState(buildingHistory.id, viewModel.checkboxState)
+                Log.d("checkboxState3", viewModel.checkboxState.toString())
             }
         }
     }
