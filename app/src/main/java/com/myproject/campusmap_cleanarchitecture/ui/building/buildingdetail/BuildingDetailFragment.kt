@@ -21,8 +21,6 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
     private val args by navArgs<BuildingDetailFragmentArgs>()
 
-    // private val sharedPreferences = context?.getSharedPreferences(getString(R.string.spk),Context.MODE_PRIVATE)
-
     private val viewModel: BuildingDetailViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,8 +39,6 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
             checkboxState(building.id)
 
-            Log.d("checkboxState", binding.buildingDetailFavorite.isSelected.toString())
-
         } else if (buildingHistory != null) {
 
             updateBuildingHistoryUI(buildingHistory)
@@ -58,16 +54,26 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
             if (building != null) {
 
                 it.isSelected = !it.isSelected
-
                 viewModel.checkboxState = it.isSelected
                 viewModel.setBuildingDetailCheckboxState(building.id, viewModel.checkboxState)
-                Log.d("checkboxState2", viewModel.checkboxState.toString())
-            } else if (buildingHistory != null) {
-                it.isSelected = !it.isSelected
 
+                if(viewModel.checkboxState)
+                    viewModel.addBuildingDetailFavorite(building)
+                else
+                    viewModel.deleteBuildingDetailFavorite(building.id)
+
+            } else if (buildingHistory != null) {
+
+                it.isSelected = !it.isSelected
                 viewModel.checkboxState = it.isSelected
                 viewModel.setBuildingDetailCheckboxState(buildingHistory.id, viewModel.checkboxState)
-                Log.d("checkboxState3", viewModel.checkboxState.toString())
+
+                if(viewModel.checkboxState)
+                    viewModel.addBuildingDetailFavorite(buildingHistory)
+                else
+                    viewModel.deleteBuildingDetailFavorite(buildingHistory.id)
+
+
             }
         }
     }

@@ -23,7 +23,9 @@ class BuildingDetailViewModel @Inject constructor(
     private val buildingHistoriesUseCase: GetBuildingHistoriesUseCase,
     private val buildingUseCase: GetBuildingsUseCase,
     private val getBuildingDetailCheckboxStateUseCase: GetBuildingDetailCheckboxStateUseCase,
-    private val setBuildingDetailCheckboxStateUseCase: SetBuildingDetailCheckboxStateUseCase
+    private val setBuildingDetailCheckboxStateUseCase: SetBuildingDetailCheckboxStateUseCase,
+    private val addBuildingFavoritesUseCase: AddBuildingFavoritesUseCase,
+    private val deleteBuildingFavoritesUseCase: DeleteBuildingFavoritesUseCase
 ) : ViewModel() {
 
     private val _buildingDetailData = MutableLiveData<Any>()
@@ -41,12 +43,12 @@ class BuildingDetailViewModel @Inject constructor(
             when(data) {
 
                 is Building -> {
-                    _buildingDetailData.value = buildingUseCase.invoke()
+                    _buildingDetailData.value = buildingUseCase.invoke() // 이거 필요없잖아
                     buildingName.value = data.name!!
                 }
 
                 is BuildingHistory -> {
-                    _buildingDetailData.value = buildingHistoriesUseCase.invoke()
+                    _buildingDetailData.value = buildingHistoriesUseCase.invoke() // 이것도 필요없음
                     buildingName.value = data.name!!
                 }
             }
@@ -58,11 +60,34 @@ class BuildingDetailViewModel @Inject constructor(
         buildingsImagesUseCase.invoke(c, path, v)
     }
 
+    // Checkbox
+
     fun getBuildingDetailCheckboxState(id: Int) : Boolean {
         return getBuildingDetailCheckboxStateUseCase.getBuildingDetailCheckboxState(id)
     }
 
     fun setBuildingDetailCheckboxState(id: Int, state: Boolean) {
         setBuildingDetailCheckboxStateUseCase.setBuildingDetailCheckboxState(id,state)
+    }
+
+    // Checkbox Data
+
+    fun addBuildingDetailFavorite(data : Any) {
+        viewModelScope.launch {
+
+            when(data) {
+
+                is Building -> addBuildingFavoritesUseCase.addBuilding(data)
+
+                is BuildingHistory -> addBuildingFavoritesUseCase.addBuilding(data)
+
+            }
+        }
+    }
+
+    fun deleteBuildingDetailFavorite(id: Int) {
+        viewModelScope.launch {
+            deleteBuildingFavoritesUseCase.invoke(id)
+        }
     }
 }

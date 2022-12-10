@@ -2,6 +2,7 @@ package com.myproject.campusmap_cleanarchitecture.data.repository
 
 import android.app.Activity
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource.BuildingDataSource
@@ -12,6 +13,7 @@ import com.myproject.campusmap_cleanarchitecture.domain.model.Building
 import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingFavorite
 import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.domain.repository.BuildingRepository
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class BuildingRepositoryImpl @Inject constructor(
@@ -62,8 +64,18 @@ class BuildingRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun addBuildingFavorite(building : Building) {
-        return dataSource.addBuildingFavorite(building.toBuildingFavoriteEntity())
+//    override suspend fun addBuildingFavorite(building : Building) {
+//        return dataSource.addBuildingFavorite(building.toBuildingFavoriteEntity())
+//    }
+    override suspend fun addBuildingFavorite(data : Any) {
+
+        return when(data) {
+            is Building -> dataSource.addBuildingFavorite(data.toBuildingFavoriteEntity())
+
+            is BuildingHistory -> dataSource.addBuildingFavorite(data.toBuildingFavoriteEntity())
+
+            else -> { } // 에러처리를 여기서 ?
+        }
     }
 
     override suspend fun deleteBuildingFavorite(id: Int) {
