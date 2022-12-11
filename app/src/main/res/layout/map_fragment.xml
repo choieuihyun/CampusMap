@@ -117,9 +117,9 @@
                 android:layout_marginTop="220dp"
                 android:layout_marginStart="15dp"
                 android:paddingStart="15dp"
-                android:drawableStart="@drawable/building"
+                android:drawableStart="@drawable/favorite_filled_black"
                 android:background="#00FF0000"
-                android:text="  건물찾기"
+                android:text="  즐겨찾기"
                 android:textSize="20sp" />
 
 
