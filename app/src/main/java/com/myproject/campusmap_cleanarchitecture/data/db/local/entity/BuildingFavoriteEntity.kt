@@ -3,8 +3,8 @@ package com.myproject.campusmap_cleanarchitecture.data.db.local.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName="BuildingHistory")
-data class BuildingHistoryEntity (
+@Entity(tableName = "BuildingFavorite")
+data class BuildingFavoriteEntity (
     @PrimaryKey val id : Int,
     var name: String? = "",
     var latitude: Double? = 0.0,

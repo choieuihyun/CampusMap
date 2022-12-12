@@ -1,7 +1,9 @@
 package com.myproject.campusmap_cleanarchitecture.ui.building.buildingdetail
 import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
@@ -21,15 +23,6 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
     private val viewModel: BuildingDetailViewModel by viewModels()
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -44,17 +37,45 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
             updateBuildingImages(requireActivity(), building.buildingImageUri.toString(), binding.buildingImage)
 
+            checkboxState(building.id)
+
         } else if (buildingHistory != null) {
 
             updateBuildingHistoryUI(buildingHistory)
 
             updateBuildingImages(requireActivity(), buildingHistory.buildingImageUri.toString(), binding.buildingImage)
 
-        }
-    }
+            checkboxState(buildingHistory.id)
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+        }
+
+        binding.buildingDetailFavorite.setOnClickListener {
+
+            if (building != null) {
+
+                it.isSelected = !it.isSelected
+                viewModel.checkboxState = it.isSelected
+                viewModel.setBuildingDetailCheckboxState(building.id, viewModel.checkboxState)
+
+                if(viewModel.checkboxState)
+                    viewModel.addBuildingDetailFavorite(building)
+                else
+                    viewModel.deleteBuildingDetailFavorite(building.id)
+
+            } else if (buildingHistory != null) {
+
+                it.isSelected = !it.isSelected
+                viewModel.checkboxState = it.isSelected
+                viewModel.setBuildingDetailCheckboxState(buildingHistory.id, viewModel.checkboxState)
+
+                if(viewModel.checkboxState)
+                    viewModel.addBuildingDetailFavorite(buildingHistory)
+                else
+                    viewModel.deleteBuildingDetailFavorite(buildingHistory.id)
+
+
+            }
+        }
     }
 
     private fun updateBuildingUI(building: Building) {
@@ -89,6 +110,12 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
     private fun updateBuildingImages(c: Activity, path: String, v: ImageView) {
         viewModel.getBuildingImages(c, path, v)
+    }
+
+    private fun checkboxState(id: Int) {
+        val checkboxState = viewModel.getBuildingDetailCheckboxState(id)
+        binding.buildingDetailFavorite.isChecked = checkboxState
+        binding.buildingDetailFavorite.isSelected = checkboxState
     }
 
 }

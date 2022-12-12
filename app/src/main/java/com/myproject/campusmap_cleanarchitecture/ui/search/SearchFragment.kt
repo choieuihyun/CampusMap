@@ -115,6 +115,14 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(R.layout.search_fragm
 
                         searchBuildingAdapter.submitList(buildings)
 
+                        searchBuildingAdapter.setOnItemClickListener { building -> // 보일러 떼는 소리 폴폴~
+                            viewModel.addBuildingHistories(building)
+                            val action = SearchFragmentDirections.actionSearchFragmentToMapFragment(building,
+                                busStop = null,
+                                buildingHistory = null)
+                            findNavController().navigate(action)
+                        }
+
                     }
 
                     binding.buildingSearchButton.setOnClickListener {

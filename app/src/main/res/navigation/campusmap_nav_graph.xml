@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_mapFragment_to_buildingHistoryBottomSheetDialog"
             app:destination="@id/buildingHistoryBottomSheetDialog" />
+        <action
+            android:id="@+id/action_mapFragment_to_buildingFavoriteFragment"
+            app:destination="@id/buildingFavoriteFragment" />
     </fragment>
     <fragment
         android:id="@+id/buildingMenuFragment"
@@ -191,4 +194,9 @@
             android:name="buildingHistory"
             app:argType="com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory" />
     </dialog>
+    <fragment
+        android:id="@+id/buildingFavoriteFragment"
+        android:name="com.myproject.campusmap_cleanarchitecture.ui.building.buildingfavorite.BuildingFavoriteFragment"
+        android:label="BuildingFavoriteFragment"
+        tools:layout="@layout/building_fragment_favorite"/>
 </navigation>

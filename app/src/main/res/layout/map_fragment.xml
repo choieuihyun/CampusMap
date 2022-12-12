@@ -67,7 +67,7 @@
             android:id="@+id/navigationView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:background="@color/white"
             android:orientation="vertical"
             android:padding="10dp">
@@ -81,7 +81,7 @@
                 android:layout_marginStart="15dp"
                 android:paddingStart="15dp"
                 android:drawableStart="@drawable/building"
-                android:background="#00ff0000"
+                android:background="#00FF0000"
                 android:text="  건물찾기"
                 android:textSize="20sp" />
 
@@ -94,7 +94,7 @@
                 android:layout_marginStart="15dp"
                 android:paddingStart="15dp"
                 android:drawableStart="@drawable/notice"
-                android:background="#00ff0000"
+                android:background="#00FF0000"
                 android:text="  공지사항"
                 android:textSize="20sp" />
 
@@ -106,9 +106,22 @@
                 android:layout_marginStart="15dp"
                 android:paddingStart="15dp"
                 android:drawableStart="@drawable/bus"
-                android:background="#00ff0000"
-                android:text="  버스정류장"
+                android:background="#00FF0000"
+                android:text="  버스정보"
                 android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/menu_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="220dp"
+                android:layout_marginStart="15dp"
+                android:paddingStart="15dp"
+                android:drawableStart="@drawable/favorite_filled_black"
+                android:background="#00FF0000"
+                android:text="  즐겨찾기"
+                android:textSize="20sp" />
+
 
         </com.google.android.material.navigation.NavigationView>
 

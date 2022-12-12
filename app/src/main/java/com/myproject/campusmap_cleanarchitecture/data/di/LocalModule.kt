@@ -1,8 +1,12 @@
 package com.myproject.campusmap_cleanarchitecture.data.di
 
 import android.content.Context
+import android.content.SharedPreferences
+import androidx.room.PrimaryKey
 import androidx.room.Room
+import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingDatabase
+import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingFavoriteDatabase
 import com.myproject.campusmap_cleanarchitecture.data.db.local.database.BuildingHistoriesDatabase
 import dagger.Module
 import dagger.Provides
@@ -35,5 +39,18 @@ object LocalModule {
             "historiesDB")
             .fallbackToDestructiveMigration()
             .build()
+
+    @Singleton
+    @Provides
+    fun provideFavoriteDatabase(@ApplicationContext context: Context) : BuildingFavoriteDatabase =
+        Room.databaseBuilder(context,
+        BuildingFavoriteDatabase::class.java,
+        "favoritesDB")
+            .build()
+
+    @Singleton
+    @Provides
+    fun provideSharedPreference(@ApplicationContext context: Context) : SharedPreferences =
+        context.getSharedPreferences(R.string.spk.toString(),Context.MODE_PRIVATE)
 
 }

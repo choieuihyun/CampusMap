@@ -53,12 +53,6 @@ object NetworkModule {
             .baseUrl(BUSAPI_BASE_URL)
             .build()
     }
-/*
-    @Singleton
-    @Provides
-    fun provideFirebase(firebase: Firebase): Firebase {
-        return firebase
-    }*/
 
     @Singleton
     @Provides

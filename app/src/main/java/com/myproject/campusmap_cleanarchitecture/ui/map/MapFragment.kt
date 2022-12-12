@@ -126,7 +126,7 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
         }*/
 
-        if(building != null) { // map이 열릴때 받은 데이터들을 처리해야해서 이렇게 한건데 아무리봐도 구린 코드임. 방법 생각해내야함.
+        if(building != null) {
 
             createBuildingMarker(building)
 
@@ -163,6 +163,10 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
 
         binding.buildingSearchButton.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_searchFragment)
+        }
+
+        binding.menuFavorite.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_buildingFavoriteFragment)
         }
 
 
