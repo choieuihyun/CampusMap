@@ -1,6 +1,7 @@
 package com.myproject.campusmap_cleanarchitecture.ui.search
 
 import android.app.Activity
+import android.content.Context
 import android.widget.ImageView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -37,7 +38,7 @@ class SearchFragmentViewModel @Inject constructor(
         }
     }
 
-    fun getBuildingImages(c: Activity, path: String, v: ImageView) {
+    fun getBuildingImages(c: Context, path: String, v: ImageView) {
         buildingsImagesUseCase.invoke(c, path, v)
     }
 

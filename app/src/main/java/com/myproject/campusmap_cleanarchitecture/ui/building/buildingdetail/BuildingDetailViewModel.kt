@@ -2,6 +2,7 @@ package com.myproject.campusmap_cleanarchitecture.ui.building.buildingdetail
 
 
 import android.app.Activity
+import android.content.Context
 import android.widget.ImageView
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
@@ -56,7 +57,7 @@ class BuildingDetailViewModel @Inject constructor(
         }
     }
 
-    fun getBuildingImages(c: Activity, path: String, v: ImageView) {
+    fun getBuildingImages(c: Context, path: String, v: ImageView) {
         buildingsImagesUseCase.invoke(c, path, v)
     }
 

@@ -108,7 +108,7 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
     }
 
-    private fun updateBuildingImages(c: Activity, path: String, v: ImageView) {
+    private fun updateBuildingImages(c: Context, path: String, v: ImageView) {
         viewModel.getBuildingImages(c, path, v)
     }
 

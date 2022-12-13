@@ -66,11 +66,9 @@ object NetworkModule {
         return FirebaseStorage.getInstance()
     }
 
-    // 일단 추가했는데 별 소용은 없네요.
-
     @Singleton
     @Provides
-    fun provideFirebaseStorageReference(firebaseStorage: FirebaseStorage) : StorageReference  {
+    fun provideFirebaseStorageReference(firebaseStorage: FirebaseStorage) : StorageReference  { // 이건 필요없어보이는데
         return firebaseStorage.reference
     }
 

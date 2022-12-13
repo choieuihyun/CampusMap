@@ -1,8 +1,8 @@
 package com.myproject.campusmap_cleanarchitecture.data.repository
 
 import android.app.Activity
+import android.content.Context
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource.BuildingDataSource
@@ -13,7 +13,6 @@ import com.myproject.campusmap_cleanarchitecture.domain.model.Building
 import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingFavorite
 import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.domain.repository.BuildingRepository
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class BuildingRepositoryImpl @Inject constructor(
@@ -84,7 +83,7 @@ class BuildingRepositoryImpl @Inject constructor(
 
     // BuildingImage 불러오는 코드
 
-    override fun getBuildingImages(c: Activity, path: String, v: ImageView) {
+    override fun getBuildingImages(c: Context, path: String, v: ImageView) {
         dataSource.getBuildingImages(c,path,v)
     }
 

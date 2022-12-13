@@ -42,7 +42,7 @@ class BuildingHistoryBottomSheetDialog() : BottomSheetDialogFragment() {
 
         binding.buildingHistory = buildingHistory
 
-        viewModel.getBuildingImages(requireActivity(), buildingHistory.buildingImageUri.toString(), binding.buildingImage)
+        viewModel.getBuildingImages(requireContext(), buildingHistory.buildingImageUri.toString(), binding.buildingImage)
 
         binding.lectureRoomButton.setOnClickListener {
             val action = BuildingHistoryBottomSheetDialogDirections.actionBuildingHistoryBottomSheetDialogToBuildingDetailFragment(building = null, buildingHistory)

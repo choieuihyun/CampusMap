@@ -40,7 +40,7 @@ class BuildingBottomSheetDialog() : BottomSheetDialogFragment() {
         val building = args.building
 
         binding.building = building
-        viewModel.getBuildingImages(requireActivity(), binding.building?.buildingImageUri!!,binding.buildingImage)
+        viewModel.getBuildingImages(requireContext(), binding.building?.buildingImageUri!!,binding.buildingImage)
 
         binding.lectureRoomButton.setOnClickListener {
             // 이게 building이 먼저 가서 다음꺼는 안넣어도 상관이 없나? 에러는 안뜨는데
