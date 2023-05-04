@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.databinding.BuildingFragmentDetailBinding
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingFavorite
 import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.ui.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +29,7 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
         val building = args.building
         val buildingHistory = args.buildingHistory
+        val buildingFavorite = args.buildingFavorite
 
         binding.buildingDetailViewModel = viewModel
 
@@ -46,6 +48,14 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
             updateBuildingImages(requireActivity(), buildingHistory.buildingImageUri.toString(), binding.buildingImage)
 
             checkboxState(buildingHistory.id)
+
+        } else if (buildingFavorite != null) {
+
+            updateBuildingFavoriteUI(buildingFavorite)
+
+            updateBuildingImages(requireActivity(), buildingFavorite.buildingImageUri.toString(), binding.buildingImage)
+
+            checkboxState(buildingFavorite.id)
 
         }
 
@@ -73,6 +83,16 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
                 else
                     viewModel.deleteBuildingDetailFavorite(buildingHistory.id)
 
+            } else if (buildingFavorite != null) {
+
+                it.isSelected = !it.isSelected
+                viewModel.checkboxState = it.isSelected
+                viewModel.setBuildingDetailCheckboxState(buildingFavorite.id, viewModel.checkboxState)
+
+                if(viewModel.checkboxState)
+                    viewModel.addBuildingDetailFavorite(buildingFavorite)
+                else
+                    viewModel.deleteBuildingDetailFavorite(buildingFavorite.id)
 
             }
         }
@@ -87,7 +107,7 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
         }
 
         binding.lectureRoomButton.setOnClickListener {
-            val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building, buildingHistory = null)
+            val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building, buildingHistory = null, buildingFavorite = null)
             findNavController().navigate(action)
         }
 
@@ -102,7 +122,22 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
         }
 
         binding.lectureRoomButton.setOnClickListener {
-            val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building = null, buildingHistory)
+            val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building = null, buildingHistory, buildingFavorite = null)
+            findNavController().navigate(action)
+        }
+
+    }
+
+    private fun updateBuildingFavoriteUI(buildingFavorite: BuildingFavorite) {
+
+        viewModel.getBuildingDetailData(buildingFavorite)
+
+        if(buildingFavorite.buildingImageUri?.contains("no_detail") == true) {
+            binding.lectureRoomButton.visibility = View.GONE
+        }
+
+        binding.lectureRoomButton.setOnClickListener {
+            val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building = null, buildingHistory = null, buildingFavorite)
             findNavController().navigate(action)
         }
 

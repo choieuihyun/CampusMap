@@ -44,7 +44,7 @@ class BuildingBottomSheetDialog() : BottomSheetDialogFragment() {
 
         binding.lectureRoomButton.setOnClickListener {
             // 이게 building이 먼저 가서 다음꺼는 안넣어도 상관이 없나? 에러는 안뜨는데
-            val action = BuildingBottomSheetDialogDirections.actionBottomSheetDialogToBuildingDetailFragment(building, buildingHistory = null)
+            val action = BuildingBottomSheetDialogDirections.actionBottomSheetDialogToBuildingDetailFragment(building, buildingHistory = null, buildingFavorite = null)
             findNavController().navigate(action)
         }
 

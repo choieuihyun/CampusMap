@@ -13,6 +13,12 @@ class BuildingFavoriteViewHolder(
     private val viewModel: BuildingFavoriteViewModel
 ) : RecyclerView.ViewHolder(binding.root) {
 
+    private var onButtonClickListener : ((BuildingFavorite) -> Unit)? = null
+
+    fun setOnButtonClickListener(listener : (BuildingFavorite) -> Unit) {
+        onButtonClickListener = listener
+    }
+
     fun bind(c: Context, path: String, buildingFavorite: BuildingFavorite) {
         viewModel.getBuildingImages(c, path, binding.buildingFavoriteImageView)
         binding.buildingFavorite = buildingFavorite
@@ -30,6 +36,12 @@ class BuildingFavoriteViewHolder(
             viewModel.setBuildingDetailCheckboxState(buildingFavorite.id, viewModel.checkboxState)
             viewModel.deleteBuildingFavorite(buildingFavorite.id)
 
+        }
+
+        binding.buildingFavoriteButton.setOnClickListener {
+            onButtonClickListener?.let {
+                it(buildingFavorite)
+            }
         }
     }
 

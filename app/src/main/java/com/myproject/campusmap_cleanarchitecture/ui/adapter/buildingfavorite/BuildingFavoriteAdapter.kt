@@ -23,6 +23,18 @@ class BuildingFavoriteAdapter(private val context: Context,
     override fun onBindViewHolder(holder: BuildingFavoriteViewHolder, position: Int) {
         val buildingFavorite = currentList[position]
         holder.bind(context, buildingFavorite.buildingImageUri.toString(), buildingFavorite) // 저거 context 고쳐
+
+        holder.setOnButtonClickListener {
+            onButtonClickListener?.let {
+                it(buildingFavorite)
+            }
+        }
+    }
+
+    private var onButtonClickListener : ((BuildingFavorite) -> Unit)? = null
+
+    fun setOnButtonClickListener(listener : (BuildingFavorite) -> Unit) {
+        onButtonClickListener = listener
     }
 
     companion object {

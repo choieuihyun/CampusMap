@@ -1,8 +1,10 @@
 package com.myproject.campusmap_cleanarchitecture.ui.building.buildingfavorite
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myproject.campusmap_cleanarchitecture.R
@@ -40,6 +42,11 @@ class BuildingFavoriteFragment : BaseFragment<BuildingFragmentFavoriteBinding>(R
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = buildingFavoriteAdapter
+        }
+
+        buildingFavoriteAdapter.setOnButtonClickListener {
+            buildingFavorite -> val action = BuildingFavoriteFragmentDirections.actionBuildingFavoriteFragmentToBuildingDetailFragment(building = null, buildingHistory = null, buildingFavorite)
+            findNavController().navigate(action)
         }
 
 
