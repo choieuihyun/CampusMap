@@ -1,6 +1,7 @@
 package com.myproject.campusmap_cleanarchitecture.domain.repository
 
 import android.app.Activity
+import android.content.Context
 import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import com.myproject.campusmap_cleanarchitecture.data.db.local.entity.BuildingFavoriteEntity
@@ -35,7 +36,7 @@ interface BuildingRepository {
 
     // Building Image 불러오는 코드
 
-    fun getBuildingImages(c: Activity, path: String, v: ImageView)
+    fun getBuildingImages(c: Context, path: String, v: ImageView)
 
     // SharedPreference
 

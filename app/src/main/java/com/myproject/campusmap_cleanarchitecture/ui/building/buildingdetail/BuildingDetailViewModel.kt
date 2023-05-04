@@ -2,6 +2,7 @@ package com.myproject.campusmap_cleanarchitecture.ui.building.buildingdetail
 
 
 import android.app.Activity
+import android.content.Context
 import android.widget.ImageView
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
@@ -9,6 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myproject.campusmap_cleanarchitecture.domain.model.Building
+import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingFavorite
 import com.myproject.campusmap_cleanarchitecture.domain.model.BuildingHistory
 import com.myproject.campusmap_cleanarchitecture.domain.model.NoticeItem
 import com.myproject.campusmap_cleanarchitecture.domain.usecase.*
@@ -22,6 +24,7 @@ class BuildingDetailViewModel @Inject constructor(
     private val buildingsImagesUseCase: GetBuildingImagesUseCase,
     private val buildingHistoriesUseCase: GetBuildingHistoriesUseCase,
     private val buildingUseCase: GetBuildingsUseCase,
+    private val buildingFavoritesUseCase: GetBuildingFavoritesUseCase,
     private val getBuildingDetailCheckboxStateUseCase: GetBuildingDetailCheckboxStateUseCase,
     private val setBuildingDetailCheckboxStateUseCase: SetBuildingDetailCheckboxStateUseCase,
     private val addBuildingFavoritesUseCase: AddBuildingFavoritesUseCase,
@@ -51,12 +54,17 @@ class BuildingDetailViewModel @Inject constructor(
                     _buildingDetailData.value = buildingHistoriesUseCase.invoke() // 이것도 필요없음
                     buildingName.value = data.name!!
                 }
+
+                is BuildingFavorite -> {
+                    _buildingDetailData.value = buildingFavoritesUseCase.invoke()
+                    buildingName.value = data.name!!
+                }
             }
 
         }
     }
 
-    fun getBuildingImages(c: Activity, path: String, v: ImageView) {
+    fun getBuildingImages(c: Context, path: String, v: ImageView) {
         buildingsImagesUseCase.invoke(c, path, v)
     }
 
