@@ -1,6 +1,7 @@
 package com.myproject.campusmap_cleanarchitecture.ui.building.buildingdetail
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -96,6 +97,13 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
 
             }
         }
+
+        binding.shareButton.setOnClickListener {
+
+            shareSheet()
+
+        }
+
     }
 
     private fun updateBuildingUI(building: Building) {
@@ -140,6 +148,24 @@ class BuildingDetailFragment: BaseFragment<BuildingFragmentDetailBinding>(R.layo
             val action = BuildingDetailFragmentDirections.actionBuildingDetailFragmentToLectureRoomMenu(building = null, buildingHistory = null, buildingFavorite)
             findNavController().navigate(action)
         }
+
+    }
+
+    private fun shareSheet() {
+
+        val sendIntent: Intent = Intent().apply {
+
+            action = Intent.ACTION_SEND
+
+            putExtra(Intent.EXTRA_TEXT, "Hello World")
+
+            type = "text/plain"
+
+        }
+
+        val shareIntent = Intent.createChooser(sendIntent, null)
+
+        startActivity(shareIntent)
 
     }
 
