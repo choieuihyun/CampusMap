@@ -112,20 +112,6 @@ class MapFragment : Fragment(), MapView.CurrentLocationEventListener, MapReverse
         val busStop = args.busStop
         val buildingHistory = args.buildingHistory
 
-/*        if(building != null) { // map이 열릴때 받은 데이터들을 처리해야해서 이렇게 한건데 아무리봐도 구린 코드임. 방법 생각해내야함.
-
-            if (buildingHistory.latitude != 0.0 && building.latitude != 0.0 && building.longitude != 0.0) {
-
-                createBuildingMarker(building)
-
-            } else if (buildingHistory.latitude != 0.0 && building.latitude == 0.0 && building.longitude == 0.0) {
-
-                createBusStopMarker(busStop!!)
-
-            }
-
-        }*/
-
         if(building != null) {
 
             createBuildingMarker(building)
