@@ -1,8 +1,10 @@
 package com.myproject.campusmap_cleanarchitecture.ui.util
 
 import android.content.Context
+import android.widget.Toast
 import com.myproject.campusmap_cleanarchitecture.R
 import com.myproject.campusmap_cleanarchitecture.domain.error.NetworkError
+import com.myproject.campusmap_cleanarchitecture.domain.error.RoomError
 
 fun NetworkError.toErrorMessage(
     context: Context
@@ -23,4 +25,16 @@ fun NetworkError.toErrorMessage(
         }
 
     }
+}
+
+fun RoomError.toErrorMessage(
+    context: Context
+) : String {
+
+    return when (this) {
+        is RoomError.Unknown -> {
+            context.getString(R.string.room_error_msg)
+        }
+    }
+
 }

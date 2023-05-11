@@ -25,7 +25,7 @@ class BuildingMenuAdapter : ListAdapter<Building, BuildingMenuViewHolder>(Buildi
         }
     }
 
-    private var onItemClickListener: ((Building) -> Unit)? = null
+    private var onItemClickListener: ((Building) -> Unit)? = null // 쓰이는 순서를 생각해보자.
 
     fun setOnItemClickListener(listener: (Building) -> Unit) {
         onItemClickListener = listener
