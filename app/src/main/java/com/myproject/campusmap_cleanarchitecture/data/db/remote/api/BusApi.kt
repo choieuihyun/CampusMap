@@ -15,7 +15,7 @@ interface BusApi {
     @GET("bus_location2_stopno_common.do") // 정류장 번호로 검색
     suspend fun getBusStopData(@Query("ServiceKey") ServiceKey: String,
                                @Query("searchFld") searchFld: String,
-    @Query("searchNm") searchNm : String) : Response<BusStopResponse>
+                               @Query("searchNm") searchNm : String) : Response<BusStopResponse>
 
 
 }

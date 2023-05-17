@@ -26,12 +26,24 @@
     <string name="ka_ha">카~하</string>
     <string name="a_z">A~Z</string>
 
+    <!-- building detail -->
+
+    <string name="share">공유하기</string>
+    <string name="buildingsearch">강의실 찾기</string>
+    <string name="favorite">즐겨찾기</string>
+    <string name="phone">전화번호</string>
+
     <!-- search fragment -->
+
     <string name="search_edittext_hint">건물명을 입력하세요</string>
     <string name="search_result_button">검색 리스트</string>
     <string name="search_history">검색 기록</string>
 
-    <!-- error message -->
+    <!-- building Favorite -->
+
+    <string name="favoriteButton">바로가기</string>
+
+    <!-- network error message -->
     <string name="error_msg">An error occurred during\nnetwork communication.</string>
     <string name="error_unknown">A network error has occurred.\nPlease run again in a few minutes.</string>
     <string name="error_internal_server">An error occurred on the server.\nPlease run again in a few minutes.</string>
@@ -39,6 +51,9 @@
     <string name="error_bad_request">Error Code : %1$d, Invalid request.\nPlease run again in a few minutes.</string>
     <string name="bus_error_msg">운행중인 버스가 없습니다.</string>
     <string name="data_error_msg">데이터가 없습니다.</string>
+
+    <!-- room error message -->
+    <string name="room_error_msg">데이터가 없습니다.</string>
 
     <!-- Sharedpreference -->
     <string name="spk">spk</string>

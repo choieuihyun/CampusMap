@@ -17,11 +17,10 @@ class BusRepositoryImpl @Inject constructor(
     override suspend fun getBusPositionData(stopStdid: Int): NetworkResult<List<BusPosition>?> { // isSuccessful 사용해서 error 처리해야할듯.
 
         return dataSource.getBusPositionData(stopStdid).mapNetworkResult {
-            busPositionData -> busPositionData?.map {
+                busPositionData -> busPositionData?.map {
                 it.toModel()
             }
         }
-
     }
 
     override suspend fun getBusStopData(searchNm: String, direction: String): BusStop? {
