@@ -1,18 +1,18 @@
 package com.myproject.campusmap_cleanarchitecture.domain.usecase
 
-import android.util.Log
 import com.myproject.campusmap_cleanarchitecture.domain.model.NoticeItem
-import kotlinx.coroutines.*
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
-import org.jsoup.nodes.Element
-import org.jsoup.select.Elements
-import java.io.IOException
+import com.myproject.campusmap_cleanarchitecture.domain.repository.NoticeRepository
 import javax.inject.Inject
 
-class GetNoticeUseCase @Inject constructor() {
+class GetNoticeUseCase @Inject constructor(
+    private val repository: NoticeRepository
+) {
 
-    private lateinit var doc: Document
+    suspend operator fun invoke(url: String, linkUrl: String): ArrayList<NoticeItem> {
+        return repository.getNoticeData(url, linkUrl)
+    }
+
+  /*  private lateinit var doc: Document
     private lateinit var docArray: ArrayList<Document>
     private lateinit var notice: Elements
     private lateinit var noticeDocArray: ArrayList<Elements>
@@ -105,6 +105,6 @@ class GetNoticeUseCase @Inject constructor() {
             noticeArray
         }
         return a.await()
-    }
+    }*/
 }
 

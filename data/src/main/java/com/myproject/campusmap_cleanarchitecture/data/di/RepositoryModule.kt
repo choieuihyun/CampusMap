@@ -3,12 +3,15 @@ package com.myproject.campusmap_cleanarchitecture.data.di
 import com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource.BuildingDataSource
 import com.myproject.campusmap_cleanarchitecture.data.datasource.localdatasource.LectureRoomDataSource
 import com.myproject.campusmap_cleanarchitecture.data.datasource.remotedatasource.BusDataSource
+import com.myproject.campusmap_cleanarchitecture.data.datasource.remotedatasource.JsoupDataSource
 import com.myproject.campusmap_cleanarchitecture.data.repository.BuildingRepositoryImpl
 import com.myproject.campusmap_cleanarchitecture.data.repository.BusRepositoryImpl
 import com.myproject.campusmap_cleanarchitecture.data.repository.LectureRoomRepositoryImpl
+import com.myproject.campusmap_cleanarchitecture.data.repository.NoticeRepositoryImpl
 import com.myproject.campusmap_cleanarchitecture.domain.repository.BuildingRepository
 import com.myproject.campusmap_cleanarchitecture.domain.repository.BusRepository
 import com.myproject.campusmap_cleanarchitecture.domain.repository.LectureRoomRepository
+import com.myproject.campusmap_cleanarchitecture.domain.repository.NoticeRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,6 +47,12 @@ object RepositoryModule {
     @Provides
     fun provideBusRepository(dataSource: BusDataSource) : BusRepository {
         return BusRepositoryImpl(dataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun provideJsoupData(jsoupDataSource: JsoupDataSource) : NoticeRepository {
+        return NoticeRepositoryImpl(jsoupDataSource)
     }
 
 /*    @Singleton
