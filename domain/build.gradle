@@ -1,0 +1,15 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+apply from: rootProject.file("android.gradle")
+
+dependencies {
+
+
+    implementation("javax.inject:javax.inject:1")
+
+}

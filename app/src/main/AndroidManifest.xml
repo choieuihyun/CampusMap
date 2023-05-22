@@ -18,11 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusMap_CleanArchitecture"
-        android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.main.MainActivity"
-            android:theme="@style/Theme.App.Starting"
+            android:name=".presentation.main.MainActivity"
+            android:theme="@style/Theme.CampusMap_CleanArchitecture"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
